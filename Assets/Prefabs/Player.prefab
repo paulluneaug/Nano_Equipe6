@@ -165,5 +165,5 @@ MonoBehaviour:
   m_shootActions: []
   m_rigidbody: {fileID: 5213401030009000322}
   m_maxSpeed: 10
-  m_acceleration: 1
-  m_deceleration: 1
+  m_acceleration: 1.5
+  m_decelerationFactor: 0.75

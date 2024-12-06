@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float m_maxSpeed;
     [SerializeField] private float m_acceleration;
-    [SerializeField] private float m_deceleration;
+    [SerializeField] private float m_decelerationFactor;
     
     private Vector2 m_velocity = Vector2.zero;
     
@@ -28,7 +28,27 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        m_rigidbody.MovePosition(m_rigidbody.position + GetMoveInput());
+        Vector2 moveInput = GetMoveInput();
+
+        if (moveInput.sqrMagnitude > 0)
+        {
+            m_velocity += m_acceleration * GetMoveInput();
+
+            if (m_velocity.magnitude > m_maxSpeed)
+                m_velocity = m_velocity.normalized * m_maxSpeed; // Thank you JetBrains AI I guess ?
+        }
+        
+        // If we are pressing no key or if we want to go in the opposite direction of our current velocity.
+        if(moveInput.sqrMagnitude == 0
+           || (moveInput.x < 0 && m_velocity.x > 0)
+           || (moveInput.x > 0 && m_velocity.x < 0)
+           || (moveInput.y < 0 && m_velocity.y > 0)
+           || (moveInput.y > 0 && m_velocity.y < 0))
+        {
+            m_velocity *= m_decelerationFactor;
+        }
+        
+        m_rigidbody.MovePosition(m_rigidbody.position + m_velocity * Time.fixedDeltaTime);
     }
     
     /**
@@ -37,12 +57,6 @@ public class Player : MonoBehaviour
      */
     private Vector2 GetMoveInput()
     {
-        if (m_moveActions.Count == 0)
-        {
-            Debug.Log("Player.GetMoveInput: No action in list.");
-            return Vector2.zero;
-        }
-
         Vector2 moveInput = Vector2.zero;
 
         foreach (InputActionReference actionReference in m_moveActions)
