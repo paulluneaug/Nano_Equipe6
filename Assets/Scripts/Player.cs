@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
         if (moveInput.sqrMagnitude > 0)
         {
-            m_velocity += m_acceleration * GetMoveInput();
+            m_velocity += m_acceleration * moveInput;
 
             if (m_velocity.magnitude > m_maxSpeed)
                 m_velocity = m_velocity.normalized * m_maxSpeed; // Thank you JetBrains AI I guess ?
