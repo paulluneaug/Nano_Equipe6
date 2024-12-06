@@ -1,9 +1,11 @@
-using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityUtility.Singletons;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
+    [SerializeField] private InputActionAsset m_inputActionAsset;
+    
     [Header("Players")]
     [SerializeField] private Player m_player1;
     [SerializeField] private Player m_player2;
@@ -13,6 +15,23 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] private float m_playerMergeMaxDistance = 2f;
 
     private bool m_arePlayersMerged;
+
+    protected override void Start()
+    {
+        // Set input devices to:
+        //   - Keyboard and Gamepad 0 (if connected) for player 1
+        //   - Keyboard and Gamepad 1 (if connected) for player 2
+        if (Gamepad.all.Count > 0)
+            m_inputActionAsset.FindActionMap("Player1").devices = new[]
+                { InputSystem.GetDevice("Keyboard"), Gamepad.all[0] };
+        
+        if (Gamepad.all.Count > 1)
+            m_inputActionAsset.FindActionMap("Player2").devices = new[]
+                { InputSystem.GetDevice("Keyboard"), Gamepad.all[1] };
+        else
+            m_inputActionAsset.FindActionMap("Player2").devices = new[]
+                { InputSystem.GetDevice("Keyboard") };
+    }
     
     private void Update()
     {
