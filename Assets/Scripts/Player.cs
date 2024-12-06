@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,9 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField] private int m_playerNumber;
     
     [Header("Input Actions")]
-    [SerializeField] private List<InputActionReference> m_moveActions = new List<InputActionReference>();
-    [SerializeField] private List<InputActionReference> m_shootActions = new List<InputActionReference>();
-    [SerializeField] private List<InputActionReference> m_mergeActions = new List<InputActionReference>();
+    [SerializeField] private List<InputActionReference> m_moveActions = new();
+    [SerializeField] private List<InputActionReference> m_shootActions = new();
+    [SerializeField] private List<InputActionReference> m_mergeActions = new();
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D m_rigidbody;
