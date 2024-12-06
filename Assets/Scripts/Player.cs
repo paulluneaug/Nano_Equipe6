@@ -1,18 +1,24 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    private static readonly int s_animatorParamVelocityX = Animator.StringToHash("DirectionX");
+    private static readonly int s_animatorParamVelocityY = Animator.StringToHash("DirectionY");
+
     [Header("Multiplayer")]
     [SerializeField] private int m_playerNumber;
     
     [Header("Input Actions")]
     [SerializeField] private List<InputActionReference> m_moveActions = new List<InputActionReference>();
     [SerializeField] private List<InputActionReference> m_shootActions = new List<InputActionReference>();
+    [SerializeField] private List<InputActionReference> m_mergeActions = new List<InputActionReference>();
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D m_rigidbody;
+    [SerializeField] private Animator m_animator;
     
     [Header("Movement")]
     [SerializeField] private float m_maxSpeed;
@@ -24,6 +30,14 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        UpdateAnimation();
+    }
+
+    private void UpdateAnimation()
+    {
+        m_animator.SetFloat(s_animatorParamVelocityX, m_velocity.x);
+        m_animator.SetFloat(s_animatorParamVelocityY, m_velocity.y);
+        m_animator.SetFloat(s_animatorParamVelocityY, m_velocity.y);
     }
 
     private void Move()
@@ -65,5 +79,18 @@ public class Player : MonoBehaviour
         }
 
         return moveInput / m_moveActions.Count;
+    }
+
+    public bool WantsToMerge()
+    {
+        if (m_mergeActions.Count == 0)
+            return false;
+        
+        int inputTrueCount = 0;
+        foreach (InputActionReference actionReference in m_mergeActions)
+            if (actionReference.action.triggered)
+                inputTrueCount++;
+        
+        return inputTrueCount == m_mergeActions.Count;
     }
 }
