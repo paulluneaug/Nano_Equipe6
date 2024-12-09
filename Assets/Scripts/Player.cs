@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
 
         return moveInput / m_moveActions.Count;
     }
-
-    public bool GetWantsToMerge() => m_wantsToMerge;
+    
+    public Vector2 GetVelocity() => m_velocity;
+    public Vector2 SetVelocity(Vector2 velocity) => m_velocity = velocity;
 }
