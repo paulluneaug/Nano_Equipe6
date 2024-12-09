@@ -48,8 +48,8 @@ public class Player : MonoBehaviour
         {
             m_velocity += m_acceleration * m_moveInput;
 
-            if (m_velocity.magnitude > m_maxSpeed)
-                m_velocity = m_velocity.normalized * m_maxSpeed; // Thank you JetBrains AI I guess ?
+            if (m_velocity.magnitude > (m_maxSpeed * m_moveInput.magnitude))
+                m_velocity = m_velocity.normalized * (m_maxSpeed * m_moveInput.magnitude);
         }
         
         // If we are pressing no key or if we want to go in the opposite direction of our current velocity.
