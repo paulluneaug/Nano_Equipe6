@@ -26,10 +26,44 @@ public class Player : MonoBehaviour
     
     private Vector2 m_velocity = Vector2.zero;
     
+    // Input State
+    private Vector2 m_moveInput;
+    private bool m_wantsToMerge;
+    
+    // ========== Unity Methods ==========
+    // ===================================
+    
     private void FixedUpdate()
     {
+        UpdateInputState();
         Move();
         UpdateAnimation();
+    }
+
+    // ========== Movement ==========
+    // ==============================
+    
+    private void Move()
+    {
+        if (m_moveInput.sqrMagnitude > 0)
+        {
+            m_velocity += m_acceleration * m_moveInput;
+
+            if (m_velocity.magnitude > m_maxSpeed)
+                m_velocity = m_velocity.normalized * m_maxSpeed; // Thank you JetBrains AI I guess ?
+        }
+        
+        // If we are pressing no key or if we want to go in the opposite direction of our current velocity.
+        if(m_moveInput.sqrMagnitude == 0
+           || (m_moveInput.x < 0 && m_velocity.x > 0)
+           || (m_moveInput.x > 0 && m_velocity.x < 0)
+           || (m_moveInput.y < 0 && m_velocity.y > 0)
+           || (m_moveInput.y > 0 && m_velocity.y < 0))
+        {
+            m_velocity *= m_decelerationFactor;
+        }
+        
+        m_rigidbody.MovePosition(m_rigidbody.position + m_velocity * Time.fixedDeltaTime);
     }
 
     private void UpdateAnimation()
@@ -38,32 +72,16 @@ public class Player : MonoBehaviour
         m_animator.SetFloat(s_animatorParamVelocityY, m_velocity.y);
         m_animator.SetFloat(s_animatorParamVelocityY, m_velocity.y);
     }
-
-    private void Move()
-    {
-        Vector2 moveInput = GetMoveInput();
-
-        if (moveInput.sqrMagnitude > 0)
-        {
-            m_velocity += m_acceleration * moveInput;
-
-            if (m_velocity.magnitude > m_maxSpeed)
-                m_velocity = m_velocity.normalized * m_maxSpeed; // Thank you JetBrains AI I guess ?
-        }
-        
-        // If we are pressing no key or if we want to go in the opposite direction of our current velocity.
-        if(moveInput.sqrMagnitude == 0
-           || (moveInput.x < 0 && m_velocity.x > 0)
-           || (moveInput.x > 0 && m_velocity.x < 0)
-           || (moveInput.y < 0 && m_velocity.y > 0)
-           || (moveInput.y > 0 && m_velocity.y < 0))
-        {
-            m_velocity *= m_decelerationFactor;
-        }
-        
-        m_rigidbody.MovePosition(m_rigidbody.position + m_velocity * Time.fixedDeltaTime);
-    }
     
+    // ========== Input ==========
+    // ===========================
+
+    private void UpdateInputState()
+    {
+        m_moveInput = GetMoveInput();
+        m_wantsToMerge = CheckWantsToMerge();
+    }
+
     /**
      * Averages the movement input vector from all controllers.
      * If there is only one action in the list, it just returns the value from that action.
@@ -80,16 +98,23 @@ public class Player : MonoBehaviour
         return moveInput / m_moveActions.Count;
     }
 
-    public bool WantsToMerge()
-    {
+    private bool CheckWantsToMerge()
+    { 
+        // If there is no input in the list, return.
         if (m_mergeActions.Count == 0)
+        {
+            Debug.Log("Player.CheckWantsToMerge: Player " + m_playerNumber + " has no merge input.");
             return false;
-        
-        int inputTrueCount = 0;
+        }
+
+        // Count the amount of inputs in the list that are triggered.
+        int inputTriggeredCount = 0;
         foreach (InputActionReference actionReference in m_mergeActions)
-            if (actionReference.action.triggered)
-                inputTrueCount++;
+            if (actionReference.action.IsPressed())
+                inputTriggeredCount++;
         
-        return inputTrueCount == m_mergeActions.Count;
+        return inputTriggeredCount == m_mergeActions.Count;
     }
+
+    public bool GetWantsToMerge() => m_wantsToMerge;
 }

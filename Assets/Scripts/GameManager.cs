@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityUtility.Singletons;
+using UnityUtility.Timer;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
@@ -13,8 +14,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     
     [Header("Merging")]
     [SerializeField] private float m_playerMergeMaxDistance = 2f;
+    [SerializeField] private float m_playerMergeCooldownTime = 2f;
 
     private bool m_arePlayersMerged;
+    private Timer m_mergeTimer;
 
     protected override void Start()
     {
@@ -31,21 +34,29 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         else
             m_inputActionAsset.FindActionMap("Player2").devices = new[]
                 { InputSystem.GetDevice("Keyboard") };
+        
+        m_mergeTimer = new Timer(m_playerMergeCooldownTime, false);
     }
     
     private void Update()
     {
+        m_mergeTimer.Update(Time.deltaTime);
+        
         bool canMerge = Vector2.Distance(
             m_player1.transform.position,
             m_player2.transform.position
         ) < m_playerMergeMaxDistance;
 
-        if (canMerge && m_player1.WantsToMerge() && m_player2.WantsToMerge())
+        if (canMerge && m_player1.GetWantsToMerge() && m_player2.GetWantsToMerge())
             ToggleMerge();
     }
 
     private void ToggleMerge()
     {
+        // Don't try to merge if the cooldown is running.
+        if (m_mergeTimer.IsRunning)
+            return;
+        
         Debug.Log("Trying to merge.");
         if (m_arePlayersMerged)
         {
@@ -61,5 +72,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             m_playerMerged.gameObject.SetActive(false);
             m_arePlayersMerged = false;
         }
+
+        m_mergeTimer.Start();
     }
 }
