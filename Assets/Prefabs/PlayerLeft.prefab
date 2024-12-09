@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3300923572726401781}
   - component: {fileID: 4494469614340295307}
+  - component: {fileID: 8830277528589103327}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7852602097730447406}
@@ -87,6 +88,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8830277528589103327
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253692684205510299}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0db3778196717fd43832187437af6f11, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6160584313611330691
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +122,7 @@ GameObject:
   - component: {fileID: 5213401030009000322}
   - component: {fileID: 7764524302972991282}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,10 +183,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0bae754c781984bbeedc9f357d63be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerNumber: 0
-  m_moveActions: []
-  m_shootActions: []
+  m_playerNumber: 1
+  m_moveActions:
+  - {fileID: 7313703439254968147, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_shootActions:
+  - {fileID: 7554147553396722864, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_rigidbody: {fileID: 5213401030009000322}
-  m_maxSpeed: 10
+  m_animator: {fileID: 8830277528589103327}
+  m_maxSpeed: 8
   m_acceleration: 1.5
   m_decelerationFactor: 0.75
