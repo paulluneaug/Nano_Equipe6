@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityUtility.Singletons;
 using UnityUtility.Timer;
 
@@ -79,22 +78,51 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             return;
         
         if (!m_arePlayersMerged)
-        {
-            Debug.Log("GameManager.ToggleMerge: Merging.");
-            m_player1.gameObject.SetActive(false);
-            m_player2.gameObject.SetActive(false);
-            m_playerMerged.gameObject.SetActive(true);
-            m_arePlayersMerged = true;
-        }
+            Merge();
         else
-        {
-            Debug.Log("GameManager.ToggleMerge: Separating.");
-            m_player1.gameObject.SetActive(true);
-            m_player2.gameObject.SetActive(true);
-            m_playerMerged.gameObject.SetActive(false);
-            m_arePlayersMerged = false;
-        }
+            Separate();
 
         m_mergeTimer.Start();
+    }
+
+    private void Merge()
+    {
+        // Swap active objects
+        m_player1.gameObject.SetActive(false);
+        m_player2.gameObject.SetActive(false);
+        m_playerMerged.gameObject.SetActive(true);
+        
+        // Set merged player position to average of individual players' positions.
+        m_playerMerged.transform.position = new Vector3(
+            (m_player1.transform.position.x + m_player2.transform.position.x) / 2,
+            (m_player1.transform.position.y + m_player2.transform.position.y) / 2,
+            0
+        );
+        
+        m_arePlayersMerged = true;
+    }
+
+    private void Separate()
+    {
+        // Swap active objects
+        m_player1.gameObject.SetActive(true);
+        m_player2.gameObject.SetActive(true);
+        m_playerMerged.gameObject.SetActive(false);
+        
+        // Set individual players' positions to merged players' position,
+        // keeping individual player's z-coordinate to avoid z-fighting.
+        m_player1.transform.position = new Vector3(
+            m_playerMerged.transform.position.x,
+            m_playerMerged.transform.position.y,
+            m_player1.transform.position.z
+        );
+
+        m_player2.transform.position = new Vector3(
+            m_playerMerged.transform.position.x,
+            m_playerMerged.transform.position.y,
+            m_player2.transform.position.z
+        );
+        
+        m_arePlayersMerged = false;
     }
 }
