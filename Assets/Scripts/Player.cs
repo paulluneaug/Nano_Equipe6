@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     [Header("Input Actions")]
     [SerializeField] private List<InputActionReference> m_moveActions = new();
     [SerializeField] private List<InputActionReference> m_shootActions = new();
-    [SerializeField] private List<InputActionReference> m_mergeActions = new();
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D m_rigidbody;
@@ -79,7 +78,6 @@ public class Player : MonoBehaviour
     private void UpdateInputState()
     {
         m_moveInput = GetMoveInput();
-        m_wantsToMerge = CheckWantsToMerge();
     }
 
     /**
@@ -96,24 +94,6 @@ public class Player : MonoBehaviour
         }
 
         return moveInput / m_moveActions.Count;
-    }
-
-    private bool CheckWantsToMerge()
-    { 
-        // If there is no input in the list, return.
-        if (m_mergeActions.Count == 0)
-        {
-            Debug.Log("Player.CheckWantsToMerge: Player " + m_playerNumber + " has no merge input.");
-            return false;
-        }
-
-        // Count the amount of inputs in the list that are triggered.
-        int inputTriggeredCount = 0;
-        foreach (InputActionReference actionReference in m_mergeActions)
-            if (actionReference.action.IsPressed())
-                inputTriggeredCount++;
-        
-        return inputTriggeredCount == m_mergeActions.Count;
     }
 
     public bool GetWantsToMerge() => m_wantsToMerge;

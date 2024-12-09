@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityUtility.Singletons;
 using UnityUtility.Timer;
 
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [Header("Merging")]
     [SerializeField] private float m_playerMergeMaxDistance = 2f;
     [SerializeField] private float m_playerMergeCooldownTime = 2f;
+    [SerializeField] private List<InputActionReference> m_mergeActions = new();
 
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
@@ -47,8 +50,26 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             m_player2.transform.position
         ) < m_playerMergeMaxDistance;
 
-        if (canMerge && m_player1.GetWantsToMerge() && m_player2.GetWantsToMerge())
+        if (canMerge && CheckWantsToMerge())
             ToggleMerge();
+    }
+    
+    private bool CheckWantsToMerge()
+    { 
+        // If there is no input in the list, return.
+        if (m_mergeActions.Count != 2)
+        {
+            Debug.Log("GameManager.CheckWantsToMerge: There are not 2 actions in the list for merging input.");
+            return false;
+        }
+
+        // Count the amount of inputs in the list that are triggered.
+        int inputTriggeredCount = 0;
+        foreach (InputActionReference actionReference in m_mergeActions)
+            if (actionReference.action.IsPressed())
+                inputTriggeredCount++;
+        
+        return inputTriggeredCount == m_mergeActions.Count;
     }
 
     private void ToggleMerge()
@@ -57,9 +78,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         if (m_mergeTimer.IsRunning)
             return;
         
-        Debug.Log("Trying to merge.");
-        if (m_arePlayersMerged)
+        if (!m_arePlayersMerged)
         {
+            Debug.Log("GameManager.ToggleMerge: Merging.");
             m_player1.gameObject.SetActive(false);
             m_player2.gameObject.SetActive(false);
             m_playerMerged.gameObject.SetActive(true);
@@ -67,6 +88,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
         else
         {
+            Debug.Log("GameManager.ToggleMerge: Separating.");
             m_player1.gameObject.SetActive(true);
             m_player2.gameObject.SetActive(true);
             m_playerMerged.gameObject.SetActive(false);
