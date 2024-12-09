@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Rigidbody2D m_rigidbody;
     [SerializeField] private Animator m_animator;
+    [SerializeField] private ShootPattern m_shootPattern;
     
     [Header("Movement")]
     [SerializeField] private float m_maxSpeed;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     
     // Input State
     private Vector2 m_moveInput;
+    private bool m_shootInput;
     private bool m_wantsToMerge;
     
     // ========== Unity Methods ==========
@@ -34,9 +36,20 @@ public class Player : MonoBehaviour
     
     private void FixedUpdate()
     {
-        UpdateInputState();
         Move();
+    }
+
+    private void Update()
+    {
+        UpdateInputState();
+        UpdateShoot();
         UpdateAnimation();
+    }
+
+    private void UpdateShoot()
+    {
+        m_shootPattern.ShouldShoot = m_shootInput;
+        m_shootPattern.UpdatePattern(Time.deltaTime);
     }
 
     // ========== Movement ==========
@@ -78,6 +91,7 @@ public class Player : MonoBehaviour
     private void UpdateInputState()
     {
         m_moveInput = GetMoveInput();
+        m_shootInput = GetShootInput();
     }
 
     /**
@@ -94,6 +108,16 @@ public class Player : MonoBehaviour
         }
 
         return moveInput / m_moveActions.Count;
+    }
+
+    private bool GetShootInput()
+    {
+        bool actionPerformed = true;
+
+        foreach (InputActionReference actionReference in m_shootActions)
+            actionPerformed &= actionReference.action.IsPressed();
+
+        return actionPerformed;
     }
     
     public Vector2 GetVelocity() => m_velocity;
