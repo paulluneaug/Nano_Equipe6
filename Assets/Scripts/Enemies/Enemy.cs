@@ -1,17 +1,18 @@
 using System;
 using UnityEngine;
 using UnityUtility.CustomAttributes;
-using UnityUtility.Pools;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public virtual bool IsAlive => m_health > 0;
+
     [SerializeField] private ProjectileDamageType m_resistances;
-    [SerializeField] private int m_health;
+    [SerializeField] private int m_maxHealth;
     [SerializeField] private ShootPattern m_shootPattern;
 
     [SerializeField, Layer] private int m_projectileLayer;
 
-    [NonSerialized] private IObjectPool<Enemy> m_pool;
+    [NonSerialized] private int m_health;
 
 
     private void Awake()
@@ -34,7 +35,7 @@ public abstract class Enemy : MonoBehaviour
 
         if (!other.TryGetComponent(out Projectile projectile))
         {
-            Debug.LogError($"The layer Projectile shoul only be used on objects with the component {nameof(Projectile)}");
+            Debug.LogError($"The layer Projectile should only be used on objects with the component {nameof(Projectile)}");
             return;
         }
 
@@ -44,17 +45,28 @@ public abstract class Enemy : MonoBehaviour
         }
 
         projectile.Release();
+
+        if ((projectile.DamageType & ~m_resistances) == 0)
+        {
+            return;
+        }
+
+        m_health -= projectile.DamageAmout;
+        if (m_health <= 0)
+        {
+            Kill();
+        }
     }
 
-    public virtual void StartEnemy(IObjectPool<Enemy> pool)
+    public virtual void StartEnemy()
     {
-        m_pool = pool;
+        m_health = m_maxHealth;
     }
 
     protected abstract void Move(float deltaTime);
 
-    protected virtual void Release()
+    protected virtual void Kill()
     {
-        m_pool.Release(this);
+        gameObject.SetActive(false);
     }
 }
