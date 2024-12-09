@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 5213401030009000322}
   - component: {fileID: 7764524302972991282}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,11 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0bae754c781984bbeedc9f357d63be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerNumber: 0
-  m_moveActions: []
-  m_shootActions: []
-  m_mergeActions:
-  - {fileID: 0}
+  m_playerNumber: 1
+  m_moveActions:
+  - {fileID: 7313703439254968147, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_shootActions:
+  - {fileID: 7554147553396722864, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_rigidbody: {fileID: 5213401030009000322}
   m_animator: {fileID: 8830277528589103327}
   m_maxSpeed: 8
