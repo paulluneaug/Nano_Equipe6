@@ -21,6 +21,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7764524302972991282, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+      propertyPath: m_playerType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764524302972991282, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_acceleration
       value: 0.75
       objectReference: {fileID: 0}

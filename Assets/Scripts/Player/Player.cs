@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float m_acceleration;
     [SerializeField] private float m_decelerationFactor;
     
+    [SerializeField] private PlayerType m_playerType;
+    
     private Vector2 m_velocity = Vector2.zero;
     
     // Input State
@@ -33,6 +36,25 @@ public class Player : MonoBehaviour
     
     // ========== Unity Methods ==========
     // ===================================
+
+    private void Awake()
+    {
+        switch (m_playerType)
+        {
+            case PlayerType.Player1:
+                GameManager.Instance.SetPlayer1(this);
+                break;
+            
+            case PlayerType.Player2:
+                GameManager.Instance.SetPlayer2(this);
+                break;
+            
+            case PlayerType.PlayerMerged:
+                GameManager.Instance.SetPlayerMerged(this);
+                gameObject.SetActive(false);
+                break;
+        }
+    }
     
     private void FixedUpdate()
     {

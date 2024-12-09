@@ -61,6 +61,7 @@ public abstract class Enemy : MonoBehaviour
     public virtual void StartEnemy()
     {
         m_health = m_maxHealth;
+        m_shootPattern.ShouldShoot = true;
     }
 
     protected abstract void Move(float deltaTime);
