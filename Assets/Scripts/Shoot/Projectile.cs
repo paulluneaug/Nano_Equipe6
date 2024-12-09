@@ -6,35 +6,45 @@ using UnityUtility.Pools;
 public class Projectile : MonoBehaviour
 {
     public ProjectileSource ProjectileSource => m_projectileSource;
+    public int DamageAmout => m_damageAmout;
+    public ProjectileDamageType DamageType => m_damageType;
 
-    public float DamageAmout => m_damageAmout;
 
     [SerializeField] private ProjectileSource m_projectileSource;
 
     [Title("Damages")]
     [SerializeField] private ProjectileDamageType m_damageType;
-    [SerializeField] private float m_damageAmout;
+    [SerializeField] private int m_damageAmout;
 
     [Title("Movement")]
     [SerializeField] private Vector2 m_direction;
     [SerializeField] private float m_speed;
 
     [NonSerialized] private IObjectPool<Projectile> m_pool;
+    [NonSerialized] private bool m_shouldRelease = false;
 
     public void StartProjectile(IObjectPool<Projectile> pool, Vector2 direction, float speed)
     {
         m_pool = pool;
         m_direction = direction;
         m_speed = speed;
+        m_shouldRelease = false;
     }
 
     public void Release()
     {
-        m_pool.Release(this);
+        m_shouldRelease = true;
     }
 
     private void Update()
     {
+        if (m_shouldRelease)
+        {
+            m_pool.Release(this);
+            m_shouldRelease = false;
+            return;
+        }
+
         transform.position += m_direction.XY0() * m_speed * Time.deltaTime;
     }
 }
