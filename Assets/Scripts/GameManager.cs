@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,6 +21,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
+    
+    /**
+     * Invoked every time the players merge or separate.
+     * The boolean is set to true if the players are now merged, and false if they are now separated.
+     */
+    public event Action<bool> OnPlayerMerge;
 
     protected override void Start()
     {
@@ -103,6 +110,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_playerMerged.SetVelocity((m_player1.GetVelocity() + m_player2.GetVelocity()) / 2);
         
         m_arePlayersMerged = true;
+        OnPlayerMerge?.Invoke(true);
     }
 
     private void Separate()
@@ -131,5 +139,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_player2.SetVelocity(m_playerMerged.GetVelocity());
         
         m_arePlayersMerged = false;
+        OnPlayerMerge?.Invoke(false);
     }
 }
