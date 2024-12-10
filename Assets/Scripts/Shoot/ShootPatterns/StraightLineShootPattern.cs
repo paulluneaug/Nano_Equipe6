@@ -14,10 +14,7 @@ public class StraightLineShootPattern : ShootPattern
 
     public override void UpdatePattern(float deltaTime)
     {
-        if (!ShouldShoot)
-            return;
-        
-        m_emitters.ForEach(emitter => emitter.UpdateEmitter(deltaTime));
+        m_emitters.ForEach(emitter => emitter.UpdateEmitter(deltaTime, m_shouldShoot));
     }
 
     private void OnDrawGizmosSelected()

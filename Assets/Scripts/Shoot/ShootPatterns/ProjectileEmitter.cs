@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityUtility.Pools;
 using UnityUtility.CustomAttributes;
 using UnityUtility.MathU;
-using System.Net.Http;
 
 [Serializable]
 public class ProjectileEmitter
@@ -36,7 +35,7 @@ public class ProjectileEmitter
         m_duringStartDelay = true;
     }
 
-    public void UpdateEmitter(float deltaTime)
+    public void UpdateEmitter(float deltaTime, bool shouldShoot)
     {
         m_timer += deltaTime;
         if (m_duringStartDelay) 
@@ -49,9 +48,14 @@ public class ProjectileEmitter
             return;
         }
 
+        if (!shouldShoot)
+        {
+            return;
+        }
+
         if (m_timer > m_shootDelay) 
         {
-            m_timer -= m_shootDelay;
+            m_timer = 0.0f;
             Shoot();
         }
     }
