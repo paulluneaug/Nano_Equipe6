@@ -140,11 +140,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 326821440189568506}
-  - component: {fileID: 1986778404331983810}
+  - component: {fileID: 5409979315049813374}
   - component: {fileID: 416730451881841531}
   - component: {fileID: 8556311942972529540}
   m_Layer: 7
-  m_Name: Obstacle
+  m_Name: BaseObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,7 +167,7 @@ Transform:
   - {fileID: 3972832582196777404}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1986778404331983810
+--- !u!114 &5409979315049813374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,40 +176,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 9157054062057816238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d85281d97a04cf9458b9848d4c1adb9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 73d080af6020ac441bb7294842fee1c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_resistances: -1
-  m_maxHealth: 100000000
+  m_maxHealth: 10
   m_shootPattern: {fileID: 625158789247075131}
   m_projectileLayer: 6
   m_speedFactor: 1
   m_useGlobalScrollFactor: 1
-  m_speedAlongSpline:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_killAtTheEndOfSpline: 1
+  m_scrollingDirection: {x: 0, y: -1}
 --- !u!61 &416730451881841531
 BoxCollider2D:
   m_ObjectHideFlags: 0
