@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityUtility.CustomAttributes;
@@ -40,7 +41,8 @@ public class Player : MonoBehaviour
     [NonSerialized] private bool m_knockedDown;
 
     private Vector2 m_velocity = Vector2.zero;
-
+    private bool m_isMerging;
+    
     // Input State
     private Vector2 m_moveInput;
     private bool m_shootInput;
@@ -74,7 +76,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!m_knockedDown)
+        if (!m_knockedDown && !m_isMerging)
         {
             Move();
         }
@@ -162,6 +164,16 @@ public class Player : MonoBehaviour
         m_animator.SetFloat(s_animatorParamVelocityY, m_velocity.y);
         m_animator.SetFloat(s_animatorParamVelocityY, m_velocity.y);
     }
+
+    public void MergeToPosition(Vector2 position)
+    {
+        m_isMerging = true;
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(m_rigidbody.DOMove(position, 0.3f).SetEase(Ease.InCubic));
+        sequence.onComplete += () => gameObject.SetActive(false);
+        sequence.onComplete += () => m_isMerging = false;
+    }
+    
 
     // ========== Input ==========
     // ===========================
