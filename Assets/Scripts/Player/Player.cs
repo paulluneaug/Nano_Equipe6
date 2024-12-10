@@ -42,11 +42,11 @@ public class Player : MonoBehaviour
 
     private Vector2 m_velocity = Vector2.zero;
     private bool m_isMerging;
-    
+
     // Input State
     private Vector2 m_moveInput;
     private bool m_shootInput;
-    private bool m_wantsToMerge;
+    private readonly bool m_wantsToMerge;
 
     // ========== Unity Methods ==========
     // ===================================
@@ -65,12 +65,12 @@ public class Player : MonoBehaviour
             case PlayerType.Player2:
                 GameManager.Instance.SetPlayer2(this);
                 break;
-
             default:
                 Debug.Log("Player has an incorrect player type." +
                           "Make sure the merged player uses the PlayerMerge class.");
                 break;
         }
+
         Revive();
     }
 
@@ -169,11 +169,11 @@ public class Player : MonoBehaviour
     {
         m_isMerging = true;
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(m_rigidbody.DOMove(position, 0.3f).SetEase(Ease.InCubic));
+        _ = sequence.Append(m_rigidbody.DOMove(position, 0.3f).SetEase(Ease.InCubic));
         sequence.onComplete += () => gameObject.SetActive(false);
         sequence.onComplete += () => m_isMerging = false;
     }
-    
+
 
     // ========== Input ==========
     // ===========================
@@ -228,7 +228,7 @@ public class Player : MonoBehaviour
         m_knockedDownTimer.Start();
     }
 
-    private void Revive()
+    protected void Revive()
     {
         m_knockedDown = false;
         m_health = m_maxHealth;

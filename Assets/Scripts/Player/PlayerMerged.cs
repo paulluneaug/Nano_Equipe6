@@ -1,4 +1,4 @@
-﻿using DG.Tweening;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerMerged : Player
@@ -18,8 +18,18 @@ public class PlayerMerged : Player
         GameManager.Instance.SetPlayerMerged(this);
         gameObject.SetActive(false);
         GameManager.Instance.OnPlayerMerge += TriggerFusionVFX;
+
+        Revive();
     }
-    
+
+    private void OnDestroy()
+    {
+        if (!GameManager.ApplicationIsQuitting)
+        {
+            GameManager.Instance.OnPlayerMerge -= TriggerFusionVFX;
+        }
+    }
+
     private void TriggerFusionVFX(bool isMerged)
     {
         if (isMerged)
