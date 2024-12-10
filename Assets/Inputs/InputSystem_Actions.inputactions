@@ -280,6 +280,28 @@
                 },
                 {
                     "name": "",
+                    "id": "53474e3a-6cd6-4d21-9e91-25d338118314",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a33de184-00c8-4eda-900e-d9f488e68c6c",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "3e8124f8-7ae2-4317-8b6e-2804dad6a999",
                     "path": "<Keyboard>/numpad1",
                     "interactions": "",
@@ -293,6 +315,17 @@
                     "name": "",
                     "id": "1ec7b770-ec97-4e9c-a566-dce0f14412d1",
                     "path": "<Keyboard>/semicolon",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Merge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "231e43b4-b364-4a3d-9ba4-8dd3b4b26921",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
