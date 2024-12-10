@@ -103,10 +103,10 @@ TextureImporter:
       name: explobig_00001_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 800
-        height: 1163
+        x: 246
+        y: 533
+        width: 140
+        height: 115
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

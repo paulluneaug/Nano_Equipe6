@@ -5,6 +5,51 @@ TextureImporter:
   - first:
       213: -74471677170856754
     second: explobig_00014_0
+  - first:
+      213: 996382389362520810
+    second: explobig_00014_1
+  - first:
+      213: 5793325612179943817
+    second: explobig_00014_2
+  - first:
+      213: -5292139673559951719
+    second: explobig_00014_3
+  - first:
+      213: 6034397486047591295
+    second: explobig_00014_4
+  - first:
+      213: -5726085483154313346
+    second: explobig_00014_5
+  - first:
+      213: -4062877074550582454
+    second: explobig_00014_6
+  - first:
+      213: -3746048405165006139
+    second: explobig_00014_7
+  - first:
+      213: 1973191907473062514
+    second: explobig_00014_8
+  - first:
+      213: -6303485991558691423
+    second: explobig_00014_9
+  - first:
+      213: -3655735950812753200
+    second: explobig_00014_10
+  - first:
+      213: 6314463707974435768
+    second: explobig_00014_11
+  - first:
+      213: -4798003983649402994
+    second: explobig_00014_12
+  - first:
+      213: 5115778271278350858
+    second: explobig_00014_13
+  - first:
+      213: -6834415425378192399
+    second: explobig_00014_14
+  - first:
+      213: -1512597862132687840
+    second: explobig_00014_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,10 +148,10 @@ TextureImporter:
       name: explobig_00014_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 800
-        height: 1163
+        x: 366
+        y: 817
+        width: 79
+        height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,6 +162,336 @@ TextureImporter:
       bones: []
       spriteID: ecc4768776c67fef0800000000000000
       internalID: -74471677170856754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_1
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 939
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae2786a018cd3dd00800000000000000
+      internalID: 996382389362520810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_2
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 862
+        width: 42
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 981782e23f6066050800000000000000
+      internalID: 5793325612179943817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 877
+        width: 34
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99615bf710b8e86b0800000000000000
+      internalID: -5292139673559951719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_4
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 858
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7b706dba8c7eb350800000000000000
+      internalID: 6034397486047591295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_5
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 780
+        width: 45
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7fe017579bd880b0800000000000000
+      internalID: -5726085483154313346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_6
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 780
+        width: 44
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a439555a3d2cd97c0800000000000000
+      internalID: -4062877074550582454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_7
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 623
+        width: 99
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c2a8baa2dc530cc0800000000000000
+      internalID: -3746048405165006139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_8
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 633
+        width: 99
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a7b9ed59f226b10800000000000000
+      internalID: 1973191907473062514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_9
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 549
+        width: 143
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a54e7253e48588a0800000000000000
+      internalID: -6303485991558691423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_10
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 595
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d25e2b8587344dc0800000000000000
+      internalID: -3655735950812753200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_11
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 514
+        width: 47
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b389e4794b71a750800000000000000
+      internalID: 6314463707974435768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_12
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 535
+        width: 52
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8f0bab3cc01a6db0800000000000000
+      internalID: -4798003983649402994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_13
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 539
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a024531bb35eef640800000000000000
+      internalID: 5115778271278350858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_14
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 448
+        width: 115
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f3f1e281674721a0800000000000000
+      internalID: -6834415425378192399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00014_15
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 466
+        width: 72
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02cd09b224c220be0800000000000000
+      internalID: -1512597862132687840
       vertices: []
       indices: 
       edges: []

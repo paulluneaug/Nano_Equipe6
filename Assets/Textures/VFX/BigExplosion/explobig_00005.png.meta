@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 6220188013253643556
     second: explobig_00005_0
+  - first:
+      213: 607333023794978369
+    second: explobig_00005_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,10 +106,10 @@ TextureImporter:
       name: explobig_00005_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 800
-        height: 1163
+        x: 141
+        y: 352
+        width: 397
+        height: 559
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,6 +120,28 @@ TextureImporter:
       bones: []
       spriteID: 42d4026ca0c825650800000000000000
       internalID: 6220188013253643556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explobig_00005_1
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 652
+        width: 140
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ed9a7da2ead6800800000000000000
+      internalID: 607333023794978369
       vertices: []
       indices: 
       edges: []
