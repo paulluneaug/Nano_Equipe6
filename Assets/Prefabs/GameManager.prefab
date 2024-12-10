@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_inputActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_player1: {fileID: 0}
-  m_player2: {fileID: 0}
-  m_playerMerged: {fileID: 0}
   m_playerMergeMaxDistance: 2
+  m_playerMergeCooldownTime: 2
+  m_mergeActions:
+  - {fileID: -6935871351947264078, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 4023803114228110605, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
