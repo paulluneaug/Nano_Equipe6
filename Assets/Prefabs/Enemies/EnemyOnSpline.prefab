@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2299021462738554822}
   - component: {fileID: 7856143844362942067}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 3171874916429593085}
   - component: {fileID: 1794160076510913753}
   - component: {fileID: 7779986925242886526}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyOnSpline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6748160740917383641}
   - component: {fileID: 4045792701213070728}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}

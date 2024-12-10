@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3972832582196777404}
   - component: {fileID: 625158789247075131}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8558387949221622631}
   - component: {fileID: 505254627423477409}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 1986778404331983810}
   - component: {fileID: 416730451881841531}
   - component: {fileID: 8556311942972529540}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
