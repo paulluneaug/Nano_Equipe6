@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        // Yep, that will start the Game Manager three times, but it works fine so whatever
+        GameManager.Instance.StartGameManager();
+        
         switch (m_playerType)
         {
             case PlayerType.Player1:

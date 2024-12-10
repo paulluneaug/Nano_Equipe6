@@ -31,6 +31,13 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     protected override void Start()
     {
+        StartGameManager();
+    }
+
+    public void StartGameManager()
+    {
+        m_arePlayersMerged = false;
+        
         // Set input devices to:
         //   - Keyboard and Gamepad 0 (if connected) for player 1
         //   - Keyboard and Gamepad 1 (if connected) for player 2
