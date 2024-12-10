@@ -350,9 +350,9 @@ MonoBehaviour:
   m_time: 14
   m_enemyPool: {fileID: 900593880}
   m_spawnPoints:
-  - Position: {x: -6.38, y: 5.6425, z: 0}
-  - Position: {x: 5.15, y: 5.5525, z: 0}
-  - Position: {x: -4.68, y: 5.6724997, z: 0}
+  - Position: {x: -6.64, y: 5.58, z: 0}
+  - Position: {x: 7.14, y: 5.5525, z: 0}
+  - Position: {x: 0.33, y: 9.780001, z: 0}
 --- !u!1001 &234813264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1622,6 +1622,10 @@ PrefabInstance:
       propertyPath: m_emitters.Array.data[0].m_shootDelay
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3359687444283858198, guid: 29cd4fa84d6130645a3feba2870b8d54, type: 3}
+      propertyPath: m_emitters.Array.data[0].m_projectileSpeed
+      value: 4.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5208427715838809506, guid: 29cd4fa84d6130645a3feba2870b8d54, type: 3}
       propertyPath: m_Name
       value: ScrollingEnemy
@@ -1747,6 +1751,7 @@ MonoBehaviour:
   m_populateEventsHidden: 0
   m_waveEvents:
   - {fileID: 1192990010}
+  - {fileID: 224107009}
 --- !u!1 &1443583359495003544
 GameObject:
   m_ObjectHideFlags: 0
