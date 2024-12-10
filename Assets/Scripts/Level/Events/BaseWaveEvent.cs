@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 public abstract class BaseWaveEvent : MonoBehaviour
@@ -9,15 +10,21 @@ public abstract class BaseWaveEvent : MonoBehaviour
     [SerializeField] protected float m_time = 0.0f;
 
     [NonSerialized] protected bool m_isFinished = false;
-    [NonSerialized] private Level m_level;
 
-    public virtual void Load(Level level)
+#if UNITY_EDITOR
+    [NonSerialized] protected bool m_editorLoaded;
+    [NonSerialized] protected Level m_owningLevel;
+
+#endif
+
+
+
+    public virtual void Load()
     {
         m_isFinished = false;
-        m_level = level;
     }
 
-    public virtual void Start()
+    public virtual void StartEvent()
     {
     }
 
@@ -39,4 +46,44 @@ public abstract class BaseWaveEvent : MonoBehaviour
     {
         Debug.LogError($"Event {name} finished");
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        UpdateEventEditor();
+    }
+
+
+    public virtual void LoadEventEditor(Level owningLevel)
+    {
+        m_editorLoaded = true;
+        m_owningLevel = owningLevel;
+    }
+
+    public virtual void SaveEventEditor()
+    {
+    }
+
+    public virtual void UpdateEventEditor()
+    {
+
+    }
+
+    public virtual void UnloadEventEditor()
+    {
+        m_editorLoaded = false;
+    }
+
+    protected virtual void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+
+        Vector3 center = transform.position + m_time * GlobalVariablesScriptable.Instance.ScrollSpeed * Vector3.up;
+
+        Vector3 start = center + Vector3.left * 10;
+        Vector3 end = center + Vector3.right * 10;
+
+        Gizmos.DrawLine(start, end);
+    }
+#endif
 }

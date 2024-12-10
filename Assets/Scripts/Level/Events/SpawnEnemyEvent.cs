@@ -23,28 +23,19 @@ public abstract class SpawnEnemyEvent<TEnemy> : BaseWaveEvent
         }
     }
 
-    [SerializeField] private int m_numberOfEnemiesToSpawn = 1;
-    [SerializeField] private float m_timeBetweenSpawns = 0.0f;
 
-    [SerializeField] private BaseEnemyPool<TEnemy> m_enemyPool;
+    [SerializeField] protected BaseEnemyPool<TEnemy> m_enemyPool;
+
+    protected abstract int EnemiesToSpawnCount { get; }
 
     //Cache 
     protected List<SpawnedEnemy> m_spawnedEnemies;
     protected int m_spawnedEnemiesCount = 0;
-    protected float m_spawnTimer = 0.0f;
 
-    public override void Load(Level level)
+    public override void Load()
     {
-
-        base.Load(level);
-        m_spawnedEnemies = new List<SpawnedEnemy>(m_numberOfEnemiesToSpawn);
-    }
-
-    public override void Start()
-    {
-        base.Start();
-        // Spawns the first enemy on the first Update
-        m_spawnTimer = m_timeBetweenSpawns;
+        base.Load();
+        m_spawnedEnemies = new List<SpawnedEnemy>(EnemiesToSpawnCount);
     }
 
     public override void UpdateEvent(float deltaTime, float currentWaveTime)
@@ -56,25 +47,10 @@ public abstract class SpawnEnemyEvent<TEnemy> : BaseWaveEvent
             return;
         }
 
-        //Spawn the new enemies
-        if (m_spawnedEnemiesCount < m_numberOfEnemiesToSpawn)
-        {
-            if (m_spawnTimer >= m_timeBetweenSpawns)
-            {
-                m_spawnTimer -= m_timeBetweenSpawns;
-
-                PooledObject<TEnemy> newEnemy = SpawnEnemy();
-                newEnemy.Object.StartEnemy();
-                m_spawnedEnemies.Add(new SpawnedEnemy(newEnemy));
-                m_spawnedEnemiesCount++;
-            }
-            m_spawnTimer += deltaTime;
-        }
-
         // Checks wether all spawned enemies are dead
         bool noEnemiesAlive = !m_spawnedEnemies.Any(enemy => enemy.IsAlive);
 
-        if (m_spawnedEnemiesCount == m_numberOfEnemiesToSpawn && noEnemiesAlive)
+        if (m_spawnedEnemiesCount == EnemiesToSpawnCount && noEnemiesAlive)
         {
             Finish();
         }
