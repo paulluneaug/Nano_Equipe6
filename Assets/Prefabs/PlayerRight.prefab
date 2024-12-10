@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1063682085048082621, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.134
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063682085048082621, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.736
+      objectReference: {fileID: 0}
     - target: {fileID: 4494469614340295307, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -15,6 +23,10 @@ PrefabInstance:
     - target: {fileID: 6160584313611330691, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_Name
       value: PlayerRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764524302972991282, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+      propertyPath: m_playerType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7764524302972991282, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_playerNumber

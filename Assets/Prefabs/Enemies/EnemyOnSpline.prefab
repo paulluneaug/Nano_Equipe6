@@ -288,7 +288,7 @@ MonoBehaviour:
     m_offset: {x: 0, y: 0}
     m_shootDelay: 1
     m_projectileSpeed: 2
-    m_startDelay: 5
+    m_startDelay: 0.1
     m_displayGizmos: 1
     m_rayColor: {r: 1, g: 0, b: 0, a: 1}
   m_projectilesPool: {fileID: 0}

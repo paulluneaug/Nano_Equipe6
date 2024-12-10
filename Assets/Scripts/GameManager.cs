@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityUtility.Singletons;
 using UnityUtility.Timer;
 
@@ -10,9 +11,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] private InputActionAsset m_inputActionAsset;
     
     [Header("Players")]
-    [SerializeField] private Player m_player1;
-    [SerializeField] private Player m_player2;
-    [SerializeField] private Player m_playerMerged;
+    private Player m_player1;
+    private Player m_player2;
+    private Player m_playerMerged;
     
     [Header("Merging")]
     [SerializeField] private float m_playerMergeMaxDistance = 2f;
@@ -30,6 +31,13 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     protected override void Start()
     {
+        StartGameManager();
+    }
+
+    public void StartGameManager()
+    {
+        m_arePlayersMerged = false;
+        
         // Set input devices to:
         //   - Keyboard and Gamepad 0 (if connected) for player 1
         //   - Keyboard and Gamepad 1 (if connected) for player 2
@@ -49,6 +57,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Thank you JetBrains AI.
+        
         m_mergeTimer.Update(Time.deltaTime);
         
         bool canMerge = Vector2.Distance(
@@ -140,5 +151,20 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         
         m_arePlayersMerged = false;
         OnPlayerMerge?.Invoke(false);
+    }
+
+    public void SetPlayer1(Player player)
+    {
+        m_player1 = player;
+    }
+    
+    public void SetPlayer2(Player player)
+    {
+        m_player2 = player;
+    }
+    
+    public void SetPlayerMerged(Player player)
+    {
+        m_playerMerged = player;
     }
 }
