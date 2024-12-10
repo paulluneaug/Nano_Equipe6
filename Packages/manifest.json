@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.pluneau.unityutility": "https://github.com/paulluneaug/UnityUtility.git?path=/UnityUtility/Assets/Public#v1.10.1",
+    "com.pluneau.unityutility": "https://github.com/paulluneaug/UnityUtility.git?path=/UnityUtility/Assets/Public#v1.10.2",
     "com.unity.cinemachine": "3.1.2",
     "com.unity.collab-proxy": "2.6.0",
     "com.unity.feature.2d": "2.0.1",
