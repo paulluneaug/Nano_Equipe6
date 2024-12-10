@@ -7,6 +7,11 @@ using UnityUtility.Utils;
 public class Wave : MonoBehaviour
 {
 #if UNITY_EDITOR
+    [Title("Editor")]
+    [Button(nameof(LoadWaveEditor))]
+    [Button(nameof(SaveWaveEditor))]
+    [Button(nameof(UnloadWaveEditor))]
+    [Title("Events")]
     [Button(nameof(PopulateEvents))]
     [ShowIf(nameof(m_populateEventsHidden)), SerializeField] private bool m_populateEventsHidden; // Just to display the button
 #endif
@@ -17,7 +22,7 @@ public class Wave : MonoBehaviour
     private int m_eventToStartIndex = 0;
     private int m_eventsCount;
 
-    public void Load(Level level)
+    public void Load()
     {
         m_waveEvents.Sort(
             (BaseWaveEvent event1, BaseWaveEvent event2) =>
@@ -27,7 +32,7 @@ public class Wave : MonoBehaviour
         m_eventsCount = m_waveEvents.Length;
         m_startedEvents = new List<BaseWaveEvent>(m_eventsCount);
 
-        m_waveEvents.ForEach(waveEvent => waveEvent.Load(level));
+        m_waveEvents.ForEach(waveEvent => waveEvent.Load());
     }
 
     public bool UpdateWave(float deltaTime, float currentWaveTime)
@@ -40,7 +45,7 @@ public class Wave : MonoBehaviour
 
             m_startedEvents.Add(eventToStart);
 
-            eventToStart.Start();
+            eventToStart.StartEvent();
             m_eventToStartIndex++;
         }
 
@@ -72,6 +77,12 @@ public class Wave : MonoBehaviour
 
 
 #if UNITY_EDITOR
+
+    private void OnValidate()
+    {
+        UpdateWaveEditor();
+    }
+
     private void PopulateEvents()
     {
         m_waveEvents = GetComponentsInChildren<BaseWaveEvent>();
@@ -80,6 +91,28 @@ public class Wave : MonoBehaviour
             event1.Time.CompareTo(event2.Time));
 
         EditorUtility.SetDirty(this);
+    }
+
+    public void LoadWaveEditor()
+    {
+        m_waveEvents.ForEach(waveEvent => waveEvent.LoadEventEditor(GetComponentInParent<Level>()));
+    }
+
+    public void UpdateWaveEditor()
+    {
+        m_waveEvents.ForEach(waveEvent => waveEvent.UpdateEventEditor());
+    }
+
+    public void SaveWaveEditor()
+    {
+        m_waveEvents.ForEach(waveEvent => waveEvent.SaveEventEditor());
+        m_waveEvents.ForEach(waveEvent => EditorUtility.SetDirty(waveEvent));
+        EditorUtility.SetDirty(this);
+    }
+
+    public void UnloadWaveEditor()
+    {
+        m_waveEvents.ForEach(waveEvent => waveEvent.UnloadEventEditor());
     }
 #endif
 }

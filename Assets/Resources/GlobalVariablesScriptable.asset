@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e27497858ab33469cc6723db46546b, type: 3}
   m_Name: GlobalVariablesScriptable
   m_EditorClassIdentifier: 
-  m_scrollSpeed: 3.69
+  m_scrollSpeed: 1.25

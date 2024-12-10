@@ -2,34 +2,23 @@ using System;
 using UnityEngine;
 using UnityEngine.Splines;
 
-public class EnemyOnSpline : Enemy
+public class EnemyOnSpline : MovingEnemy
 {
     public override bool IsAlive => base.IsAlive && !(m_killAtTheEndOfSpline && m_progressAlongSpline >= 1.0f);
-
-    [SerializeField] private float m_speedFactor;
-    [SerializeField] protected bool m_useGlobalScrollFactor = true;
     [SerializeField] private AnimationCurve m_speedAlongSpline;
 
     [SerializeField] private bool m_killAtTheEndOfSpline = true;
+
+
 
     [NonSerialized] private SplineContainer m_spline;
     [NonSerialized] private float m_splineLength;
     [NonSerialized] private float m_progressAlongSpline;
 
-    [NonSerialized] private GlobalVariablesScriptable m_globalVariablesScriptable;
-
     public void SetSpline(SplineContainer spline)
     {
         m_spline = spline;
         m_splineLength = spline.CalculateLength();
-    }
-
-    private void Awake()
-    {
-        if (m_useGlobalScrollFactor)
-        {
-            m_globalVariablesScriptable = GlobalVariablesScriptable.Instance;
-        }
     }
 
     public override void StartEnemy()

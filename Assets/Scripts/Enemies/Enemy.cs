@@ -4,7 +4,7 @@ using UnityUtility.CustomAttributes;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public virtual bool IsAlive => m_health > 0;
+    public virtual bool IsAlive => m_health > 0 && !m_outOfBounds;
 
     [SerializeField] private ProjectileDamageType m_resistances;
     [SerializeField] private int m_maxHealth;
@@ -13,6 +13,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField, Layer] private int m_projectileLayer;
 
     [NonSerialized] private int m_health;
+    [NonSerialized] private bool m_outOfBounds;
 
 
     private void Awake()
@@ -20,10 +21,9 @@ public abstract class Enemy : MonoBehaviour
         m_shootPattern.ShouldShoot = true;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         m_shootPattern.UpdatePattern(Time.deltaTime);
-        Move(Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,9 +62,14 @@ public abstract class Enemy : MonoBehaviour
     {
         m_health = m_maxHealth;
         m_shootPattern.ShouldShoot = true;
+        m_outOfBounds = false;
     }
 
-    protected abstract void Move(float deltaTime);
+    public void WentOutOfBounds()
+    {
+        m_outOfBounds = true;
+        Kill();
+    }
 
     protected virtual void Kill()
     {

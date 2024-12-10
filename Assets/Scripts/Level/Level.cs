@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityUtility.CustomAttributes;
+using UnityUtility.Utils;
 
 public class Level : MonoBehaviour
 {
@@ -9,8 +10,16 @@ public class Level : MonoBehaviour
     public float CurrentWaveTime => m_currentWaveTime;
 
 #if UNITY_EDITOR
+    public float GlobalScrollFactor => GlobalVariablesScriptable.Instance.ScrollSpeed;
+
+    //[Title("Editor")]
+    //[Button(nameof(LoadWaveEditor))]
+    //[Button(nameof(SaveWaveEditor))]
+    //[Button(nameof(UnloadWaveEditor))]
+    //[SerializeField] private int m_waveToLoadIndex = 0;
+    [Title("Waves")]
     [Button(nameof(PopulateWaves))]
-    [ShowIf(nameof(m_populateWavesHidden)), SerializeField] private bool m_populateWavesHidden; // Just to display the button
+    [ShowIf(nameof(m_populateWavesHidden)), SerializeField] private bool m_populateWavesHidden; // Just to display the buttons
 #endif
     [SerializeField] private Wave[] m_waves;
 
@@ -41,7 +50,7 @@ public class Level : MonoBehaviour
             return;
         }
         m_currentWave = m_waves[m_currentWaveIndex];
-        m_currentWave.Load(this);
+        m_currentWave.Load();
 
     }
 
@@ -66,7 +75,7 @@ public class Level : MonoBehaviour
                 m_currentWave = m_waves[m_currentWaveIndex];
 
                 m_currentWaveTime = 0.0f;
-                m_currentWave.Load(this);
+                m_currentWave.Load();
             }
             else
             {
@@ -83,5 +92,20 @@ public class Level : MonoBehaviour
         m_waves = GetComponentsInChildren<Wave>();
         EditorUtility.SetDirty(this);
     }
+
+    //private void LoadWaveEditor()
+    //{
+    //    m_waves[m_waveToLoadIndex].LoadWaveEditor(this);
+    //}
+
+    //private void SaveWaveEditor()
+    //{
+    //    m_waves[m_waveToLoadIndex].SaveWaveEditor();
+    //    EditorUtility.SetDirty(this);
+    //}
+    //private void UnloadWaveEditor()
+    //{
+    //    m_waves[m_waveToLoadIndex].UnloadWaveEditor();
+    //}
 #endif
 }
