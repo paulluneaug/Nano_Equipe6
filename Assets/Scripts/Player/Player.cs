@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerType m_playerType;
     
     private Vector2 m_velocity = Vector2.zero;
+    private bool m_isMerging;
     
     // Input State
     private Vector2 m_moveInput;
@@ -51,16 +53,17 @@ public class Player : MonoBehaviour
                 GameManager.Instance.SetPlayer2(this);
                 break;
             
-            case PlayerType.PlayerMerged:
-                GameManager.Instance.SetPlayerMerged(this);
-                gameObject.SetActive(false);
+            default:
+                Debug.Log("Player has an incorrect player type." +
+                          "Make sure the merged player uses the PlayerMerge class.");
                 break;
         }
     }
     
     private void FixedUpdate()
     {
-        Move();
+        if(!m_isMerging)
+            Move();
     }
 
     private void Update()
@@ -108,6 +111,15 @@ public class Player : MonoBehaviour
         m_animator.SetFloat(s_animatorParamVelocityY, m_velocity.y);
         m_animator.SetFloat(s_animatorParamVelocityY, m_velocity.y);
     }
+
+    public void MergeToPosition(Vector2 position)
+    {
+        m_isMerging = true;
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(m_rigidbody.DOMove(position, 0.3f).SetEase(Ease.InCubic));
+        sequence.onComplete += () => gameObject.SetActive(false);
+        sequence.onComplete += () => m_isMerging = false;
+    }
     
     // ========== Input ==========
     // ===========================
@@ -145,5 +157,5 @@ public class Player : MonoBehaviour
     }
     
     public Vector2 GetVelocity() => m_velocity;
-    public Vector2 SetVelocity(Vector2 velocity) => m_velocity = velocity;
+    public void SetVelocity(Vector2 velocity) => m_velocity = velocity;
 }
