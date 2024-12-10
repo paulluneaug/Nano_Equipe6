@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityUtility.Pools;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private ShootPattern m_shootPattern;
 
     [SerializeField] private int m_contactDamage;
+    [SerializeField] private VFXControllerPool m_vfxPool;
 
     [NonSerialized] private int m_health;
     [NonSerialized] private bool m_outOfBounds;
@@ -62,6 +64,12 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Kill()
     {
+        PooledObject<VFXController> vfxController = m_vfxPool.Request();
+
+        vfxController.Object.gameObject.SetActive(true);
+        vfxController.Object.transform.position = transform.position;
+        vfxController.Object.StartVFXLifeCycle(m_vfxPool);
+
         gameObject.SetActive(false);
     }
 }
