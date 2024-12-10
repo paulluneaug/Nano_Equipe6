@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1063682085048082621}
   - component: {fileID: 5941295645710655201}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 3300923572726401781}
   - component: {fileID: 4494469614340295307}
   - component: {fileID: 8830277528589103327}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,11 +131,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 997f5f605bc95b74682c601f7a410786, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.58131075, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -172,7 +172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6612794336895984305}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 7852602097730447406}
   - component: {fileID: 5213401030009000322}
   - component: {fileID: 7764524302972991282}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 3346315556051681436}
   - component: {fileID: 5803379429713392529}
   - component: {fileID: 6212995962751664978}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1bd883b8f51dbac4291e95816a1bc1b5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2999999, g: 0.8168152, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -105,22 +105,24 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void Merge()
     {
-        // Swap active objects
-        m_player1.gameObject.SetActive(false);
-        m_player2.gameObject.SetActive(false);
-        m_playerMerged.gameObject.SetActive(true);
-        
         // Set merged player position to average of individual players' positions.
-        m_playerMerged.transform.position = new Vector3(
+        Vector3 middlePosition = new(
             (m_player1.transform.position.x + m_player2.transform.position.x) / 2,
             (m_player1.transform.position.y + m_player2.transform.position.y) / 2,
             0
         );
+
+        m_playerMerged.transform.position = middlePosition;
         
+        m_player1.MergeToPosition(middlePosition);
+        m_player2.MergeToPosition(middlePosition);
+
         // Set merged player's velocity to average of individual players' velocities.
         m_playerMerged.SetVelocity((m_player1.GetVelocity() + m_player2.GetVelocity()) / 2);
         
         m_arePlayersMerged = true;
+        
+        m_playerMerged.gameObject.SetActive(true);
         OnPlayerMerge?.Invoke(true);
     }
 
