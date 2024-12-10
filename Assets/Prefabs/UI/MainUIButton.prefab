@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 2520353422144198628}
   - component: {fileID: 8115247830628186642}
   - component: {fileID: 2491241203412250221}
+  - component: {fileID: 1825116580107224507}
+  - component: {fileID: 8726774562595124913}
+  - component: {fileID: 8602458780431030995}
   m_Layer: 5
   m_Name: MainUIButton
   m_TagString: Untagged
@@ -121,6 +124,55 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1825116580107224507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003635671897499766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1e3819b00f21c47bb0b54593a7beee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_soundToPlayOnClick: {fileID: 0}
+  m_containerToDeactivate: {fileID: 0}
+  m_containerToActivate: {fileID: 0}
+--- !u!95 &8726774562595124913
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003635671897499766}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4bb5c6c472143f044a1cee0335e3be7c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &8602458780431030995
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003635671897499766}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7644162119245375752
 GameObject:
   m_ObjectHideFlags: 0
