@@ -509,7 +509,23 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      explobig_00015_0: 6437023958088380992
+      explobig_00015_1: 1226508950901796078
+      explobig_00015_10: 5350130899276049370
+      explobig_00015_11: 7367421439055037105
+      explobig_00015_12: 7546108885950489186
+      explobig_00015_13: 6600686969602812011
+      explobig_00015_14: 4742498597863672301
+      explobig_00015_15: 5664846458199760704
+      explobig_00015_2: -8119045115478802152
+      explobig_00015_3: 7535554365069541367
+      explobig_00015_4: 4359114489699105
+      explobig_00015_5: 9135549010041336617
+      explobig_00015_6: 9110479585425970769
+      explobig_00015_7: -4157753889821854983
+      explobig_00015_8: 4355438895348576262
+      explobig_00015_9: 7672302344786118709
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
