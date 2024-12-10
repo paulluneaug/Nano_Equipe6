@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private static readonly int s_animatorParamVelocityY = Animator.StringToHash("DirectionY");
 
     public Vector2 Velocity { get => m_velocity; set => m_velocity = value; }
+    public bool KnockedDown => m_knockedDown;
 
     [Header("Multiplayer")]
     [SerializeField] private int m_playerNumber;
