@@ -303,6 +303,56 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &224107007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224107008}
+  - component: {fileID: 224107009}
+  m_Layer: 0
+  m_Name: Event02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &224107008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224107007}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4612234423891732537}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &224107009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224107007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f435de9b6442865428513a4f29b7fb87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_time: 14
+  m_enemyPool: {fileID: 900593880}
+  m_spawnPoints:
+  - Position: {x: -6.38, y: 5.6425, z: 0}
+  - Position: {x: 5.15, y: 5.5525, z: 0}
+  - Position: {x: -4.68, y: 5.6724997, z: 0}
 --- !u!1001 &234813264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -866,6 +916,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3626810651829353913, guid: 3f8c7d272b3766641b1c0f5f8b629120, type: 3}
   m_PrefabInstance: {fileID: 1028409841}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1192990009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1192990011}
+  - component: {fileID: 1192990010}
+  m_Layer: 0
+  m_Name: Event01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1192990010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192990009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f435de9b6442865428513a4f29b7fb87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_time: 8
+  m_enemyPool: {fileID: 900593880}
+  m_spawnPoints:
+  - Position: {x: -6.38, y: 5.6425, z: 0}
+  - Position: {x: 5.15, y: 5.5525, z: 0}
+  - Position: {x: -4.68, y: 5.6724997, z: 0}
+  - Position: {x: 6.71, y: 5.6025, z: 0}
+--- !u!4 &1192990011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192990009}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4612234423891732537}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1326850493 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7764524302972991282, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
@@ -1517,6 +1618,10 @@ PrefabInstance:
       propertyPath: m_projectilesPool
       value: 
       objectReference: {fileID: 1978226962}
+    - target: {fileID: 3359687444283858198, guid: 29cd4fa84d6130645a3feba2870b8d54, type: 3}
+      propertyPath: m_emitters.Array.data[0].m_shootDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5208427715838809506, guid: 29cd4fa84d6130645a3feba2870b8d54, type: 3}
       propertyPath: m_Name
       value: ScrollingEnemy
@@ -1641,7 +1746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_populateEventsHidden: 0
   m_waveEvents:
-  - {fileID: 0}
+  - {fileID: 1192990010}
 --- !u!1 &1443583359495003544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,7 +1776,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1192990011}
+  - {fileID: 224107008}
   m_Father: {fileID: 8344563852187883565}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6850164683888221091
