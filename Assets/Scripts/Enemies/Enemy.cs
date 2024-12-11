@@ -9,7 +9,8 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private ProjectileDamageType m_resistances;
     [SerializeField] private int m_maxHealth;
     [SerializeField] private ShootPattern m_shootPattern;
-
+    [SerializeField] private ContactDamageTrigger m_contactDamageTrigger;
+    
     [SerializeField] private int m_contactDamage;
     [SerializeField] private VFXControllerPool m_vfxPool;
 
@@ -22,6 +23,14 @@ public abstract class Enemy : MonoBehaviour
         m_shootPattern.ShouldShoot = true;
     }
 
+    private void Start()
+    {
+        if (m_contactDamageTrigger)
+        {
+            m_contactDamageTrigger.OnContact += DealContactDamage;
+        }
+    }
+
     protected virtual void Update()
     {
         m_shootPattern.UpdatePattern(Time.deltaTime);
@@ -29,12 +38,23 @@ public abstract class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // If the enemy has a contact damage trigger, ignore damage from the rest of the collider.
+        if (m_contactDamageTrigger)
+        {
+            return;
+        }
+        
+        DealContactDamage(other);
+    }
+
+    private void DealContactDamage(Collider2D other)
+    {
         if (other.TryGetComponent(out Player player))
         {
             player.TakeDamage(m_contactDamage);
         }
     }
-
+    
     public virtual void TakeDamage(int damage, ProjectileDamageType damageType)
     {
         if ((damageType & ~m_resistances) == 0)
