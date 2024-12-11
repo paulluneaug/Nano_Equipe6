@@ -1,5 +1,4 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 
 public abstract class BaseWaveEvent : MonoBehaviour
