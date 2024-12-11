@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public Vector2 Velocity { get => m_velocity; set => m_velocity = value; }
     public bool KnockedDown => m_knockedDown;
 
+    public bool Invinsible = false;
+
     [Header("Multiplayer")]
     [SerializeField] private int m_playerNumber;
 
@@ -215,6 +217,11 @@ public class Player : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
+        if (Invinsible)
+        {
+            return;
+        }
+
         m_health -= damage;
         if (m_health <= 0)
         {
