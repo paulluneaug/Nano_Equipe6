@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
         else
         {
-            if (Separate());
+            if (Separate())
                 m_mergeTimer.Start();
         }
     }
