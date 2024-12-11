@@ -80,7 +80,10 @@ public class Player : MonoBehaviour
 
         Revive();
 
-        _ = m_bubbleSprite?.DOFade(0.0f, 0.0f);
+        if (m_bubbleSprite != null)
+        {
+            _ = m_bubbleSprite.DOFade(0.0f, 0.0f);
+        }
 
         m_allIFramesTimers = new List<Timer>()
         {
