@@ -10,8 +10,6 @@ public class PlayerMerged : Player
     [SerializeField] private SpriteRenderer m_mediumWingsSprite;
     [SerializeField] private SpriteRenderer m_smallWingsSprite;
 
-    private Sequence m_fusionSequence;
-    
     private void Awake()
     {
         GameManager.Instance.SetPlayerMerged(this);
@@ -21,20 +19,46 @@ public class PlayerMerged : Player
     
     private void TriggerFusionVFX(bool isMerged)
     {
-        if (isMerged)
+        if (isMerged) // Begin fusion animation
         {
             m_fusionAnimator.Play("Fusion");
+
+            var fusionSequence = DOTween.Sequence();
+
+            // Fade in fusion animation and body
+            fusionSequence.Append(m_fusionSprite.DOFade(1, 0.1f).From(0));
+            fusionSequence.Append(m_bodySprite.DOFade(1, 1f).From(0));
             
-            m_fusionSequence = DOTween.Sequence().Pause();
+            // Fade in wings
+            fusionSequence.Append(m_bigWingsSprite.DOFade(1, 0.2f).From(0));
+            fusionSequence.Append(m_smallWingsSprite.DOFade(1, 0.2f).From(0));
+            fusionSequence.Append(m_mediumWingsSprite.DOFade(1, 0.2f).From(0));
             
-            m_fusionSequence.Append(m_fusionSprite.DOFade(1, 0.1f).From(0));
-            m_fusionSequence.Append(m_bodySprite.DOFade(1, 1f).From(0));
-            m_fusionSequence.Append(m_bigWingsSprite.DOFade(1, 0.15f).From(0));
-            m_fusionSequence.Append(m_smallWingsSprite.DOFade(1, 0.15f).From(0));
-            m_fusionSequence.Append(m_mediumWingsSprite.DOFade(1, 0.15f).From(0));
-            m_fusionSequence.Insert(1.0f, m_fusionSprite.DOFade(0, 0.5f));
+            // Fade out fusion animation
+            fusionSequence.Insert(1.0f, m_fusionSprite.DOFade(0, 0.25f));
             
-            m_fusionSequence.Play();
+            fusionSequence.Play();
+        }
+        else // Begin separation animation
+        {
+            m_fusionAnimator.Play("Separation");
+
+            var separationSequence = DOTween.Sequence();
+            
+            // Fade in fusion animation
+            separationSequence.Append(m_fusionSprite.DOFade(1, 0.1f).From(0));
+            separationSequence.AppendInterval(0.2f);
+            
+            // Fade out wings
+            separationSequence.Append(m_bigWingsSprite.DOFade(0, 0.2f));
+            separationSequence.Append(m_smallWingsSprite.DOFade(0, 0.2f));
+            separationSequence.Append(m_mediumWingsSprite.DOFade(0, 0.2f));
+            
+            // Fade out body and fusion animation
+            separationSequence.Append(m_bodySprite.DOFade(0, 0.25f));
+            separationSequence.Insert(1.0f, m_fusionSprite.DOFade(0, 0.25f));
+            
+            separationSequence.onComplete += () => gameObject.SetActive(false);
         }
     }
 }
