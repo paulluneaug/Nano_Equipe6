@@ -71,6 +71,7 @@ public abstract class Enemy : MonoBehaviour
 
         if (m_health <= 0)
         {
+            PlayKillVfxAndSfx();
             Kill();
         }
         else
@@ -105,14 +106,16 @@ public abstract class Enemy : MonoBehaviour
     public void WentOutOfBounds()
     {
         m_outOfBounds = true;
-        Kill();
+        Kill(); // No VFX or SFX
     }
 
     protected virtual void Kill()
     {
-        if (m_outOfBounds)
-            return;
-        
+        gameObject.SetActive(false);
+    }
+
+    private void PlayKillVfxAndSfx()
+    {
         PooledObject<VFXController> vfxController = m_vfxPool.Request();
 
         vfxController.Object.gameObject.SetActive(true);
@@ -123,7 +126,5 @@ public abstract class Enemy : MonoBehaviour
         
         sfxController.Object.gameObject.SetActive(true);
         sfxController.Object.StartSFXLifeCycle(m_dieSfxPool);
-        
-        gameObject.SetActive(false);
     }
 }

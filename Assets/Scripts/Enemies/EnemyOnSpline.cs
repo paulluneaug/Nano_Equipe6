@@ -9,8 +9,6 @@ public class EnemyOnSpline : MovingEnemy
 
     [SerializeField] private bool m_killAtTheEndOfSpline = true;
 
-
-
     [NonSerialized] private SplineContainer m_spline;
     [NonSerialized] private float m_splineLength;
     [NonSerialized] private float m_progressAlongSpline;
@@ -44,7 +42,7 @@ public class EnemyOnSpline : MovingEnemy
         {
             if (m_killAtTheEndOfSpline)
             {
-                Kill();
+                Kill(); // No VFX or SFX
             }
             return;
         }
