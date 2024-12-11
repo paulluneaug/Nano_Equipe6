@@ -130,8 +130,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 997f5f605bc95b74682c601f7a410786, type: 3}
-  m_Color: {r: 0, g: 0.58131075, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f584f4de606149e44a1131a6d968ee29, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -271,6 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0bae754c781984bbeedc9f357d63be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Invinsible: 0
+  m_playerNumber: 0
   m_moveActions:
   - {fileID: 7313703439254968147, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_shootActions:

@@ -11,6 +11,12 @@ TextureImporter:
   - first:
       213: 4653525245675194151
     second: MagicalGirl1_MoveBack_0002_2
+  - first:
+      213: -1699940958070282601
+    second: MagicalGirl1_MoveBack_0002_3
+  - first:
+      213: -8306962706765049463
+    second: MagicalGirl1_MoveBack_0002_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
