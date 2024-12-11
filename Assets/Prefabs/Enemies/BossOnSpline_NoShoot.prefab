@@ -136,10 +136,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_resistances: 1
-  m_maxHealth: 200
+  m_maxHealth: 20
   m_shootPattern: {fileID: 7109874341930704583}
   m_contactDamageTrigger: {fileID: 0}
-  m_contactDamage: 10
+  m_contactDamage: 1
   m_vfxPool: {fileID: 0}
   m_dieSfxPool: {fileID: 0}
   m_hitSfxPool: {fileID: 0}
