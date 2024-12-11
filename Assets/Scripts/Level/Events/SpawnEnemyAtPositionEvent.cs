@@ -235,7 +235,7 @@ public class SpawnEnemyAtPositionEvent : SpawnEnemyEvent<Enemy>
         Gizmos.color = Color.magenta;
         foreach (SpawnPoint spawnPoint in m_spawnPoints)
         {
-            Gizmos.DrawWireSphere(spawnPoint.Position, 0.5f);
+            Gizmos.DrawWireSphere(transform.position + spawnPoint.Position, 0.5f);
         }
 
         Gizmos.color = gizmosColor;

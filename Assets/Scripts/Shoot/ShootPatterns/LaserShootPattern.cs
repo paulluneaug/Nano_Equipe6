@@ -57,6 +57,7 @@ public class LaserShootPattern : ShootPattern
         m_shootStep = LaserShootStep.LaserOn;
 
         m_laserTimer.Start();
+        m_laser.ResetLaser();
         m_laser.gameObject.SetActive(true);
     }
 
