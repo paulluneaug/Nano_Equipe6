@@ -1,19 +1,61 @@
 fileFormatVersion: 2
-guid: f54e6db210ea8274f9f23cddfcd95cfa
+guid: 971660939eb9d344194d1b8a06e39bd9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8607792577517783543
-    second: MagicalGirl2_Wings_0023_0
+      213: -1316741007591074135
+    second: ObstacleHorizontal_0
   - first:
-      213: 1415401565534043847
-    second: MagicalGirl2_Wings_0023_1
+      213: -5154790373943604475
+    second: ObstacleHorizontal_1
   - first:
-      213: 5178036906359912433
-    second: MagicalGirl2_Wings_0023_2
+      213: 2515108552010069425
+    second: ObstacleHorizontal_2
   - first:
-      213: -5871495142067686891
-    second: MagicalGirl2_Wings_0023_3
+      213: -552465243579511407
+    second: ObstacleHorizontal_3
+  - first:
+      213: -8077407306600906666
+    second: ObstacleHorizontal_4
+  - first:
+      213: 59907253728171002
+    second: ObstacleHorizontal_5
+  - first:
+      213: 5992218833825709982
+    second: ObstacleHorizontal_6
+  - first:
+      213: -3564939524374431669
+    second: ObstacleHorizontal_7
+  - first:
+      213: 6824900872911037314
+    second: ObstacleHorizontal_8
+  - first:
+      213: 8037701911724559251
+    second: ObstacleHorizontal_9
+  - first:
+      213: -1140171592659054242
+    second: ObstacleHorizontal_10
+  - first:
+      213: 8992164112374592377
+    second: ObstacleHorizontal_11
+  - first:
+      213: -1909867130140297354
+    second: ObstacleHorizontal_12
+  - first:
+      213: -6394160092855058723
+    second: ObstacleHorizontal_13
+  - first:
+      213: 4706421144928179111
+    second: ObstacleHorizontal_14
+  - first:
+      213: 8176456248743483949
+    second: ObstacleHorizontal_15
+  - first:
+      213: -4808287535942407072
+    second: ObstacleHorizontal_16
+  - first:
+      213: -4003844055245653935
+    second: ObstacleHorizontal_17
   externalObjects: {}
   serializedVersion: 13
   mipmaps:

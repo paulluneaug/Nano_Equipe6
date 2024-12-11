@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 7e0fce5ccef515f48a179ed287acaf81
+guid: 593b18dd7b05551488ba948fe8683fdf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3899855518478219042
-    second: MagicalGirl2_Wings_0017_0
-  - first:
-      213: 3520823584282337560
-    second: MagicalGirl2_Wings_0017_1
-  - first:
-      213: 2247581310507600919
-    second: MagicalGirl2_Wings_0017_2
-  - first:
-      213: 3489165050854709000
-    second: MagicalGirl2_Wings_0017_3
+      213: -2428330863197254518
+    second: EnemyBoss_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
