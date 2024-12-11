@@ -81,14 +81,14 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             m_playerMerged.DebugInvinsible = !m_playerMerged.DebugInvinsible;
         }
 
-        if ((m_arePlayersMerged && m_playerMerged.KnockedDown) || 
+        if ((m_arePlayersMerged && m_playerMerged.KnockedDown) ||
             (!m_arePlayersMerged && (m_player1.KnockedDown && m_player2.KnockedDown)))
         {
-            ReloadScene();
+            GameOver();
             return;
         }
-        
-        
+
+
         _ = m_mergeTimer.Update(Time.deltaTime);
 
         bool canMerge = Vector2.Distance(
@@ -100,6 +100,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             ToggleMerge();
         }
+    }
+
+    private static void GameOver()
+    {
+        ReloadScene();
     }
 
     private static void ReloadScene()
@@ -144,15 +149,17 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
         else
         {
-            if (Separate());
+            if (Separate())
+            {
                 m_mergeTimer.Start();
+            }
         }
     }
 
     private void Merge()
     {
         m_fusionAudioSource.Play();
-        
+
         // Set merged player position to average of individual players' positions.
         Vector3 middlePosition = new(
             (m_player1.transform.position.x + m_player2.transform.position.x) / 2,
@@ -161,7 +168,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         );
 
         m_playerMerged.transform.position = middlePosition;
-        
+
         m_player1.MergeTo(middlePosition);
         m_player2.MergeTo(middlePosition);
 
@@ -169,7 +176,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_playerMerged.Velocity = (m_player1.Velocity + m_player2.Velocity) / 2;
 
         m_arePlayersMerged = true;
-        
+
         m_playerMerged.gameObject.SetActive(true);
         OnPlayerMerge?.Invoke(true);
     }
@@ -185,11 +192,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             m_separationFailedAudioSource.Play();
             return false;
         }
-        
+
         m_separationAudioSource.Play();
-        
+
         var sequence = DOTween.Sequence();
-        sequence.AppendInterval(1.4f);
+        _ = sequence.AppendInterval(1.4f);
         sequence.onComplete += () =>
         {
             // Set individual players' positions to merged players' position,
@@ -205,11 +212,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 m_playerMerged.transform.position.y,
                 m_player2.transform.position.z
             );
-        
+
             // Set individual players' velocities to merged player's velocity.
             m_player1.Velocity = m_playerMerged.Velocity;
             m_player2.Velocity = m_playerMerged.Velocity;
-            
+
             // Swap active objects
             m_player1.gameObject.SetActive(true);
             m_player2.gameObject.SetActive(true);
@@ -217,10 +224,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             m_player1.Separate();
             m_player2.Separate();
         };
-        
+
         m_arePlayersMerged = false;
         OnPlayerMerge?.Invoke(false);
-        
+
         return true;
     }
 

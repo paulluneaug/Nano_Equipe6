@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Timer m_mergeIFrameTimer;
     [SerializeField] private Timer m_reviveIFrameTimer;
 
-    [NonSerialized] private int m_health;
+    [NonSerialized] protected int m_health;
     [NonSerialized] private bool m_knockedDown;
 
     [NonSerialized] protected List<Timer> m_allIFramesTimers;
