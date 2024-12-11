@@ -110,6 +110,9 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Kill()
     {
+        if (m_outOfBounds)
+            return;
+        
         PooledObject<VFXController> vfxController = m_vfxPool.Request();
 
         vfxController.Object.gameObject.SetActive(true);
