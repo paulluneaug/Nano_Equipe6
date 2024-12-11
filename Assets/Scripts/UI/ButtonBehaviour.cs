@@ -36,7 +36,7 @@ public class ButtonBehaviour : MonoBehaviour
         if(m_containerToDeactivate != null)
         {
             m_containerToDeactivate.interactable = false;
-
+            m_containerToDeactivate.blocksRaycasts = false;
         }
         
         m_objectAnimator.Play("MainUIButtonOnClick");
@@ -47,6 +47,7 @@ public class ButtonBehaviour : MonoBehaviour
         if (m_containerToActivate != null)
         {
             m_containerToActivate.interactable = true;
+            m_containerToActivate.blocksRaycasts = true;
 
         }
 
