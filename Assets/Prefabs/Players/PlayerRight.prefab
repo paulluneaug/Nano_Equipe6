@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.736
       objectReference: {fileID: 0}
+    - target: {fileID: 3346315556051681436, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4494469614340295307, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -29,8 +33,12 @@ PrefabInstance:
       value: 10.8
       objectReference: {fileID: 0}
     - target: {fileID: 4494469614340295307, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a539520d73d8afa45a07dd92e09f225f, type: 3}
+    - target: {fileID: 4494469614340295307, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4494469614340295307, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_Color.g
@@ -38,7 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4494469614340295307, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_Color.r
-      value: 0.9646715
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803379429713392529, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5803379429713392529, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_Color.b
@@ -59,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 6212995962751664978, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 6b4d7a7a3fbdcd04c9b704d75797125a, type: 2}
+      objectReference: {fileID: 9100000, guid: 1daf6f954d93b17469905bdcb651acfb, type: 2}
     - target: {fileID: 6612794336895984305, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_LocalPosition.z
       value: -2
@@ -123,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 8830277528589103327, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 0db3778196717fd43832187437af6f11, type: 2}
+      objectReference: {fileID: 9100000, guid: c6310a4f2726ed740a1cbe7f57ef6e36, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

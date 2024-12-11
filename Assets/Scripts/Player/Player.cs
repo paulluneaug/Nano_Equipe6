@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
 
     private Vector2 m_velocity = Vector2.zero;
     private bool m_canMove = true;
+    protected bool m_canShoot = true;
 
     // Input State
     private Vector2 m_moveInput;
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!m_knockedDown && m_canMove)
+        if (m_canMove)
         {
             Move();
         }
@@ -133,7 +134,7 @@ public class Player : MonoBehaviour
 
     private void UpdateShoot()
     {
-        m_shootPattern.ShouldShoot = m_shootInput;
+        m_shootPattern.ShouldShoot = m_shootInput && m_canShoot;
         m_shootPattern.UpdatePattern(Time.deltaTime);
     }
 
@@ -153,7 +154,7 @@ public class Player : MonoBehaviour
         }
 
         // If we are pressing no key or if we want to go in the opposite direction of our current velocity.
-        if (m_moveInput.sqrMagnitude == 0
+        if (m_moveInput.sqrMagnitude == 0 || m_knockedDown
            || (m_moveInput.x < 0 && m_velocity.x > 0)
            || (m_moveInput.x > 0 && m_velocity.x < 0)
            || (m_moveInput.y < 0 && m_velocity.y > 0)
@@ -162,7 +163,8 @@ public class Player : MonoBehaviour
             m_velocity *= m_decelerationFactor;
         }
 
-        m_rigidbody.MovePosition(m_rigidbody.position + m_velocity * Time.fixedDeltaTime);
+        //m_rigidbody.MovePosition(m_rigidbody.position + m_velocity * Time.fixedDeltaTime);
+        m_rigidbody.linearVelocity = m_velocity;
     }
 
     private void UpdateAnimation()
@@ -242,7 +244,11 @@ public class Player : MonoBehaviour
         return actionPerformed;
     }
 
-
+    public ShootPattern GetShootPattern()
+    {
+        return m_shootPattern;
+    }
+    
     public virtual void TakeDamage(int damage)
     {
         if (Invinsible)

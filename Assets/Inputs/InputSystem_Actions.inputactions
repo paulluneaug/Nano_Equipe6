@@ -102,17 +102,6 @@
                 },
                 {
                     "name": "",
-                    "id": "ef65bca7-7c21-4949-ba4f-e5738248c7fd",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "de19f0a1-4bde-4b89-8ae6-1d233d65defb",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
@@ -135,8 +124,19 @@
                 },
                 {
                     "name": "",
+                    "id": "50748100-b792-4ee5-8890-f83687c3d384",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4fe67b3d-1d5f-4d01-b19d-7f0d704d7541",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -147,7 +147,7 @@
                 {
                     "name": "",
                     "id": "ca97e49e-ac42-4076-8cc0-ee6ffce01fe4",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
