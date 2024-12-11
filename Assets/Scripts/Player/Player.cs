@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
 
     private Vector2 m_velocity = Vector2.zero;
     private bool m_canMove = true;
+    protected bool m_canShoot = true;
 
     // Input State
     private Vector2 m_moveInput;
@@ -133,7 +134,7 @@ public class Player : MonoBehaviour
 
     private void UpdateShoot()
     {
-        m_shootPattern.ShouldShoot = m_shootInput && m_canMove;
+        m_shootPattern.ShouldShoot = m_shootInput && m_canShoot;
         m_shootPattern.UpdatePattern(Time.deltaTime);
     }
 

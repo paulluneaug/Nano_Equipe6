@@ -31,6 +31,7 @@ public class PlayerMerged : Player
     {
         if (isMerged) // Begin fusion animation
         {
+            m_canShoot = false;
             m_fusionAnimator.Play("Fusion");
 
             var fusionSequence = DOTween.Sequence();
@@ -46,11 +47,13 @@ public class PlayerMerged : Player
             
             // Fade out fusion animation
             fusionSequence.Insert(1.0f, m_fusionSprite.DOFade(0, 0.25f));
+            fusionSequence.onComplete += () => m_canShoot = true;
             
             fusionSequence.Play();
         }
         else // Begin separation animation
         {
+            m_canShoot = false;
             m_fusionAnimator.Play("Separation");
 
             var separationSequence = DOTween.Sequence();
@@ -67,8 +70,9 @@ public class PlayerMerged : Player
             // Fade out body and fusion animation
             separationSequence.Append(m_bodySprite.DOFade(0, 0.25f));
             separationSequence.Insert(1.0f, m_fusionSprite.DOFade(0, 0.25f));
-            
+
             separationSequence.onComplete += () => gameObject.SetActive(false);
+            separationSequence.onComplete += () => m_canShoot = true;
         }
     }
 }
