@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7194b5c1befd3fa4db60a5b8c8d60065
+guid: 9364c626517d93041a4260ef0c038622
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1292820173875933483
-    second: button_xbox_analog_trigger_light_2_0
+      213: 4896778638961541
+    second: BACKGROUND_MENU_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button_xbox_analog_trigger_light_2_0
+      name: BACKGROUND_MENU_0
       rect:
         serializedVersion: 2
-        x: 103
-        y: 43
-        width: 274
-        height: 378
+        x: 0
+        y: 0
+        width: 1921
+        height: 1081
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5de8aa9c6eafe0ee0800000000000000
-      internalID: -1292820173875933483
+      spriteID: 58ba15f1895611000800000000000000
+      internalID: 4896778638961541
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      button_xbox_analog_trigger_light_2_0: -1292820173875933483
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
