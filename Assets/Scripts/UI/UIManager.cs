@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         m_mainMenuContainer.gameObject.SetActive(true);
-        m_settingsContainer.gameObject.SetActive(false);
         m_creditContainer.gameObject.SetActive(false);
 
         m_playButton.onClick.AddListener(OnPlayButtonPressed);

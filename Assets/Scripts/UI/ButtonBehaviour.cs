@@ -12,6 +12,7 @@ public class ButtonBehaviour : MonoBehaviour
     [SerializeField] private AudioClip m_soundToPlayOnClick;
     [SerializeField] private CanvasGroup m_containerToDeactivate;
     [SerializeField] private CanvasGroup m_containerToActivate;
+    [SerializeField] private string m_idOfAnimClipToPlay;
 
     public static bool canClickAgain;
 
@@ -36,10 +37,10 @@ public class ButtonBehaviour : MonoBehaviour
         if(m_containerToDeactivate != null)
         {
             m_containerToDeactivate.interactable = false;
-
+            m_containerToDeactivate.blocksRaycasts = false;
         }
         
-        m_objectAnimator.Play("MainUIButtonOnClick");
+        m_objectAnimator.Play(m_idOfAnimClipToPlay);
     }
 
     public void AnimationCallback() //Call in Animation Event (huez moi BIS)
@@ -47,6 +48,7 @@ public class ButtonBehaviour : MonoBehaviour
         if (m_containerToActivate != null)
         {
             m_containerToActivate.interactable = true;
+            m_containerToActivate.blocksRaycasts = true;
 
         }
 
