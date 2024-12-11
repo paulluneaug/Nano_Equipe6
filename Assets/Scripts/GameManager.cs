@@ -148,8 +148,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             );
         
             // Set individual players' velocities to merged player's velocity.
-            m_player1.SetVelocity(m_playerMerged.GetVelocity());
-            m_player2.SetVelocity(m_playerMerged.GetVelocity());
+            m_player1.Velocity = m_playerMerged.Velocity;
+            m_player2.Velocity = m_playerMerged.Velocity;
             
             // Swap active objects
             m_player1.gameObject.SetActive(true);
