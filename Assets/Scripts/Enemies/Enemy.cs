@@ -27,7 +27,7 @@ public abstract class Enemy : MonoBehaviour
         m_shootPattern.UpdatePattern(Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out Player player))
         {
