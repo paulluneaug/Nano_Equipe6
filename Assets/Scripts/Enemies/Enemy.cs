@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using UnityUtility.CustomAttributes;
+using UnityUtility.Pools;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -9,8 +9,10 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private ProjectileDamageType m_resistances;
     [SerializeField] private int m_maxHealth;
     [SerializeField] private ShootPattern m_shootPattern;
-
-    [SerializeField, Layer] private int m_projectileLayer;
+    [SerializeField] private ContactDamageTrigger m_contactDamageTrigger;
+    
+    [SerializeField] private int m_contactDamage;
+    [SerializeField] private VFXControllerPool m_vfxPool;
 
     [NonSerialized] private int m_health;
     [NonSerialized] private bool m_outOfBounds;
@@ -21,37 +23,46 @@ public abstract class Enemy : MonoBehaviour
         m_shootPattern.ShouldShoot = true;
     }
 
+    private void Start()
+    {
+        if (m_contactDamageTrigger)
+        {
+            m_contactDamageTrigger.OnContact += DealContactDamage;
+        }
+    }
+
     protected virtual void Update()
     {
         m_shootPattern.UpdatePattern(Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer != m_projectileLayer)
+        // If the enemy has a contact damage trigger, ignore damage from the rest of the collider.
+        if (m_contactDamageTrigger)
+        {
+            return;
+        }
+        
+        DealContactDamage(other);
+    }
+
+    private void DealContactDamage(Collider2D other)
+    {
+        if (other.TryGetComponent(out Player player))
+        {
+            player.TakeDamage(m_contactDamage);
+        }
+    }
+    
+    public virtual void TakeDamage(int damage, ProjectileDamageType damageType)
+    {
+        if ((damageType & ~m_resistances) == 0)
         {
             return;
         }
 
-        if (!other.TryGetComponent(out Projectile projectile))
-        {
-            Debug.LogError($"The layer Projectile should only be used on objects with the component {nameof(Projectile)}");
-            return;
-        }
-
-        if (projectile.ProjectileSource == ProjectileSource.Enemy)
-        {
-            return;
-        }
-
-        projectile.Release();
-
-        if ((projectile.DamageType & ~m_resistances) == 0)
-        {
-            return;
-        }
-
-        m_health -= projectile.DamageAmout;
+        m_health -= damage;
         if (m_health <= 0)
         {
             Kill();
@@ -73,6 +84,12 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Kill()
     {
+        PooledObject<VFXController> vfxController = m_vfxPool.Request();
+
+        vfxController.Object.gameObject.SetActive(true);
+        vfxController.Object.transform.position = transform.position;
+        vfxController.Object.StartVFXLifeCycle(m_vfxPool);
+
         gameObject.SetActive(false);
     }
 }

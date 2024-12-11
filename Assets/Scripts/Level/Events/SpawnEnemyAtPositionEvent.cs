@@ -225,6 +225,11 @@ public class SpawnEnemyAtPositionEvent : SpawnEnemyEvent<Enemy>
 
     private void DrawGizmos()
     {
+        if (m_spawnPoints == null)
+        {
+            return;
+        }
+
         Color gizmosColor = Gizmos.color;
 
         Gizmos.color = Color.magenta;

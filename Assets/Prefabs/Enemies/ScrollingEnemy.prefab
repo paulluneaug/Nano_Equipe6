@@ -51,7 +51,8 @@ MonoBehaviour:
   m_resistances: 0
   m_maxHealth: 10
   m_shootPattern: {fileID: 3359687444283858198}
-  m_projectileLayer: 6
+  m_contactDamage: 10
+  m_vfxPool: {fileID: 0}
   m_speedFactor: 1
   m_useGlobalScrollFactor: 1
   m_scrollingDirection: {x: 0, y: -1}

@@ -61,27 +61,38 @@ public class Level : MonoBehaviour
             return true;
         }
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            return NextWave();
+        }
+
         m_currentLevelTime += deltaTime;
         m_currentWaveTime += deltaTime;
 
         if (m_currentWave.UpdateWave(deltaTime, m_currentWaveTime))
         {
-            // Next Wave
-            m_currentWave.FinishWave();
+            return NextWave();
+        }
+        return false;
+    }
 
-            m_currentWaveIndex++;
-            if (m_currentWaveIndex < m_waves.Length)
-            {
-                m_currentWave = m_waves[m_currentWaveIndex];
+    private bool NextWave()
+    {
+        // Next Wave
+        m_currentWave.FinishWave();
 
-                m_currentWaveTime = 0.0f;
-                m_currentWave.Load();
-            }
-            else
-            {
-                m_currentWave = null;
-                return true;
-            }
+        m_currentWaveIndex++;
+        if (m_currentWaveIndex < m_waves.Length)
+        {
+            m_currentWave = m_waves[m_currentWaveIndex];
+
+            m_currentWaveTime = 0.0f;
+            m_currentWave.Load();
+        }
+        else
+        {
+            m_currentWave = null;
+            return true;
         }
         return false;
     }

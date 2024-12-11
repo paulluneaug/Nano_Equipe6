@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class VFXController : MonoBehaviour
 {
-    private Animator m_animator;
+    [SerializeField] private Animator m_animator;
 
     private void Start()
     {
-        m_animator = GetComponent<Animator>();
+        m_animator ??= GetComponent<Animator>();
     }
 
     public void StartVFXLifeCycle(VFXControllerPool pool)
