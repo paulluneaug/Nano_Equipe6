@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,7 +15,7 @@ public class Player : MonoBehaviour
     public Vector2 Velocity { get => m_velocity; set => m_velocity = value; }
     public bool KnockedDown => m_knockedDown;
 
-    public bool Invinsible = false;
+    public bool DebugInvinsible = false;
 
     [Header("Multiplayer")]
     [SerializeField] private int m_playerNumber;
@@ -43,8 +44,14 @@ public class Player : MonoBehaviour
     [SerializeField] private int m_maxHealth;
     [SerializeField] private Timer m_knockedDownTimer;
 
+    [Title("I Frames")]
+    [SerializeField] private Timer m_mergeIFrameTimer;
+    [SerializeField] private Timer m_reviveIFrameTimer;
+
     [NonSerialized] private int m_health;
     [NonSerialized] private bool m_knockedDown;
+
+    [NonSerialized] protected List<Timer> m_allIFramesTimers;
 
     private Vector2 m_velocity = Vector2.zero;
     private bool m_canMove = true;
@@ -58,28 +65,19 @@ public class Player : MonoBehaviour
     // ========== Unity Methods ==========
     // ===================================
 
-    private void Awake()
+    protected virtual void Awake()
     {
         // Yep, that will start the Game Manager three times, but it works fine so whatever
         GameManager.Instance.StartGameManager();
-
-        switch (m_playerType)
-        {
-            case PlayerType.Player1:
-                GameManager.Instance.SetPlayer1(this);
-                break;
-
-            case PlayerType.Player2:
-                GameManager.Instance.SetPlayer2(this);
-                break;
-            case PlayerType.PlayerMerged:
-            default:
-                Debug.Log("Player has an incorrect player type." +
-                          "Make sure the merged player uses the PlayerMerge class.");
-                break;
-        }
+        RegisterPlayer();
 
         Revive();
+
+        m_allIFramesTimers = new List<Timer>()
+        {
+            m_mergeIFrameTimer,
+            m_reviveIFrameTimer,
+        };
     }
 
     private void FixedUpdate()
@@ -99,6 +97,14 @@ public class Player : MonoBehaviour
             UpdateShoot();
         }
         UpdateAnimation();
+
+        UpdateIFramesTimers(Time.deltaTime);
+    }
+
+    protected virtual void UpdateIFramesTimers(float deltaTime)
+    {
+        _ = m_mergeIFrameTimer.Update(deltaTime);
+        _ = m_reviveIFrameTimer.Update(deltaTime);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -114,6 +120,7 @@ public class Player : MonoBehaviour
             if (!m_knockedDownTimer.IsRunning)
             {
                 Revive();
+                m_reviveIFrameTimer.Start();
             }
         }
     }
@@ -143,7 +150,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (m_moveInput.sqrMagnitude > 0)
+        if (m_moveInput.sqrMagnitude > 0 && !m_knockedDown)
         {
             m_velocity += m_acceleration * m_moveInput;
 
@@ -185,6 +192,8 @@ public class Player : MonoBehaviour
         // Disable the objects
         sequence.onComplete += () => gameObject.SetActive(false);
         sequence.onComplete += () => m_canMove = true;
+
+        m_mergeIFrameTimer.Start();
     }
 
     public void Separate()
@@ -204,6 +213,7 @@ public class Player : MonoBehaviour
                           "Make sure the merged player uses the PlayerMerge class.");
                 break;
         }
+        m_mergeIFrameTimer.Start();
     }
 
 
@@ -248,19 +258,26 @@ public class Player : MonoBehaviour
     {
         return m_shootPattern;
     }
-    
-    public virtual void TakeDamage(int damage)
+
+    public virtual bool TakeDamage(int damage)
     {
-        if (Invinsible)
+        if (DebugInvinsible)
         {
-            return;
+            return false;
+        }
+
+        if (IsDuringIFrames())
+        {
+            return false;
         }
 
         m_health -= damage;
         if (m_health <= 0)
         {
             Kill();
+            return true;
         }
+        return true;
     }
 
     private void Kill()
@@ -273,5 +290,29 @@ public class Player : MonoBehaviour
     {
         m_knockedDown = false;
         m_health = m_maxHealth;
+    }
+
+    protected virtual void RegisterPlayer()
+    {
+        switch (m_playerType)
+        {
+            case PlayerType.Player1:
+                GameManager.Instance.SetPlayer1(this);
+                break;
+
+            case PlayerType.Player2:
+                GameManager.Instance.SetPlayer2(this);
+                break;
+            case PlayerType.PlayerMerged:
+            default:
+                Debug.Log("Player has an incorrect player type." +
+                          "Make sure the merged player uses the PlayerMerge class.");
+                break;
+        }
+    }
+
+    private bool IsDuringIFrames()
+    {
+        return m_allIFramesTimers.Any(timer => timer.IsRunning);
     }
 }

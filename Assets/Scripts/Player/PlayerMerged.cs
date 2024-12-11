@@ -1,8 +1,11 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityUtility.Timer;
 
 public class PlayerMerged : Player
 {
+    [SerializeField] private Timer m_damagesIFrameTimer;
+
     [SerializeField] private Animator m_fusionAnimator;
     
     [SerializeField] private SpriteRenderer m_fusionSprite;
@@ -10,13 +13,34 @@ public class PlayerMerged : Player
     [SerializeField] private SpriteRenderer m_mediumWingsSprite;
     [SerializeField] private SpriteRenderer m_smallWingsSprite;
 
-    private void Awake()
+    protected override void Awake()
     {
-        GameManager.Instance.SetPlayerMerged(this);
+        base.Awake();
         gameObject.SetActive(false);
         GameManager.Instance.OnPlayerMerge += TriggerFusionVFX;
 
-        Revive();
+        m_allIFramesTimers.Add(m_damagesIFrameTimer);
+    }
+
+    protected override void RegisterPlayer()
+    {
+        GameManager.Instance.SetPlayerMerged(this);
+    }
+
+    public override bool TakeDamage(int damage)
+    {
+        if (base.TakeDamage(damage))
+        {
+            m_damagesIFrameTimer.Start();
+            return true;
+        }
+        return false;
+    }
+
+    protected override void UpdateIFramesTimers(float deltaTime)
+    {
+        base.UpdateIFramesTimers(deltaTime);
+        _ = m_damagesIFrameTimer.Update(deltaTime);
     }
 
     private void OnDestroy()

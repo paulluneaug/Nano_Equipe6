@@ -72,9 +72,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            m_player1.Invinsible = !m_player1.Invinsible;
-            m_player2.Invinsible = !m_player2.Invinsible;
-            m_playerMerged.Invinsible = !m_playerMerged.Invinsible;
+            m_player1.DebugInvinsible = !m_player1.DebugInvinsible;
+            m_player2.DebugInvinsible = !m_player2.DebugInvinsible;
+            m_playerMerged.DebugInvinsible = !m_playerMerged.DebugInvinsible;
         }
 
         if ((m_arePlayersMerged && m_playerMerged.KnockedDown) || 
