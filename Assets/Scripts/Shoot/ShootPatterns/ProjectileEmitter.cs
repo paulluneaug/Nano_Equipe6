@@ -35,7 +35,7 @@ public class ProjectileEmitter
         m_duringStartDelay = true;
     }
 
-    public void UpdateEmitter(float deltaTime, bool shouldShoot)
+    public bool UpdateEmitter(float deltaTime, bool shouldShoot)
     {
         m_timer += deltaTime;
         if (m_duringStartDelay) 
@@ -45,12 +45,12 @@ public class ProjectileEmitter
                 m_timer -= m_startDelay;
                 m_duringStartDelay = false;
             }
-            return;
+            return false;
         }
 
         if (!shouldShoot)
         {
-            return;
+            return false;
         }
 
         if (m_timer > m_shootDelay) 
@@ -58,6 +58,8 @@ public class ProjectileEmitter
             m_timer = 0.0f;
             Shoot();
         }
+
+        return true;
     }
 
     private void Shoot()

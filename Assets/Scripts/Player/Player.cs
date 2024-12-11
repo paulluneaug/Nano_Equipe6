@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityUtility.CustomAttributes;
 using UnityUtility.Timer;
 
@@ -45,7 +46,12 @@ public class Player : MonoBehaviour
 
     [NonSerialized] private int m_health;
     [NonSerialized] private bool m_knockedDown;
-
+    
+    [Header("Sound")]
+    [SerializeField] private AudioSource m_hitSoundSource;
+    [SerializeField] private AudioSource m_dieSoundSource;
+    [SerializeField] private AudioSource m_shootSoundSource;
+    
     private Vector2 m_velocity = Vector2.zero;
     private bool m_canMove = true;
     protected bool m_canShoot = true;
@@ -135,7 +141,10 @@ public class Player : MonoBehaviour
     private void UpdateShoot()
     {
         m_shootPattern.ShouldShoot = m_shootInput && m_canShoot;
-        m_shootPattern.UpdatePattern(Time.deltaTime);
+        if (m_shootPattern.UpdatePattern(Time.deltaTime))
+        {
+            m_shootSoundSource.Play();
+        }
     }
 
     // ========== Movement ==========
@@ -251,6 +260,8 @@ public class Player : MonoBehaviour
     
     public virtual void TakeDamage(int damage)
     {
+        m_hitSoundSource.Play();
+        
         if (Invinsible)
         {
             return;
@@ -265,6 +276,7 @@ public class Player : MonoBehaviour
 
     private void Kill()
     {
+        m_dieSoundSource.Play();
         m_knockedDown = true;
         m_knockedDownTimer.Start();
     }

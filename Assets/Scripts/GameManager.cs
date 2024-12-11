@@ -83,8 +83,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             ReloadScene();
             return;
         }
-
-
+        
+        
         _ = m_mergeTimer.Update(Time.deltaTime);
 
         bool canMerge = Vector2.Distance(
