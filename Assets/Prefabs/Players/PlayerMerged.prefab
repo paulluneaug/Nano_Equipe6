@@ -640,6 +640,9 @@ MonoBehaviour:
   m_knockedDownTimer:
     m_duration: 0
     m_repeat: 0
+  m_hitAudioSource: {fileID: 5964819435617377978}
+  m_dieAudioSource: {fileID: 6384808245729937075}
+  m_shootSfxPool: {fileID: 0}
   m_mergeIFrameTimer:
     m_duration: 0.5
     m_repeat: 0
@@ -672,6 +675,16 @@ Animator:
 --- !u!4 &3626810651829353913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7852602097730447406, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+  m_PrefabInstance: {fileID: 6822681936563131799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &5964819435617377978 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 894037913149377325, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+  m_PrefabInstance: {fileID: 6822681936563131799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6384808245729937075 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 447101387321774884, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
   m_PrefabInstance: {fileID: 6822681936563131799}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &6985251657715785500 stripped

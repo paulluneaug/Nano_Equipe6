@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_audioSource: {fileID: 5144898510096215692}
+  m_pitchRange: {x: 0.95, y: 1.05}
 --- !u!82 &5144898510096215692
 AudioSource:
   m_ObjectHideFlags: 0
