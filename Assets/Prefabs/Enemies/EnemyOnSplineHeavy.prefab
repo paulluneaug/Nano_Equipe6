@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045792701213070728, guid: 041441c980a14fe47bdb7922356bde12, type: 3}
       propertyPath: m_emitters.Array.data[0].m_shootDelay
-      value: 1.2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4045792701213070728, guid: 041441c980a14fe47bdb7922356bde12, type: 3}
       propertyPath: m_emitters.Array.data[0].m_startDelay
@@ -46,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045792701213070728, guid: 041441c980a14fe47bdb7922356bde12, type: 3}
       propertyPath: m_emitters.Array.data[1].m_shootDelay
-      value: 1.2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4045792701213070728, guid: 041441c980a14fe47bdb7922356bde12, type: 3}
       propertyPath: m_emitters.Array.data[1].m_startDelay
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4045792701213070728, guid: 041441c980a14fe47bdb7922356bde12, type: 3}
       propertyPath: m_emitters.Array.data[2].m_rayColor.a
@@ -62,11 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045792701213070728, guid: 041441c980a14fe47bdb7922356bde12, type: 3}
       propertyPath: m_emitters.Array.data[2].m_shootDelay
-      value: 1.2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4045792701213070728, guid: 041441c980a14fe47bdb7922356bde12, type: 3}
       propertyPath: m_emitters.Array.data[2].m_startDelay
-      value: 0.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4045792701213070728, guid: 041441c980a14fe47bdb7922356bde12, type: 3}
       propertyPath: m_emitters.Array.data[1].m_displayGizmos
