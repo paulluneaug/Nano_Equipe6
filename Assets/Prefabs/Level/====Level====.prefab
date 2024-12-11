@@ -8101,6 +8101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScrollingEnemyTripleShot
       objectReference: {fileID: 0}
+    - target: {fileID: 9181495896229155075, guid: 36e3b7b8133b1d24caff80c659a525d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -41,6 +41,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private PlayerType m_playerType;
 
+    [SerializeField] private ContactFilter2D m_contactFilter;
+    [SerializeField] private float m_collisionOffset;
+
     [Title("Health")]
     [SerializeField] private int m_maxHealth;
     [SerializeField] private Timer m_knockedDownTimer;
@@ -63,6 +66,7 @@ public class Player : MonoBehaviour
     private bool m_canMove = true;
     protected bool m_canShoot = true;
 
+    [NonSerialized] private List<RaycastHit2D> m_hits;
 
     // Input State
     private Vector2 m_moveInput;
@@ -90,6 +94,8 @@ public class Player : MonoBehaviour
             m_mergeIFrameTimer,
             m_reviveIFrameTimer,
         };
+
+        m_hits = new List<RaycastHit2D>();
     }
 
     private void FixedUpdate()
@@ -216,8 +222,32 @@ public class Player : MonoBehaviour
             m_velocity *= m_decelerationFactor;
         }
 
+
+        Vector2 offset = m_velocity * Time.fixedDeltaTime;
+
+        if (!TryMove(offset))
+        {
+            if (!TryMove(offset * Vector2.right))
+            {
+                if (!TryMove(offset * Vector2.up))
+                {
+                    Debug.LogWarning("Failed to move");
+                }
+            }
+        }
         //m_rigidbody.MovePosition(m_rigidbody.position + m_velocity * Time.fixedDeltaTime);
-        m_rigidbody.linearVelocity = m_velocity;
+        //m_rigidbody.linearVelocity = m_velocity;
+    }
+
+    private bool TryMove(Vector2 offset)
+    {
+        int collisionCount = m_rigidbody.Cast(offset, m_contactFilter, m_hits, offset.magnitude + m_collisionOffset);
+        if (collisionCount > 0)
+        {
+            return false;
+        }
+        m_rigidbody.MovePosition(m_rigidbody.position + offset);
+        return true;
     }
 
     private void UpdateAnimation()

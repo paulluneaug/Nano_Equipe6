@@ -332,7 +332,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6160584313611330691}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -380,6 +380,21 @@ MonoBehaviour:
   m_decelerationFactor: 0.75
   m_separationForce: {x: 20, y: 0}
   m_playerType: 0
+  m_contactFilter:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 257
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  m_collisionOffset: 0.05
   m_maxHealth: 1
   m_knockedDownTimer:
     m_duration: 3
