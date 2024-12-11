@@ -47,4 +47,25 @@ public class Projectile : MonoBehaviour
 
         transform.position += m_direction.XY0() * m_speed * Time.deltaTime;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out Player player))
+        {
+            if (m_projectileSource != ProjectileSource.Player)
+            {
+                player.TakeDamage(m_damageAmout);
+                Release();
+            }
+        }
+
+        if (other.TryGetComponent(out Enemy enemy))
+        {
+            if (m_projectileSource != ProjectileSource.Enemy)
+            {
+                enemy.TakeDamage(m_damageAmout, m_damageType);
+                Release();
+            }
+        }
+    }
 }

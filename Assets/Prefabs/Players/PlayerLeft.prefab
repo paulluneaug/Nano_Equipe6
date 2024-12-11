@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1063682085048082621}
   - component: {fileID: 5941295645710655201}
   m_Layer: 3
+  m_Layer: 3
   m_Name: ShootPattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,6 +208,7 @@ GameObject:
   - component: {fileID: 7852602097730447406}
   - component: {fileID: 5213401030009000322}
   - component: {fileID: 7764524302972991282}
+  - component: {fileID: 3672146842342665320}
   m_Layer: 3
   m_Name: PlayerLeft
   m_TagString: Untagged
@@ -284,6 +286,47 @@ MonoBehaviour:
   m_decelerationFactor: 0.75
   m_separationForce: {x: 20, y: 0}
   m_playerType: 0
+  m_maxHealth: 10
+  m_knockedDownTimer:
+    m_duration: 3
+    m_repeat: 0
+--- !u!70 &3672146842342665320
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6160584313611330691}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.05}
+  m_Size: {x: 0.34, y: 1.45}
+  m_Direction: 0
 --- !u!1 &7092964580272503429
 GameObject:
   m_ObjectHideFlags: 0

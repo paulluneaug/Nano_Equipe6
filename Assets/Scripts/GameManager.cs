@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_player2.MergeTo(middlePosition);
 
         // Set merged player's velocity to average of individual players' velocities.
-        m_playerMerged.SetVelocity((m_player1.GetVelocity() + m_player2.GetVelocity()) / 2);
+        m_playerMerged.Velocity = (m_player1.Velocity + m_player2.Velocity) / 2;
         
         m_arePlayersMerged = true;
         
