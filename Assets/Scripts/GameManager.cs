@@ -170,6 +170,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void Separate()
     {
+        LaserShootPattern laser = (LaserShootPattern)m_playerMerged.GetShootPattern();
+        if (laser.GetShootStep() == LaserShootPattern.LaserShootStep.LaserOn)
+        {
+            return;
+        }
+        
         var sequence = DOTween.Sequence();
         sequence.AppendInterval(1.0f);
         sequence.onComplete += () =>
