@@ -33,7 +33,6 @@ public class LaserShootPattern : ShootPattern
             case LaserShootStep.LaserOn:
                 UpdateLaserOn(deltaTime);
                 return true;
-                break;
             case LaserShootStep.Cooldown:
                 UpdateOnCooldown(deltaTime);
                 break;

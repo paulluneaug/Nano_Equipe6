@@ -48,9 +48,9 @@ public class Player : MonoBehaviour
     [NonSerialized] private bool m_knockedDown;
     
     [Header("Sound")]
-    [SerializeField] private AudioSource m_hitSoundSource;
-    [SerializeField] private AudioSource m_dieSoundSource;
-    [SerializeField] private AudioSource m_shootSoundSource;
+    [SerializeField] private AudioSource m_hitAudioSource;
+    [SerializeField] private AudioSource m_dieAudioSource;
+    [SerializeField] private AudioSource m_shootAudioSource;
     
     private Vector2 m_velocity = Vector2.zero;
     private bool m_canMove = true;
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
         m_shootPattern.ShouldShoot = m_shootInput && m_canShoot;
         if (m_shootPattern.UpdatePattern(Time.deltaTime))
         {
-            m_shootSoundSource.Play();
+            m_shootAudioSource.Play();
         }
     }
 
@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
 
         // Move to the position
         Sequence sequence = DOTween.Sequence();
-        _ = sequence.Append(m_rigidbody.DOMove(position, 0.2f).SetEase(Ease.InBack));
+        _ = sequence.Append(m_rigidbody.DOMove(position, 1.0f).SetEase(Ease.InBack));
 
         // Disable the objects
         sequence.onComplete += () => gameObject.SetActive(false);
@@ -260,7 +260,7 @@ public class Player : MonoBehaviour
     
     public virtual void TakeDamage(int damage)
     {
-        m_hitSoundSource.Play();
+        m_hitAudioSource.Play();
         
         if (Invinsible)
         {
@@ -276,7 +276,7 @@ public class Player : MonoBehaviour
 
     private void Kill()
     {
-        m_dieSoundSource.Play();
+        m_dieAudioSource.Play();
         m_knockedDown = true;
         m_knockedDownTimer.Start();
     }
