@@ -235,7 +235,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -495,6 +495,10 @@ PrefabInstance:
       propertyPath: m_shootSfxPool
       value: 
       objectReference: {fileID: 732272859}
+    - target: {fileID: 794718712470976885, guid: 3f8c7d272b3766641b1c0f5f8b629120, type: 3}
+      propertyPath: m_healthBarManager
+      value: 
+      objectReference: {fileID: 1895927383}
     - target: {fileID: 851677144444858644, guid: 3f8c7d272b3766641b1c0f5f8b629120, type: 3}
       propertyPath: m_Name
       value: PlayerMerged
@@ -724,6 +728,17 @@ Transform:
   - {fileID: 1478261036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1895927383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7143042809121119535, guid: b2d4cbe24a246a0468d353593ba3bcb0, type: 3}
+  m_PrefabInstance: {fileID: 1543967316172013098}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e02e25322721346bd7221e83804114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1949768842
 GameObject:
   m_ObjectHideFlags: 0
