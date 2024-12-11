@@ -6,14 +6,12 @@ using UnityUtility.MathU;
 
 public class VolumeControl : MonoBehaviour
 {
-    [SerializeField] private AudioMixerGroup m_AudioMixerGroup;
+    [SerializeField] private AudioMixerGroup m_audioMixerGroup;
     [SerializeField] private string m_exposedVolumeParameter;
-    private Slider m_slider;
+    [SerializeField] private Slider m_slider;
 
     private void Start()
     {
-        m_slider = GetComponent<Slider>();
-
         m_slider.onValueChanged.RemoveAllListeners();
 
         m_slider.onValueChanged.AddListener(ChangeVolume);
@@ -26,11 +24,11 @@ public class VolumeControl : MonoBehaviour
         if(volume > 0)
         {
             float finalVolume = Mathf.Log10(volume) * 20;
-            _ = m_AudioMixerGroup.audioMixer.SetFloat(m_exposedVolumeParameter, finalVolume);
+            _ = m_audioMixerGroup.audioMixer.SetFloat(m_exposedVolumeParameter, finalVolume);
             return;
         }
 
-        _ = m_AudioMixerGroup.audioMixer.SetFloat(m_exposedVolumeParameter, -80);
+        _ = m_audioMixerGroup.audioMixer.SetFloat(m_exposedVolumeParameter, -80);
 
     }
 }
