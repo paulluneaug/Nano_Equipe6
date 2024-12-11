@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityUtility.CustomAttributes;
+using UnityUtility.Pools;
 using UnityUtility.Timer;
 
 public class Player : MonoBehaviour
@@ -50,11 +51,12 @@ public class Player : MonoBehaviour
     [Header("Sound")]
     [SerializeField] private AudioSource m_hitAudioSource;
     [SerializeField] private AudioSource m_dieAudioSource;
-    [SerializeField] private AudioSource m_shootAudioSource;
-    
+    [SerializeField] private SFXControllerPool m_shootSfxPool;
+
     private Vector2 m_velocity = Vector2.zero;
     private bool m_canMove = true;
     protected bool m_canShoot = true;
+
 
     // Input State
     private Vector2 m_moveInput;
@@ -143,9 +145,16 @@ public class Player : MonoBehaviour
         m_shootPattern.ShouldShoot = m_shootInput && m_canShoot;
         if (m_shootPattern.UpdatePattern(Time.deltaTime))
         {
-            m_shootAudioSource.time = 0;
-            m_shootAudioSource.Play();
+            PlayShootSound();
         }
+    }
+
+    private void PlayShootSound()
+    {
+        PooledObject<SFXController> sfxController = m_shootSfxPool.Request();
+        
+        sfxController.Object.gameObject.SetActive(true);
+        sfxController.Object.StartSFXLifeCycle(m_shootSfxPool);
     }
 
     // ========== Movement ==========

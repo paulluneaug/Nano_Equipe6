@@ -57,9 +57,11 @@ public class ProjectileEmitter
         {
             m_timer = 0.0f;
             Shoot();
-        }
 
-        return true;
+            return true;
+        }
+        
+        return false;
     }
 
     private void Shoot()
