@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FENETRE_AUDIO_0: -7703971735678732293
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
