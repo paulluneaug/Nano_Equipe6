@@ -13,7 +13,11 @@ public abstract class Enemy : MonoBehaviour
     
     [SerializeField] private int m_contactDamage;
     [SerializeField] private VFXControllerPool m_vfxPool;
-
+    
+    [SerializeField] private SFXControllerPool m_dieSfxPool;
+    [SerializeField] private SFXControllerPool m_hitSfxPool;
+    [SerializeField] private SFXControllerPool m_shieldSfxPool;
+    
     [NonSerialized] private int m_health;
     [NonSerialized] private bool m_outOfBounds;
 
@@ -59,14 +63,36 @@ public abstract class Enemy : MonoBehaviour
     {
         if ((damageType & ~m_resistances) == 0)
         {
+            PlayShieldSfx();
             return;
         }
 
         m_health -= damage;
+
         if (m_health <= 0)
         {
             Kill();
         }
+        else
+        {
+            PlayDamageSfx();
+        }
+    }
+
+    private void PlayShieldSfx()
+    {
+        PooledObject<SFXController> sfxController = m_shieldSfxPool.Request();
+        
+        sfxController.Object.gameObject.SetActive(true);
+        sfxController.Object.StartSFXLifeCycle(m_shieldSfxPool);
+    }
+
+    private void PlayDamageSfx()
+    {
+        PooledObject<SFXController> sfxController = m_hitSfxPool.Request();
+        
+        sfxController.Object.gameObject.SetActive(true);
+        sfxController.Object.StartSFXLifeCycle(m_hitSfxPool);
     }
 
     public virtual void StartEnemy()
@@ -90,6 +116,11 @@ public abstract class Enemy : MonoBehaviour
         vfxController.Object.transform.position = transform.position;
         vfxController.Object.StartVFXLifeCycle(m_vfxPool);
 
+        PooledObject<SFXController> sfxController = m_dieSfxPool.Request();
+        
+        sfxController.Object.gameObject.SetActive(true);
+        sfxController.Object.StartSFXLifeCycle(m_dieSfxPool);
+        
         gameObject.SetActive(false);
     }
 }

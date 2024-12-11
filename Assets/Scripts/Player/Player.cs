@@ -143,6 +143,7 @@ public class Player : MonoBehaviour
         m_shootPattern.ShouldShoot = m_shootInput && m_canShoot;
         if (m_shootPattern.UpdatePattern(Time.deltaTime))
         {
+            m_shootAudioSource.time = 0;
             m_shootAudioSource.Play();
         }
     }
@@ -189,7 +190,7 @@ public class Player : MonoBehaviour
 
         // Move to the position
         Sequence sequence = DOTween.Sequence();
-        _ = sequence.Append(m_rigidbody.DOMove(position, 1.0f).SetEase(Ease.InBack));
+        _ = sequence.Append(m_rigidbody.DOMove(position, 0.3f).SetEase(Ease.InBack));
 
         // Disable the objects
         sequence.onComplete += () => gameObject.SetActive(false);

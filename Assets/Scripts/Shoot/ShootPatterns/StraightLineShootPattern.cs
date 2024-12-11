@@ -19,7 +19,6 @@ public class StraightLineShootPattern : ShootPattern
         {
             isUpdating |= emitter.UpdateEmitter(deltaTime, m_shouldShoot);
         }
-        //m_emitters.ForEach(emitter => emitter.UpdateEmitter(deltaTime, m_shouldShoot));
         
         return isUpdating;
     }

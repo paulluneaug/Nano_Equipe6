@@ -294,9 +294,9 @@ MonoBehaviour:
   m_knockedDownTimer:
     m_duration: 3
     m_repeat: 0
-  m_hitSoundSource: {fileID: 894037913149377325}
-  m_dieSoundSource: {fileID: 447101387321774884}
-  m_shootSoundSource: {fileID: 2512768553548087579}
+  m_hitAudioSource: {fileID: 894037913149377325}
+  m_dieAudioSource: {fileID: 447101387321774884}
+  m_shootAudioSource: {fileID: 2512768553548087579}
 --- !u!70 &3672146842342665320
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -538,8 +538,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0a72f74267b7dd04e9c2b843339e53b2, type: 3}
-  m_Resource: {fileID: 8300000, guid: 0a72f74267b7dd04e9c2b843339e53b2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 858c5a57e4f76cf4994e2ce8fe27438b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 858c5a57e4f76cf4994e2ce8fe27438b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
