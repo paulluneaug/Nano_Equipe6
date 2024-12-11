@@ -290,7 +290,7 @@ MonoBehaviour:
   m_decelerationFactor: 0.75
   m_separationForce: {x: 20, y: 0}
   m_playerType: 0
-  m_maxHealth: 10
+  m_maxHealth: 1
   m_knockedDownTimer:
     m_duration: 3
     m_repeat: 0

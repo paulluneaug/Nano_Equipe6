@@ -52,14 +52,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_resistances: 0
-  m_maxHealth: 10
+  m_maxHealth: 1
   m_shootPattern: {fileID: 3359687444283858198}
   m_contactDamageTrigger: {fileID: 0}
-  m_contactDamage: 10
+  m_contactDamage: 1
   m_vfxPool: {fileID: 0}
-  m_hitAudioSource: {fileID: 4944774299247636632}
-  m_dieAudioSource: {fileID: 6740231933211638257}
-  m_shieldAudioSource: {fileID: 3355565995477178582}
+  m_dieSfxPool: {fileID: 0}
+  m_hitSfxPool: {fileID: 0}
+  m_shieldSfxPool: {fileID: 0}
+  m_playSounds: 1
   m_speedFactor: 1
   m_useGlobalScrollFactor: 1
   m_scrollingDirection: {x: 0, y: -1}
