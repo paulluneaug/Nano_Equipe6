@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -155,8 +156,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
         m_playerMerged.transform.position = middlePosition;
         
-        m_player1.MergeToPosition(middlePosition);
-        m_player2.MergeToPosition(middlePosition);
+        m_player1.MergeTo(middlePosition);
+        m_player2.MergeTo(middlePosition);
 
         // Set merged player's velocity to average of individual players' velocities.
         m_playerMerged.Velocity = (m_player1.Velocity + m_player2.Velocity) / 2;
@@ -169,29 +170,36 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void Separate()
     {
-        // Swap active objects
-        m_player1.gameObject.SetActive(true);
-        m_player2.gameObject.SetActive(true);
-        m_playerMerged.gameObject.SetActive(false);
+        var sequence = DOTween.Sequence();
+        sequence.AppendInterval(1.0f);
+        sequence.onComplete += () =>
+        {
+            // Set individual players' positions to merged players' position,
+            // keeping individual player's z-coordinate to avoid z-fighting.
+            m_player1.transform.position = new Vector3(
+                m_playerMerged.transform.position.x,
+                m_playerMerged.transform.position.y,
+                m_player1.transform.position.z
+            );
 
-        // Set individual players' positions to merged players' position,
-        // keeping individual player's z-coordinate to avoid z-fighting.
-        m_player1.transform.position = new Vector3(
-            m_playerMerged.transform.position.x,
-            m_playerMerged.transform.position.y,
-            m_player1.transform.position.z
-        );
+            m_player2.transform.position = new Vector3(
+                m_playerMerged.transform.position.x,
+                m_playerMerged.transform.position.y,
+                m_player2.transform.position.z
+            );
+        
+            // Set individual players' velocities to merged player's velocity.
+            m_player1.Velocity = m_playerMerged.Velocity;
+            m_player2.Velocity = m_playerMerged.Velocity;
+            
+            // Swap active objects
+            m_player1.gameObject.SetActive(true);
+            m_player2.gameObject.SetActive(true);
 
-        m_player2.transform.position = new Vector3(
-            m_playerMerged.transform.position.x,
-            m_playerMerged.transform.position.y,
-            m_player2.transform.position.z
-        );
-
-        // Set individual players' velocities to merged player's velocity.
-        m_player1.Velocity = m_playerMerged.Velocity;
-        m_player2.Velocity = m_playerMerged.Velocity;
-
+            m_player1.Separate();
+            m_player2.Separate();
+        };
+        
         m_arePlayersMerged = false;
         OnPlayerMerge?.Invoke(false);
     }

@@ -28,10 +28,14 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator m_animator;
     [SerializeField] private ShootPattern m_shootPattern;
 
+    [SerializeField] protected SpriteRenderer m_bodySprite;
+    [SerializeField] private SpriteRenderer m_wingsSprite;
+
     [Header("Movement")]
     [SerializeField] private float m_maxSpeed;
     [SerializeField] private float m_acceleration;
     [SerializeField] private float m_decelerationFactor;
+    [SerializeField] private Vector2 m_separationForce;
 
     [SerializeField] private PlayerType m_playerType;
 
@@ -43,7 +47,7 @@ public class Player : MonoBehaviour
     [NonSerialized] private bool m_knockedDown;
 
     private Vector2 m_velocity = Vector2.zero;
-    private bool m_isMerging;
+    private bool m_canMove = true;
 
     // Input State
     private Vector2 m_moveInput;
@@ -67,6 +71,7 @@ public class Player : MonoBehaviour
             case PlayerType.Player2:
                 GameManager.Instance.SetPlayer2(this);
                 break;
+            case PlayerType.PlayerMerged:
             default:
                 Debug.Log("Player has an incorrect player type." +
                           "Make sure the merged player uses the PlayerMerge class.");
@@ -78,7 +83,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!m_knockedDown && !m_isMerging)
+        if (!m_knockedDown && m_canMove)
         {
             Move();
         }
@@ -167,13 +172,36 @@ public class Player : MonoBehaviour
         m_animator.SetFloat(s_animatorParamVelocityY, m_velocity.y);
     }
 
-    public void MergeToPosition(Vector2 position)
+    public void MergeTo(Vector2 position)
     {
-        m_isMerging = true;
+        m_canMove = false; // Stop normal movement to avoid conflicting with the tween.
+
+        // Move to the position
         Sequence sequence = DOTween.Sequence();
-        _ = sequence.Append(m_rigidbody.DOMove(position, 0.3f).SetEase(Ease.InCubic));
+        _ = sequence.Append(m_rigidbody.DOMove(position, 0.2f).SetEase(Ease.InBack));
+
+        // Disable the objects
         sequence.onComplete += () => gameObject.SetActive(false);
-        sequence.onComplete += () => m_isMerging = false;
+        sequence.onComplete += () => m_canMove = true;
+    }
+
+    public void Separate()
+    {
+        switch (m_playerType)
+        {
+            case PlayerType.Player1:
+                m_velocity -= m_separationForce;
+                break;
+            case PlayerType.Player2:
+                m_velocity += m_separationForce;
+                break;
+
+            case PlayerType.PlayerMerged:
+            default:
+                Debug.Log("Player.Separate : Player has an incorrect player type." +
+                          "Make sure the merged player uses the PlayerMerge class.");
+                break;
+        }
     }
 
 
