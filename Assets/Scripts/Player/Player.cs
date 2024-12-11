@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!m_knockedDown && m_canMove)
+        if (m_canMove)
         {
             Move();
         }
@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
 
     private void UpdateShoot()
     {
-        m_shootPattern.ShouldShoot = m_shootInput;
+        m_shootPattern.ShouldShoot = m_shootInput && m_canMove;
         m_shootPattern.UpdatePattern(Time.deltaTime);
     }
 
@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
         }
 
         // If we are pressing no key or if we want to go in the opposite direction of our current velocity.
-        if (m_moveInput.sqrMagnitude == 0
+        if (m_moveInput.sqrMagnitude == 0 || m_knockedDown
            || (m_moveInput.x < 0 && m_velocity.x > 0)
            || (m_moveInput.x > 0 && m_velocity.x < 0)
            || (m_moveInput.y < 0 && m_velocity.y > 0)
