@@ -153,7 +153,8 @@ public class Player : MonoBehaviour
             m_velocity *= m_decelerationFactor;
         }
 
-        m_rigidbody.MovePosition(m_rigidbody.position + m_velocity * Time.fixedDeltaTime);
+        //m_rigidbody.MovePosition(m_rigidbody.position + m_velocity * Time.fixedDeltaTime);
+        m_rigidbody.linearVelocity = m_velocity;
     }
 
     private void UpdateAnimation()
