@@ -243,7 +243,11 @@ public class Player : MonoBehaviour
         return actionPerformed;
     }
 
-
+    public ShootPattern GetShootPattern()
+    {
+        return m_shootPattern;
+    }
+    
     public virtual void TakeDamage(int damage)
     {
         if (Invinsible)

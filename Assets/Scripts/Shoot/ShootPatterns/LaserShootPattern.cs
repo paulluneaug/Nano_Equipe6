@@ -4,7 +4,7 @@ using UnityUtility.Timer;
 
 public class LaserShootPattern : ShootPattern
 {
-    private enum LaserShootStep
+    public enum LaserShootStep
     {
         Ready,
         LaserOn,
@@ -77,5 +77,10 @@ public class LaserShootPattern : ShootPattern
             m_shootStep = LaserShootStep.Ready;
             m_cooldownTimer.Stop();
         }
+    }
+
+    public LaserShootStep GetShootStep()
+    {
+        return m_shootStep;
     }
 }
