@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] private float m_playerMergeCooldownTime = 2f;
     [SerializeField] private List<InputActionReference> m_mergeActions = new();
 
+    [SerializeField] private AudioSource m_fusionAudioSource;
+    [SerializeField] private AudioSource m_separationAudioSource;
+    [SerializeField] private AudioSource m_separationFailedAudioSource;
+
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
 
@@ -83,8 +87,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             ReloadScene();
             return;
         }
-
-
+        
+        
         _ = m_mergeTimer.Update(Time.deltaTime);
 
         bool canMerge = Vector2.Distance(
@@ -136,17 +140,19 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         if (!m_arePlayersMerged)
         {
             Merge();
+            m_mergeTimer.Start();
         }
         else
         {
-            Separate();
+            if (Separate());
+                m_mergeTimer.Start();
         }
-
-        m_mergeTimer.Start();
     }
 
     private void Merge()
     {
+        m_fusionAudioSource.Play();
+        
         // Set merged player position to average of individual players' positions.
         Vector3 middlePosition = new(
             (m_player1.transform.position.x + m_player2.transform.position.x) / 2,
@@ -168,16 +174,22 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         OnPlayerMerge?.Invoke(true);
     }
 
-    private void Separate()
+    /**
+     * Returns true if successfully separated, false if the separation failed (laser is on for example)
+     */
+    private bool Separate()
     {
         LaserShootPattern laser = (LaserShootPattern)m_playerMerged.GetShootPattern();
         if (laser.GetShootStep() == LaserShootPattern.LaserShootStep.LaserOn)
         {
-            return;
+            m_separationFailedAudioSource.Play();
+            return false;
         }
         
+        m_separationAudioSource.Play();
+        
         var sequence = DOTween.Sequence();
-        sequence.AppendInterval(1.0f);
+        sequence.AppendInterval(1.4f);
         sequence.onComplete += () =>
         {
             // Set individual players' positions to merged players' position,
@@ -208,6 +220,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         
         m_arePlayersMerged = false;
         OnPlayerMerge?.Invoke(false);
+        
+        return true;
     }
 
     public void SetPlayer1(Player player)

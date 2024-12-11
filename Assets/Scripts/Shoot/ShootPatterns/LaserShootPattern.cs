@@ -18,7 +18,7 @@ public class LaserShootPattern : ShootPattern
     [NonSerialized] private bool m_needRelease;
     [NonSerialized] private LaserShootStep m_shootStep;
 
-    public override void UpdatePattern(float deltaTime)
+    public override bool UpdatePattern(float deltaTime)
     {
         if (m_needRelease && !m_shouldShoot)
         {
@@ -32,13 +32,15 @@ public class LaserShootPattern : ShootPattern
                 break;
             case LaserShootStep.LaserOn:
                 UpdateLaserOn(deltaTime);
-                break;
+                return true;
             case LaserShootStep.Cooldown:
                 UpdateOnCooldown(deltaTime);
                 break;
             default:
                 break;
         }
+        
+        return false;
     }
 
     private void UpdateLaserReady(float deltaTime)

@@ -4,7 +4,9 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityUtility.CustomAttributes;
+using UnityUtility.Pools;
 using UnityUtility.Timer;
 
 public class Player : MonoBehaviour
@@ -44,6 +46,11 @@ public class Player : MonoBehaviour
     [SerializeField] private int m_maxHealth;
     [SerializeField] private Timer m_knockedDownTimer;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource m_hitAudioSource;
+    [SerializeField] private AudioSource m_dieAudioSource;
+    [SerializeField] private SFXControllerPool m_shootSfxPool;
+
     [Title("I Frames")]
     [SerializeField] private Timer m_mergeIFrameTimer;
     [SerializeField] private Timer m_reviveIFrameTimer;
@@ -56,6 +63,7 @@ public class Player : MonoBehaviour
     private Vector2 m_velocity = Vector2.zero;
     private bool m_canMove = true;
     protected bool m_canShoot = true;
+
 
     // Input State
     private Vector2 m_moveInput;
@@ -142,7 +150,18 @@ public class Player : MonoBehaviour
     private void UpdateShoot()
     {
         m_shootPattern.ShouldShoot = m_shootInput && m_canShoot;
-        m_shootPattern.UpdatePattern(Time.deltaTime);
+        if (m_shootPattern.UpdatePattern(Time.deltaTime))
+        {
+            PlayShootSound();
+        }
+    }
+
+    private void PlayShootSound()
+    {
+        PooledObject<SFXController> sfxController = m_shootSfxPool.Request();
+        
+        sfxController.Object.gameObject.SetActive(true);
+        sfxController.Object.StartSFXLifeCycle(m_shootSfxPool);
     }
 
     // ========== Movement ==========
@@ -187,7 +206,7 @@ public class Player : MonoBehaviour
 
         // Move to the position
         Sequence sequence = DOTween.Sequence();
-        _ = sequence.Append(m_rigidbody.DOMove(position, 0.2f).SetEase(Ease.InBack));
+        _ = sequence.Append(m_rigidbody.DOMove(position, 0.3f).SetEase(Ease.InBack));
 
         // Disable the objects
         sequence.onComplete += () => gameObject.SetActive(false);
@@ -261,6 +280,8 @@ public class Player : MonoBehaviour
 
     public virtual bool TakeDamage(int damage)
     {
+        m_hitAudioSource.Play();
+        
         if (DebugInvinsible)
         {
             return false;
@@ -282,6 +303,7 @@ public class Player : MonoBehaviour
 
     private void Kill()
     {
+        m_dieAudioSource.Play();
         m_knockedDown = true;
         m_knockedDownTimer.Start();
     }
