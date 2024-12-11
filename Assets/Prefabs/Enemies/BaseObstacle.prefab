@@ -277,6 +277,10 @@ MonoBehaviour:
   m_contactDamageTrigger: {fileID: 1929508677802839277}
   m_contactDamage: 0
   m_vfxPool: {fileID: 0}
+  m_dieSfxPool: {fileID: 0}
+  m_hitSfxPool: {fileID: 0}
+  m_shieldSfxPool: {fileID: 0}
+  m_playSounds: 0
   m_speedFactor: 1
   m_useGlobalScrollFactor: 1
   m_scrollingDirection: {x: 0, y: -1}
