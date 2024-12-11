@@ -7,5 +7,5 @@ public abstract class ShootPattern : MonoBehaviour
 
     [NonSerialized] protected bool m_shouldShoot;
 
-    public abstract void UpdatePattern(float tdeltaTime);
+    public abstract bool UpdatePattern(float tdeltaTime);
 }

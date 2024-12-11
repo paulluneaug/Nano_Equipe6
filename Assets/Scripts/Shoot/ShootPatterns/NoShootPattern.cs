@@ -1,7 +1,8 @@
 public class NoShootPattern : ShootPattern
 {
-    public override void UpdatePattern(float tdeltaTime)
+    public override bool UpdatePattern(float tdeltaTime)
     {
         // Does nothing
+        return false;
     }
 }
