@@ -1092,6 +1092,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0d6f8603c4f024cb9aee2e7e8f5d51, type: 3}
+--- !u!114 &3303258727144343677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1530260145237036836, guid: 0a0d6f8603c4f024cb9aee2e7e8f5d51, type: 3}
+  m_PrefabInstance: {fileID: 3303258727144343676}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff477a0a236d4562901a8f1f5b379ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6850164683888221091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1156,6 +1167,10 @@ PrefabInstance:
       propertyPath: m_playerMergeCooldownTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
+      propertyPath: m_separationFailedSfxPool
+      value: 
+      objectReference: {fileID: 3303258727144343677}
     - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
       propertyPath: 'm_mergeActions.Array.data[0]'
       value: 

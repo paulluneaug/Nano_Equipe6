@@ -4,6 +4,7 @@ using DG.Tweening;
 using SFX;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityUtility.Pools;
 using UnityEngine.SceneManagement;
 using UnityUtility.Singletons;
 using UnityUtility.Timer;
@@ -26,10 +27,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [SerializeField] private AudioSource m_fusionAudioSource;
     [SerializeField] private AudioSource m_separationAudioSource;
-    [SerializeField] private AudioSource m_separationFailedAudioSource;
     
     [SerializeField] private AudioSource m_magicalGirlMusic;
     [SerializeField] private AudioSource m_deousMusic;
+
+    [SerializeField] private SFXControllerPool m_separationFailedSfxPool;
 
     [SerializeField] private EndingScreenController m_endingScreenController;
     [SerializeField] private string m_mainSceneName;
@@ -244,7 +246,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         LaserShootPattern laser = (LaserShootPattern)m_playerMerged.GetShootPattern();
         if (laser.GetShootStep() == LaserShootPattern.LaserShootStep.LaserOn)
         {
-            m_separationFailedAudioSource.Play();
+            PooledObject<SFXController> sfxController = m_separationFailedSfxPool.Request();
+
+            sfxController.Object.gameObject.SetActive(true);
+            sfxController.Object.StartSFXLifeCycle(m_separationFailedSfxPool);
             return false;
         }
 
