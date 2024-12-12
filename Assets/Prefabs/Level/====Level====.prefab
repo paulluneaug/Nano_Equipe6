@@ -6669,7 +6669,6 @@ MonoBehaviour:
   - {fileID: 2510851095161058666}
   - {fileID: 8876029338520727520}
   - {fileID: 2745634169536948596}
-  - {fileID: 2745634169536948596}
   - {fileID: 1714304914525044773}
   - {fileID: 6535647331906574270}
 --- !u!1 &8302751713316052456
@@ -7297,6 +7296,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 2705940158969744260}
     m_Modifications:
     - target: {fileID: 5335075443034634861, guid: bb36e85a4bf824a489ce9be75f9a6e03, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2033
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335075443034634861, guid: bb36e85a4bf824a489ce9be75f9a6e03, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2033
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335075443034634861, guid: bb36e85a4bf824a489ce9be75f9a6e03, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2033
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335075443034634861, guid: bb36e85a4bf824a489ce9be75f9a6e03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -7456,7 +7467,7 @@ PrefabInstance:
     - target: {fileID: 3359687444283858198, guid: 29cd4fa84d6130645a3feba2870b8d54, type: 3}
       propertyPath: m_projectilesPool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8368334185390744784}
     - target: {fileID: 3359687444283858198, guid: 29cd4fa84d6130645a3feba2870b8d54, type: 3}
       propertyPath: m_emitters.Array.data[0].m_shootDelay
       value: 3
@@ -7536,6 +7547,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2705940158969744260}
     m_Modifications:
+    - target: {fileID: 5335075443034634861, guid: a0cfd9ca448813648af0525162f9fa31, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.3523
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335075443034634861, guid: a0cfd9ca448813648af0525162f9fa31, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.3523
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335075443034634861, guid: a0cfd9ca448813648af0525162f9fa31, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.3523
+      objectReference: {fileID: 0}
     - target: {fileID: 5335075443034634861, guid: a0cfd9ca448813648af0525162f9fa31, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8358,6 +8381,10 @@ PrefabInstance:
       propertyPath: m_shieldSfxPool
       value: 
       objectReference: {fileID: 8499691670966447916}
+    - target: {fileID: 8586177978877786765, guid: 8378fc317ee38b943bfdaa89921671da, type: 3}
+      propertyPath: m_projectilesPool
+      value: 
+      objectReference: {fileID: 8368334185390744784}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8416,7 +8443,7 @@ PrefabInstance:
     - target: {fileID: 4045792701213070728, guid: 041441c980a14fe47bdb7922356bde12, type: 3}
       propertyPath: m_projectilesPool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8368334185390744784}
     - target: {fileID: 4045792701213070728, guid: 041441c980a14fe47bdb7922356bde12, type: 3}
       propertyPath: m_emitters.Array.data[0].m_shootDelay
       value: 2

@@ -5,6 +5,8 @@ using UnityUtility.CustomAttributes;
 
 public class Level : MonoBehaviour
 {
+
+    public bool Finished => m_finished;
     public float CurrentLevelTime => m_currentLevelTime;
 
     public float CurrentWaveTime => m_currentWaveTime;
