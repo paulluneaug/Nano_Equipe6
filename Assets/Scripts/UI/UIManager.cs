@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
-
+    [SerializeField] private Image m_fadeToBlackScreen;
     [SerializeField] private CanvasGroup m_mainMenuContainer;
     [SerializeField] private CanvasGroup m_settingsContainer;
     [SerializeField] private CanvasGroup m_creditContainer;
@@ -24,8 +24,14 @@ public class UIManager : MonoBehaviour
 
     private void OnPlayButtonPressed()
     {
-        Debug.Log("Starting game");
-        //SceneManager.LoadScene(1);
+        Sequence seq = DOTween.Sequence();
+
+        m_fadeToBlackScreen.gameObject.SetActive(true);
+
+        _ = seq.Append(m_fadeToBlackScreen.DOFade(1, 2).From(0));
+        _ = seq.onComplete += () => SceneManager.LoadScene(1);
+
+        _ = seq.Play();
     }
 
     private void OnQuitButtonPressed()

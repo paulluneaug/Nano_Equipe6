@@ -45,21 +45,26 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void AnimationCallback() //Call in Animation Event (huez moi BIS)
     {
+        Sequence seq = DOTween.Sequence();
         if (m_containerToActivate != null)
         {
             m_containerToActivate.interactable = true;
             m_containerToActivate.blocksRaycasts = true;
+            m_containerToActivate.alpha = 0;
+            m_containerToActivate.gameObject.SetActive(true);
+
+            _ = seq.Append(m_containerToActivate.DOFade(1, 0.5f).From(0));
 
         }
 
-        m_containerToDeactivate.gameObject.SetActive(false);
-        m_containerToActivate.alpha = 0;
-        m_containerToActivate.gameObject.SetActive(true);
+        if(m_containerToDeactivate != null)
+        {
+            m_containerToDeactivate.gameObject.SetActive(false);
 
-        Sequence seq = DOTween.Sequence();
+            _ = seq.Append(m_containerToDeactivate.DOFade(0, 0.2f).From(1));
+        }
 
-        _ = seq.Append(m_containerToDeactivate.DOFade(0, 0.2f).From(1));
-        _ = seq.Append(m_containerToActivate.DOFade(1, 0.5f).From(0));
+
 
         _ = seq.Play();
     }
