@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityUtility.CustomAttributes;
@@ -18,8 +19,10 @@ public class PlayerMerged : Player
     [Title("UI")]
     [SerializeField] private DeousHealthBarManager m_healthBarManager;
 
-
-
+    private LaserShootPattern m_laserShootPattern;
+    private bool m_isShooting;
+    private bool m_wasShootingLastFrame;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -31,6 +34,8 @@ public class PlayerMerged : Player
         GameManager.Instance.OnPlayerMerge += OnPlayerMerge;
 
         m_allIFramesTimers.Add(m_damagesIFrameTimer);
+
+        m_laserShootPattern = (LaserShootPattern)m_laserShootPattern;
     }
 
     protected override void RegisterPlayer()
@@ -51,10 +56,18 @@ public class PlayerMerged : Player
         return false;
     }
 
+    
+    
     protected override void UpdateIFramesTimers(float deltaTime)
     {
         base.UpdateIFramesTimers(deltaTime);
         _ = m_damagesIFrameTimer.Update(deltaTime);
+    }
+
+    protected override void UpdateShoot()
+    {
+        base.UpdateShoot();
+        
     }
 
     private void OnDestroy()
