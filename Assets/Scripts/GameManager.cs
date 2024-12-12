@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
     private int m_score;
+    private bool m_levelFinished = false;
 
     /**
      * Invoked every time the players merge or separate.
@@ -81,8 +82,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
         m_mergeTimer = new Timer(m_playerMergeCooldownTime, false);
 
+        if (m_endingScreenController)
+        {
+            m_endingScreenController.SetScreenActive(false);
+        }
 
-        m_endingScreenController.SetScreenActive(false);
+        m_levelFinished = false;
     }
 
     private void Update()
@@ -105,8 +110,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             m_playerMerged.DebugInvinsible = !m_playerMerged.DebugInvinsible;
         }
 
-        if ((m_arePlayersMerged && m_playerMerged.KnockedDown) ||
-            (!m_arePlayersMerged && (m_player1.KnockedDown && m_player2.KnockedDown)))
+        if (!m_levelFinished && ((m_arePlayersMerged && m_playerMerged.KnockedDown) ||
+            (!m_arePlayersMerged && (m_player1.KnockedDown && m_player2.KnockedDown))))
         {
             GameOver();
             return;
@@ -128,16 +133,26 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void GameOver()
     {
-        OnLevelFinished?.Invoke(); 
-        m_endingScreenController.SetScreenActive(true);
-        m_endingScreenController.SetEndingScreen(false);
+        OnLevelFinished?.Invoke();
+        m_levelFinished = true;
+
+        if (m_endingScreenController)
+        {
+            m_endingScreenController.SetScreenActive(true);
+            m_endingScreenController.SetEndingScreen(false);
+        }
     }
 
     public void Victory()
     {
         OnLevelFinished?.Invoke();
-        m_endingScreenController.SetScreenActive(true);
-        m_endingScreenController.SetEndingScreen(true);
+        m_levelFinished = true;
+
+        if (m_endingScreenController)
+        {
+            m_endingScreenController.SetScreenActive(true);
+            m_endingScreenController.SetEndingScreen(true);
+        }
     }
 
     private void ReloadScene()
