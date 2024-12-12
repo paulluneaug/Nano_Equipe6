@@ -33,6 +33,7 @@ Transform:
   - {fileID: 2955288535521430407}
   - {fileID: 7298628633295740466}
   - {fileID: 1935031779097480973}
+  - {fileID: 6668417473418803455}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1474402109702787628
@@ -87,6 +88,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8344232953490012990, guid: a9efaf7c1ac476843a21aae45b174c9b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -1519034449759022596, guid: 323e5092d53cc7f4fb212b463e9683ef, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -96,6 +101,84 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8160470823321046046, guid: a9efaf7c1ac476843a21aae45b174c9b, type: 3}
   m_PrefabInstance: {fileID: 1474402109702787628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1788706321066105749
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 363669256406909615}
+    m_Modifications:
+    - target: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197225478286835128, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_Name
+      value: SeparationFailedSoundPool
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533224983276975297, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_Name
+      value: SeparationFailedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218625871494731525, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: ad6b52eb044c79a4c8d90cd4dafb1fb5, type: 3}
+    - target: {fileID: 8218625871494731525, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ad6b52eb044c79a4c8d90cd4dafb1fb5, type: 3}
+    - target: {fileID: 8218625871494731525, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -1519034449759022596, guid: 323e5092d53cc7f4fb212b463e9683ef, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+--- !u!4 &6668417473418803455 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4924748523100349290, guid: df1e5e3b175400b4d9f53c2d3eed7d1d, type: 3}
+  m_PrefabInstance: {fileID: 1788706321066105749}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6322343142386377657
 PrefabInstance:
@@ -149,6 +232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDieSoundPool
       objectReference: {fileID: 0}
+    - target: {fileID: 5984680107844479285, guid: 3d79590198db9904cb332f2c527da0a2, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -1519034449759022596, guid: 323e5092d53cc7f4fb212b463e9683ef, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -211,6 +298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerShootSoundPool
       objectReference: {fileID: 0}
+    - target: {fileID: 8218625871494731525, guid: b2b70b857a59ef04c836af4c5cc874ce, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -1519034449759022596, guid: 323e5092d53cc7f4fb212b463e9683ef, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -229,6 +320,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 363669256406909615}
     m_Modifications:
+    - target: {fileID: 6283486490149576577, guid: b76993958ba13da49b21ef16b68171db, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -1519034449759022596, guid: 323e5092d53cc7f4fb212b463e9683ef, type: 2}
     - target: {fileID: 6334289755537394476, guid: b76993958ba13da49b21ef16b68171db, type: 3}
       propertyPath: m_Name
       value: EnemyShieldSoundPool
