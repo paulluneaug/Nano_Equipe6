@@ -162,6 +162,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     private void Merge()
     {
         m_fusionAudioSource.Play();
+        
+        Sequence musicCrossFadeSequence = DOTween.Sequence();
+        musicCrossFadeSequence.Insert(0.0f, m_magicalGirlMusic.DOFade(0.0f, 2.0f));
+        musicCrossFadeSequence.Insert(0.0f, m_deousMusic.DOFade(1.0f, 2.0f));
 
         // Set merged player position to average of individual players' positions.
         Vector3 middlePosition = new(
@@ -197,6 +201,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
 
         m_separationAudioSource.Play();
+        
+        Sequence musicCrossFadeSequence = DOTween.Sequence();
+        musicCrossFadeSequence.Insert(0.0f, m_magicalGirlMusic.DOFade(1.0f, 2.0f));
+        musicCrossFadeSequence.Insert(0.0f, m_deousMusic.DOFade(0.0f, 2.0f));
 
         var sequence = DOTween.Sequence();
         _ = sequence.AppendInterval(1.4f);
