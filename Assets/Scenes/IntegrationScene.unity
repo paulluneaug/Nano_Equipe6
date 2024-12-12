@@ -1129,6 +1129,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1519034449759022596, guid: 323e5092d53cc7f4fb212b463e9683ef, type: 2}
     - target: {fileID: 3588604532246467844, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3588604532246467844, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -1194,6 +1198,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6496701000499836802, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873049987428967773, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
+      propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6879842174499777269, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}

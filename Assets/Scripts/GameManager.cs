@@ -66,7 +66,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         if (Gamepad.all.Count > 0)
         {
             m_inputActionAsset.FindActionMap("Player1").devices = new[]
-                { InputSystem.GetDevice("Keyboard"), Gamepad.all[0] };
+                { InputSystem.GetDevice("Keyboard"),
+                    InputSystem.GetDevice("Mouse"),
+                    Gamepad.all[0] };
         }
 
         if (Gamepad.all.Count > 1)
