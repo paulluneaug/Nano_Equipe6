@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using SFX;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [SerializeField] private EndingScreenController m_endingScreenController;
     [SerializeField] private string m_mainSceneName;
+    
+    [SerializeField] private TMP_Text m_scoreText;
     
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
@@ -312,6 +315,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public void AddScore(int scoreValue)
     {
         m_score += scoreValue;
+
+        if (m_score < 0)
+            m_score = 0;
+        
+        m_scoreText.text = "Score : " + m_score;
+        
         Debug.Log("Score increased to " + m_score);
     }
 }
