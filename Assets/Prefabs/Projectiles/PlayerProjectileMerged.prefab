@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7715041589788165770, guid: 2a30907e4688aa24f85ad59060069923, type: 3}
       propertyPath: m_damageAmout
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7830579096847852484, guid: 2a30907e4688aa24f85ad59060069923, type: 3}
       propertyPath: m_Color.b

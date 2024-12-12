@@ -24,9 +24,13 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] private AudioSource m_fusionAudioSource;
     [SerializeField] private AudioSource m_separationAudioSource;
     [SerializeField] private AudioSource m_separationFailedAudioSource;
-
+    
+    [SerializeField] private AudioSource m_magicalGirlMusic;
+    [SerializeField] private AudioSource m_deousMusic;
+    
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
+    private int m_score;
 
     /**
      * Invoked every time the players merge or separate.
@@ -41,7 +45,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void StartGameManager()
     {
+        m_score = 0;
         m_arePlayersMerged = false;
+        
+        m_magicalGirlMusic.volume = 1.0f;
+        m_deousMusic.volume = 0.0f;
 
         // Set input devices to:
         //   - Keyboard and Gamepad 0 (if connected) for player 1
@@ -70,7 +78,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ReloadScene();
+            GameOver();
             return;
         }
 
@@ -81,14 +89,14 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             m_playerMerged.DebugInvinsible = !m_playerMerged.DebugInvinsible;
         }
 
-        if ((m_arePlayersMerged && m_playerMerged.KnockedDown) || 
+        if ((m_arePlayersMerged && m_playerMerged.KnockedDown) ||
             (!m_arePlayersMerged && (m_player1.KnockedDown && m_player2.KnockedDown)))
         {
-            ReloadScene();
+            GameOver();
             return;
         }
-        
-        
+
+
         _ = m_mergeTimer.Update(Time.deltaTime);
 
         bool canMerge = Vector2.Distance(
@@ -102,9 +110,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
     }
 
+    private static void GameOver()
+    {
+        ReloadScene();
+    }
+
     private static void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Instance.StartGameManager();
     }
 
     private bool CheckWantsToMerge()
@@ -144,8 +158,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
         else
         {
-            if (Separate());
+            if (Separate())
+            {
                 m_mergeTimer.Start();
+            }
         }
     }
 
@@ -153,6 +169,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         m_fusionAudioSource.Play();
         
+        Sequence musicCrossFadeSequence = DOTween.Sequence();
+        musicCrossFadeSequence.Insert(0.0f, m_magicalGirlMusic.DOFade(0.0f, 2.0f));
+        musicCrossFadeSequence.Insert(0.0f, m_deousMusic.DOFade(1.0f, 2.0f));
+
         // Set merged player position to average of individual players' positions.
         Vector3 middlePosition = new(
             (m_player1.transform.position.x + m_player2.transform.position.x) / 2,
@@ -161,7 +181,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         );
 
         m_playerMerged.transform.position = middlePosition;
-        
+
         m_player1.MergeTo(middlePosition);
         m_player2.MergeTo(middlePosition);
 
@@ -169,7 +189,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_playerMerged.Velocity = (m_player1.Velocity + m_player2.Velocity) / 2;
 
         m_arePlayersMerged = true;
-        
+
         m_playerMerged.gameObject.SetActive(true);
         OnPlayerMerge?.Invoke(true);
     }
@@ -185,11 +205,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             m_separationFailedAudioSource.Play();
             return false;
         }
-        
+
         m_separationAudioSource.Play();
         
+        Sequence musicCrossFadeSequence = DOTween.Sequence();
+        musicCrossFadeSequence.Insert(0.0f, m_magicalGirlMusic.DOFade(1.0f, 2.0f));
+        musicCrossFadeSequence.Insert(0.0f, m_deousMusic.DOFade(0.0f, 2.0f));
+
         var sequence = DOTween.Sequence();
-        sequence.AppendInterval(1.4f);
+        _ = sequence.AppendInterval(1.4f);
         sequence.onComplete += () =>
         {
             // Set individual players' positions to merged players' position,
@@ -205,11 +229,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 m_playerMerged.transform.position.y,
                 m_player2.transform.position.z
             );
-        
+
             // Set individual players' velocities to merged player's velocity.
             m_player1.Velocity = m_playerMerged.Velocity;
             m_player2.Velocity = m_playerMerged.Velocity;
-            
+
             // Swap active objects
             m_player1.gameObject.SetActive(true);
             m_player2.gameObject.SetActive(true);
@@ -217,10 +241,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             m_player1.Separate();
             m_player2.Separate();
         };
-        
+
         m_arePlayersMerged = false;
         OnPlayerMerge?.Invoke(false);
-        
+
         return true;
     }
 
@@ -237,5 +261,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public void SetPlayerMerged(Player player)
     {
         m_playerMerged = player;
+    }
+
+    public void AddScore(int scoreValue)
+    {
+        m_score += scoreValue;
+        Debug.Log("Score increased to " + m_score);
     }
 }

@@ -17,6 +17,10 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private SFXControllerPool m_dieSfxPool;
     [SerializeField] private SFXControllerPool m_hitSfxPool;
     [SerializeField] private SFXControllerPool m_shieldSfxPool;
+
+    [SerializeField] private bool m_playSounds = true;
+
+    [SerializeField] private int m_scoreValue;
     
     [NonSerialized] private int m_health;
     [NonSerialized] private bool m_outOfBounds;
@@ -82,6 +86,11 @@ public abstract class Enemy : MonoBehaviour
 
     private void PlayShieldSfx()
     {
+        if (!m_playSounds)
+        {
+            return;
+        }
+
         PooledObject<SFXController> sfxController = m_shieldSfxPool.Request();
         
         sfxController.Object.gameObject.SetActive(true);
@@ -90,6 +99,11 @@ public abstract class Enemy : MonoBehaviour
 
     private void PlayDamageSfx()
     {
+        if (!m_playSounds)
+        {
+            return;
+        }
+
         PooledObject<SFXController> sfxController = m_hitSfxPool.Request();
         
         sfxController.Object.gameObject.SetActive(true);
@@ -116,12 +130,19 @@ public abstract class Enemy : MonoBehaviour
 
     private void PlayKillVfxAndSfx()
     {
+        // When an enemy is killed with VFX and SFX, it means the player has killed it. Therefore, increase the score.
+        GameManager.Instance.AddScore(m_scoreValue);
+        
         PooledObject<VFXController> vfxController = m_vfxPool.Request();
 
         vfxController.Object.gameObject.SetActive(true);
         vfxController.Object.transform.position = transform.position;
         vfxController.Object.StartVFXLifeCycle(m_vfxPool);
 
+        if (!m_playSounds)
+        {
+            return;
+        }
         PooledObject<SFXController> sfxController = m_dieSfxPool.Request();
         
         sfxController.Object.gameObject.SetActive(true);

@@ -423,6 +423,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.69
       objectReference: {fileID: 0}
+    - target: {fileID: 3346315556051681436, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346315556051681436, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346315556051681436, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3672146842342665320, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       propertyPath: m_Size.x
       value: 1.22
@@ -575,6 +587,8 @@ PrefabInstance:
     - {fileID: 7764524302972991282, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8204523869500282, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+    - {fileID: 2601739257846261392, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+    - {fileID: 4894540009722126432, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7852602097730447406, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       insertIndex: -1
@@ -619,7 +633,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugInvinsible: 0
-  m_playerNumber: 0
   m_moveActions:
   - {fileID: 7313703439254968147, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   - {fileID: 118489940450506060, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
@@ -631,15 +644,35 @@ MonoBehaviour:
   m_shootPattern: {fileID: 6783935229993117962}
   m_bodySprite: {fileID: 6985251657715785500}
   m_wingsSprite: {fileID: 0}
+  m_visualElementsRoot: {fileID: 0}
+  m_bubbleSprite: {fileID: 0}
   m_maxSpeed: 5
   m_acceleration: 0.75
   m_decelerationFactor: 0.9
   m_separationForce: {x: 0, y: 0}
   m_playerType: 2
-  m_maxHealth: 30
+  m_contactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  m_collisionOffset: 0
+  m_maxHealth: 3
   m_knockedDownTimer:
     m_duration: 0
     m_repeat: 0
+  m_hitAudioSource: {fileID: 5964819435617377978}
+  m_dieAudioSource: {fileID: 6384808245729937075}
+  m_shootSfxPool: {fileID: 0}
   m_mergeIFrameTimer:
     m_duration: 0.5
     m_repeat: 0
@@ -654,6 +687,7 @@ MonoBehaviour:
   m_bigWingsSprite: {fileID: 1019704423467836934}
   m_mediumWingsSprite: {fileID: 6036493278761399431}
   m_smallWingsSprite: {fileID: 5248797677335994027}
+  m_healthBarManager: {fileID: 0}
 --- !u!212 &1019704423467836934 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5803379429713392529, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
@@ -672,6 +706,16 @@ Animator:
 --- !u!4 &3626810651829353913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7852602097730447406, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+  m_PrefabInstance: {fileID: 6822681936563131799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &5964819435617377978 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 894037913149377325, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+  m_PrefabInstance: {fileID: 6822681936563131799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6384808245729937075 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 447101387321774884, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
   m_PrefabInstance: {fileID: 6822681936563131799}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &6985251657715785500 stripped
