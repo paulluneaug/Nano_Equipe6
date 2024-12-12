@@ -19,6 +19,11 @@ public class PlayerMerged : Player
     [Title("UI")]
     [SerializeField] private DeousHealthBarManager m_healthBarManager;
 
+    [Title("Sound")]
+    [SerializeField] private AudioSource m_laserStartAudioSource;
+    [SerializeField] private AudioSource m_laserLoopAudioSource;
+    [SerializeField] private AudioSource m_laserEndAudioSource;
+    
     private LaserShootPattern m_laserShootPattern;
     private bool m_isShooting;
     private bool m_wasShootingLastFrame;
@@ -35,7 +40,7 @@ public class PlayerMerged : Player
 
         m_allIFramesTimers.Add(m_damagesIFrameTimer);
 
-        m_laserShootPattern = (LaserShootPattern)m_laserShootPattern;
+        m_laserShootPattern = (LaserShootPattern)m_shootPattern;
     }
 
     protected override void RegisterPlayer()
@@ -67,7 +72,30 @@ public class PlayerMerged : Player
     protected override void UpdateShoot()
     {
         base.UpdateShoot();
-        
+
+        m_wasShootingLastFrame = m_isShooting;
+
+        if (m_laserShootPattern.GetShootStep() == LaserShootPattern.LaserShootStep.LaserOn)
+            m_isShooting = true;
+        else
+            m_isShooting = false;
+
+        if (!m_wasShootingLastFrame && m_isShooting)
+            PlayLaserStartAndLoopSound();
+        else if (m_wasShootingLastFrame && !m_isShooting)
+            PlayLaserEndSound();
+    }
+
+    private void PlayLaserStartAndLoopSound()
+    {
+        m_laserStartAudioSource.Play();
+        m_laserLoopAudioSource.Play();
+    }
+
+    private void PlayLaserEndSound()
+    {
+        m_laserEndAudioSource.Play();
+        m_laserLoopAudioSource.Stop();
     }
 
     private void OnDestroy()
