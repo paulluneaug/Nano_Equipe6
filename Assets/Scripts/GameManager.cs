@@ -24,9 +24,13 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] private AudioSource m_fusionAudioSource;
     [SerializeField] private AudioSource m_separationAudioSource;
     [SerializeField] private AudioSource m_separationFailedAudioSource;
-
+    
+    [SerializeField] private AudioSource m_magicalGirlMusic;
+    [SerializeField] private AudioSource m_deousMusic;
+    
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
+    private int m_score;
 
     /**
      * Invoked every time the players merge or separate.
@@ -41,7 +45,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void StartGameManager()
     {
+        m_score = 0;
         m_arePlayersMerged = false;
+        
+        m_magicalGirlMusic.volume = 1.0f;
+        m_deousMusic.volume = 0.0f;
 
         // Set input devices to:
         //   - Keyboard and Gamepad 0 (if connected) for player 1
@@ -70,7 +78,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ReloadScene();
+            GameOver();
             return;
         }
 
@@ -110,6 +118,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     private static void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Instance.StartGameManager();
     }
 
     private bool CheckWantsToMerge()
@@ -159,6 +168,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     private void Merge()
     {
         m_fusionAudioSource.Play();
+        
+        Sequence musicCrossFadeSequence = DOTween.Sequence();
+        musicCrossFadeSequence.Insert(0.0f, m_magicalGirlMusic.DOFade(0.0f, 2.0f));
+        musicCrossFadeSequence.Insert(0.0f, m_deousMusic.DOFade(1.0f, 2.0f));
 
         // Set merged player position to average of individual players' positions.
         Vector3 middlePosition = new(
@@ -194,6 +207,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
 
         m_separationAudioSource.Play();
+        
+        Sequence musicCrossFadeSequence = DOTween.Sequence();
+        musicCrossFadeSequence.Insert(0.0f, m_magicalGirlMusic.DOFade(1.0f, 2.0f));
+        musicCrossFadeSequence.Insert(0.0f, m_deousMusic.DOFade(0.0f, 2.0f));
 
         var sequence = DOTween.Sequence();
         _ = sequence.AppendInterval(1.4f);
@@ -244,5 +261,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public void SetPlayerMerged(Player player)
     {
         m_playerMerged = player;
+    }
+
+    public void AddScore(int scoreValue)
+    {
+        m_score += scoreValue;
+        Debug.Log("Score increased to " + m_score);
     }
 }
