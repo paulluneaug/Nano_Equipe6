@@ -10,6 +10,8 @@ using UnityUtility.Timer;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
+    public event Action OnLevelFinished;
+
     [SerializeField] private InputActionAsset m_inputActionAsset;
 
     [Header("Players")]
@@ -28,6 +30,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     
     [SerializeField] private AudioSource m_magicalGirlMusic;
     [SerializeField] private AudioSource m_deousMusic;
+
+    [SerializeField] private EndingScreenController m_endingScreenController;
+    [SerializeField] private string m_mainSceneName;
     
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
@@ -75,13 +80,21 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
 
         m_mergeTimer = new Timer(m_playerMergeCooldownTime, false);
+
+
+        m_endingScreenController.SetScreenActive(false);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            GameOver();
+            ReloadScene();
+            return;
+        }
+
+        if (m_player1 == null || m_player2 == null || m_playerMerged == null)
+        {
             return;
         }
 
@@ -113,14 +126,23 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
     }
 
-    private static void GameOver()
+    private void GameOver()
     {
-        ReloadScene();
+        OnLevelFinished?.Invoke(); 
+        m_endingScreenController.SetScreenActive(true);
+        m_endingScreenController.SetEndingScreen(false);
     }
 
-    private static void ReloadScene()
+    public void Victory()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        OnLevelFinished?.Invoke();
+        m_endingScreenController.SetScreenActive(true);
+        m_endingScreenController.SetEndingScreen(true);
+    }
+
+    private void ReloadScene()
+    {
+        SceneManager.LoadScene(m_mainSceneName);
         Instance.StartGameManager();
     }
 
@@ -264,6 +286,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public void SetPlayerMerged(Player player)
     {
         m_playerMerged = player;
+    }
+
+    public void RegisterEndingScreenController(EndingScreenController controller)
+    {
+        m_endingScreenController = controller;
+        controller.SetScreenActive(false);
     }
 
     public void AddScore(int scoreValue)
