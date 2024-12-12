@@ -1,7 +1,7 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityUtility.CustomAttributes;
-using UnityUtility.Utils;
 
 public class Level : MonoBehaviour
 {
@@ -29,6 +29,8 @@ public class Level : MonoBehaviour
     private int m_currentWaveIndex = 0;
     private Wave m_currentWave;
 
+    private bool m_finished = false;
+
     private void Start()
     {
         LoadLevel();
@@ -36,8 +38,15 @@ public class Level : MonoBehaviour
 
     private void Update()
     {
+        if (m_finished)
+        {
+            return;
+        }
+
         if (UpdateLevel(Time.deltaTime))
         {
+            m_finished = true;
+            GameManager.Instance.Victory();
             Debug.LogError("Level Finished");
         }
     }
@@ -52,6 +61,20 @@ public class Level : MonoBehaviour
         m_currentWave = m_waves[m_currentWaveIndex];
         m_currentWave.Load();
 
+        m_finished = false;
+
+        GameManager.Instance.OnLevelFinished += OnLevelFinished;
+
+    }
+
+    private void OnLevelFinished()
+    {
+        m_finished = true;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnLevelFinished -= OnLevelFinished;
     }
 
     public bool UpdateLevel(float deltaTime)
