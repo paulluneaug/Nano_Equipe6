@@ -5,6 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityUtility.CustomAttributes;
+using UnityUtility.MathU;
 using UnityUtility.Pools;
 using UnityUtility.Timer;
 
@@ -214,11 +215,10 @@ public class Player : MonoBehaviour
         }
 
         // If we are pressing no key or if we want to go in the opposite direction of our current velocity.
-        if (m_moveInput.sqrMagnitude == 0 || m_knockedDown
-           || (m_moveInput.x < 0 && m_velocity.x > 0)
-           || (m_moveInput.x > 0 && m_velocity.x < 0)
-           || (m_moveInput.y < 0 && m_velocity.y > 0)
-           || (m_moveInput.y > 0 && m_velocity.y < 0))
+        if (m_moveInput.sqrMagnitude == 0 
+            || m_knockedDown
+            || MathUf.Sign(m_moveInput.x) != MathUf.Sign(m_velocity.x)
+            || MathUf.Sign(m_moveInput.y) != MathUf.Sign(m_velocity.y))
         {
             m_velocity *= m_decelerationFactor;
         }
@@ -345,7 +345,7 @@ public class Player : MonoBehaviour
             return false;
         }
 
-        if (IsDuringIFrames())
+        if (m_knockedDown || IsDuringIFrames())
         {
             return false;
         }

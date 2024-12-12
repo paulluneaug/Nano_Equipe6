@@ -54,8 +54,10 @@ public class Projectile : MonoBehaviour
         {
             if (m_projectileSource != ProjectileSource.Player)
             {
-                player.TakeDamage(m_damageAmout);
-                Release();
+                if (player.TakeDamage(m_damageAmout))
+                {
+                    Release();
+                }
             }
         }
 
