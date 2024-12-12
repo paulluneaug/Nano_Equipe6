@@ -76,7 +76,10 @@ public class Level : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.OnLevelFinished -= OnLevelFinished;
+        if (!GameManager.ApplicationIsQuitting)
+        {
+            GameManager.Instance.OnLevelFinished -= OnLevelFinished;
+        }
     }
 
     public bool UpdateLevel(float deltaTime)
