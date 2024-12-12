@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     [Title("Components")]
     [SerializeField] private Rigidbody2D m_rigidbody;
     [SerializeField] private Animator m_animator;
-    [SerializeField] private ShootPattern m_shootPattern;
+    [SerializeField] protected ShootPattern m_shootPattern;
 
     [SerializeField] protected SpriteRenderer m_bodySprite;
     [SerializeField] private SpriteRenderer m_wingsSprite;
@@ -181,12 +181,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void UpdateShoot()
+    protected virtual void UpdateShoot()
     {
         m_shootPattern.ShouldShoot = m_shootInput && m_canShoot;
         if (m_shootPattern.UpdatePattern(Time.deltaTime))
         {
-            PlayShootSound();
+            if(m_playerType != PlayerType.PlayerMerged)
+                PlayShootSound();
         }
     }
 
@@ -360,6 +361,8 @@ public class Player : MonoBehaviour
 
     private void KnockDown()
     {
+        GameManager.Instance.AddScore(-10000);
+        
         m_dieAudioSource.Play();
         m_knockedDown = true;
         m_knockedDownTimer.Start();

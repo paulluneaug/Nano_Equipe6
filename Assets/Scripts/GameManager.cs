@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using SFX;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityUtility.Pools;
 using UnityEngine.SceneManagement;
 using UnityUtility.Singletons;
 using UnityUtility.Timer;
@@ -26,13 +28,16 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [SerializeField] private AudioSource m_fusionAudioSource;
     [SerializeField] private AudioSource m_separationAudioSource;
-    [SerializeField] private AudioSource m_separationFailedAudioSource;
     
     [SerializeField] private AudioSource m_magicalGirlMusic;
     [SerializeField] private AudioSource m_deousMusic;
 
+    [SerializeField] private SFXControllerPool m_separationFailedSfxPool;
+
     [SerializeField] private EndingScreenController m_endingScreenController;
     [SerializeField] private string m_mainSceneName;
+    
+    [SerializeField] private TMP_Text m_scoreText;
     
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
@@ -66,7 +71,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         if (Gamepad.all.Count > 0)
         {
             m_inputActionAsset.FindActionMap("Player1").devices = new[]
-                { InputSystem.GetDevice("Keyboard"), Gamepad.all[0] };
+                { InputSystem.GetDevice("Keyboard"),
+                    InputSystem.GetDevice("Mouse"),
+                    Gamepad.all[0] };
         }
 
         if (Gamepad.all.Count > 1)
@@ -242,7 +249,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         LaserShootPattern laser = (LaserShootPattern)m_playerMerged.GetShootPattern();
         if (laser.GetShootStep() == LaserShootPattern.LaserShootStep.LaserOn)
         {
-            m_separationFailedAudioSource.Play();
+            PooledObject<SFXController> sfxController = m_separationFailedSfxPool.Request();
+
+            sfxController.Object.gameObject.SetActive(true);
+            sfxController.Object.StartSFXLifeCycle(m_separationFailedSfxPool);
             return false;
         }
 
@@ -312,6 +322,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public void AddScore(int scoreValue)
     {
         m_score += scoreValue;
+
+        if (m_score < 0)
+            m_score = 0;
+        
+        m_scoreText.text = "Score : " + m_score;
+        
         Debug.Log("Score increased to " + m_score);
     }
 }

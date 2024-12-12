@@ -30,7 +30,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 412929732299118611}
-  - {fileID: 3930659217283737710}
   - {fileID: 8467914068114614959}
   m_Father: {fileID: 8315818920001437799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -62,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3930659217283737710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70,14 +69,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202307128157998886}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7750859508018584620}
   - {fileID: 737650401517253179}
-  m_Father: {fileID: 1268723784269535472}
+  m_Father: {fileID: 8315818920001437799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1411,6 +1410,7 @@ RectTransform:
   m_Children:
   - {fileID: 3985317354769719847}
   - {fileID: 1268723784269535472}
+  - {fileID: 3930659217283737710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2002,7 +2002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score : '
+  m_text: 'Score : 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36611d313ca50ee46b689def422f3b3e, type: 2}
   m_sharedMaterial: {fileID: 7482370163381550750, guid: 36611d313ca50ee46b689def422f3b3e, type: 2}
