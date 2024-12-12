@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] private AudioSource m_fusionAudioSource;
     [SerializeField] private AudioSource m_separationAudioSource;
     [SerializeField] private AudioSource m_separationFailedAudioSource;
+    
+    [SerializeField] private AudioSource m_magicalGirlMusic;
+    [SerializeField] private AudioSource m_deousMusic;
 
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
