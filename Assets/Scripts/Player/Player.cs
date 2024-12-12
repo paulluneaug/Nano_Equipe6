@@ -361,6 +361,8 @@ public class Player : MonoBehaviour
 
     private void KnockDown()
     {
+        GameManager.Instance.AddScore(-10000);
+        
         m_dieAudioSource.Play();
         m_knockedDown = true;
         m_knockedDownTimer.Start();
