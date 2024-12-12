@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using SFX;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         m_score = 0;
         m_arePlayersMerged = false;
+        
+        IntroMusicManager.Instance.StopIntroMusic();
         
         m_magicalGirlMusic.volume = 1.0f;
         m_deousMusic.volume = 0.0f;
