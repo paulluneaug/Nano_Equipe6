@@ -338,6 +338,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3626810651829353913}
     m_Modifications:
+    - target: {fileID: 4655466059074080417, guid: e8ae335f73367de45a620faddecd947a, type: 3}
+      propertyPath: m_laserTimer.m_duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655466059074080417, guid: e8ae335f73367de45a620faddecd947a, type: 3}
+      propertyPath: m_cooldownTimer.m_duration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5211794281591559019, guid: e8ae335f73367de45a620faddecd947a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
