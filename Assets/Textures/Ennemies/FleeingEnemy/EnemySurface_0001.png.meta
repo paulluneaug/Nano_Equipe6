@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 4aba35107ba9ea945a17534074eb0817
+guid: 2f48edf46cecf7f47a39dfc39a755158
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9197411530328396571
-    second: ObstacleVertical 1_0
+      213: -917324578824591565
+    second: EnemySurface_0001_0
+  - first:
+      213: -410972290018803316
+    second: EnemySurface_0001_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ObstacleVertical 1_0
+      name: EnemySurface_0001_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 27
-        width: 982
-        height: 1925
+        x: 835
+        y: 212
+        width: 349
+        height: 612
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5eca1b171fa3c5080800000000000000
-      internalID: -9197411530328396571
+      spriteID: 337ec6fd7220543f0800000000000000
+      internalID: -917324578824591565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemySurface_0001_1
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 798
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8186e031eeeb4af0800000000000000
+      internalID: -410972290018803316
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -134,8 +159,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ObstacleVertical 1_0: -9197411530328396571
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
