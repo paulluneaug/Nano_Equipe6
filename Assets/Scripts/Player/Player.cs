@@ -4,7 +4,6 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityUtility.CustomAttributes;
 using UnityUtility.Pools;
 using UnityUtility.Timer;
@@ -19,14 +18,11 @@ public class Player : MonoBehaviour
 
     public bool DebugInvinsible = false;
 
-    [Header("Multiplayer")]
-    [SerializeField] private int m_playerNumber;
-
-    [Header("Input Actions")]
+    [Title("Input Actions")]
     [SerializeField] private List<InputActionReference> m_moveActions = new();
     [SerializeField] private List<InputActionReference> m_shootActions = new();
 
-    [Header("Components")]
+    [Title("Components")]
     [SerializeField] private Rigidbody2D m_rigidbody;
     [SerializeField] private Animator m_animator;
     [SerializeField] private ShootPattern m_shootPattern;
@@ -34,13 +30,19 @@ public class Player : MonoBehaviour
     [SerializeField] protected SpriteRenderer m_bodySprite;
     [SerializeField] private SpriteRenderer m_wingsSprite;
 
-    [Header("Movement")]
+    [SerializeField] private Transform m_visualElementsRoot;
+    [SerializeField] private SpriteRenderer m_bubbleSprite;
+
+    [Title("Movement")]
     [SerializeField] private float m_maxSpeed;
     [SerializeField] private float m_acceleration;
     [SerializeField] private float m_decelerationFactor;
     [SerializeField] private Vector2 m_separationForce;
 
     [SerializeField] private PlayerType m_playerType;
+
+    [SerializeField] private ContactFilter2D m_contactFilter;
+    [SerializeField] private float m_collisionOffset;
 
     [Title("Health")]
     [SerializeField] private int m_maxHealth;
@@ -55,7 +57,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Timer m_mergeIFrameTimer;
     [SerializeField] private Timer m_reviveIFrameTimer;
 
-    [NonSerialized] private int m_health;
+    [NonSerialized] protected int m_health;
     [NonSerialized] private bool m_knockedDown;
 
     [NonSerialized] protected List<Timer> m_allIFramesTimers;
@@ -64,6 +66,7 @@ public class Player : MonoBehaviour
     private bool m_canMove = true;
     protected bool m_canShoot = true;
 
+    [NonSerialized] private List<RaycastHit2D> m_hits;
 
     // Input State
     private Vector2 m_moveInput;
@@ -81,11 +84,18 @@ public class Player : MonoBehaviour
 
         Revive();
 
+        if (m_bubbleSprite != null)
+        {
+            _ = m_bubbleSprite.DOFade(0.0f, 0.0f);
+        }
+
         m_allIFramesTimers = new List<Timer>()
         {
             m_mergeIFrameTimer,
             m_reviveIFrameTimer,
         };
+
+        m_hits = new List<RaycastHit2D>();
     }
 
     private void FixedUpdate()
@@ -129,6 +139,17 @@ public class Player : MonoBehaviour
             {
                 Revive();
                 m_reviveIFrameTimer.Start();
+
+                // Hides the bubble
+                if (m_bubbleSprite != null)
+                {
+                    Color bubbleColor = m_bubbleSprite.color;
+                    bubbleColor.a = 1.0f;
+                    m_bubbleSprite.color = bubbleColor;
+
+                    _ = m_bubbleSprite.DOFade(1.0f, 0.2f);
+                    _ = m_bubbleSprite.DOFade(0.0f, 0.2f);
+                }
             }
         }
     }
@@ -144,6 +165,18 @@ public class Player : MonoBehaviour
         {
             // Can be revived
             m_knockedDownTimer.Stop();
+
+            // Displays the bubble
+            if (m_bubbleSprite != null && m_visualElementsRoot != null)
+            {
+                m_visualElementsRoot.gameObject.SetActive(true);
+
+                Color bubbleColor = m_bubbleSprite.color;
+                bubbleColor.a = 0.0f;
+                m_bubbleSprite.color = bubbleColor;
+
+                _ = m_bubbleSprite.DOFade(1.0f, 0.2f);
+            }
         }
     }
 
@@ -159,7 +192,7 @@ public class Player : MonoBehaviour
     private void PlayShootSound()
     {
         PooledObject<SFXController> sfxController = m_shootSfxPool.Request();
-        
+
         sfxController.Object.gameObject.SetActive(true);
         sfxController.Object.StartSFXLifeCycle(m_shootSfxPool);
     }
@@ -189,8 +222,32 @@ public class Player : MonoBehaviour
             m_velocity *= m_decelerationFactor;
         }
 
+
+        Vector2 offset = m_velocity * Time.fixedDeltaTime;
+
+        if (!TryMove(offset))
+        {
+            if (!TryMove(offset * Vector2.right))
+            {
+                if (!TryMove(offset * Vector2.up))
+                {
+                    Debug.LogWarning("Failed to move");
+                }
+            }
+        }
         //m_rigidbody.MovePosition(m_rigidbody.position + m_velocity * Time.fixedDeltaTime);
-        m_rigidbody.linearVelocity = m_velocity;
+        //m_rigidbody.linearVelocity = m_velocity;
+    }
+
+    private bool TryMove(Vector2 offset)
+    {
+        int collisionCount = m_rigidbody.Cast(offset, m_contactFilter, m_hits, offset.magnitude + m_collisionOffset);
+        if (collisionCount > 0)
+        {
+            return false;
+        }
+        m_rigidbody.MovePosition(m_rigidbody.position + offset);
+        return true;
     }
 
     private void UpdateAnimation()
@@ -281,7 +338,7 @@ public class Player : MonoBehaviour
     public virtual bool TakeDamage(int damage)
     {
         m_hitAudioSource.Play();
-        
+
         if (DebugInvinsible)
         {
             return false;
@@ -295,17 +352,19 @@ public class Player : MonoBehaviour
         m_health -= damage;
         if (m_health <= 0)
         {
-            Kill();
+            KnockDown();
             return true;
         }
         return true;
     }
 
-    private void Kill()
+    private void KnockDown()
     {
         m_dieAudioSource.Play();
         m_knockedDown = true;
         m_knockedDownTimer.Start();
+
+        m_visualElementsRoot.gameObject.SetActive(false);
     }
 
     protected void Revive()

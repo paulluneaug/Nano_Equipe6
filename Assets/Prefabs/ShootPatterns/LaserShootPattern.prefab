@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2546abc498902764a875141a290d7868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_damageAmout: 100
+  m_damageAmout: 10
 --- !u!120 &3109325294386951249
 LineRenderer:
   serializedVersion: 2

@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_projectileSource: 1
   m_damageType: -1
-  m_damageAmout: 10
+  m_damageAmout: 1
   m_direction: {x: 0, y: 0}
   m_speed: 0
 --- !u!70 &2036593179400743968
