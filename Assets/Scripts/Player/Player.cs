@@ -240,14 +240,14 @@ public class Player : MonoBehaviour
         //m_rigidbody.linearVelocity = m_velocity;
     }
 
-    private bool TryMove(Vector2 offset)
+    protected bool TryMove(Vector2 direction, Vector2 offset = new Vector2())
     {
-        int collisionCount = m_rigidbody.Cast(offset, m_contactFilter, m_hits, offset.magnitude + m_collisionOffset);
+        int collisionCount = m_rigidbody.Cast(m_rigidbody.position + offset, m_rigidbody.rotation, direction, m_contactFilter, m_hits, direction.magnitude + m_collisionOffset);
         if (collisionCount > 0)
         {
             return false;
         }
-        m_rigidbody.MovePosition(m_rigidbody.position + offset);
+        m_rigidbody.MovePosition(m_rigidbody.position + direction + offset);
         return true;
     }
 

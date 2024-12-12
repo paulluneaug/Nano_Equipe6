@@ -394,7 +394,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  m_collisionOffset: 0.05
+  m_collisionOffset: 0.1
   m_maxHealth: 1
   m_knockedDownTimer:
     m_duration: 3
