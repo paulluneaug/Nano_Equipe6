@@ -2523,6 +2523,37 @@ MonoBehaviour:
   - Position: {x: 10.139999, y: 7.239998, z: 0}
   - Position: {x: 15.829999, y: 7.3199997, z: 0}
   - Position: {x: 7.41, y: 7.2300034, z: 0}
+--- !u!1 &3891886989193931527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6236851997998102874}
+  m_Layer: 0
+  m_Name: LevelCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6236851997998102874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891886989193931527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5088087488611500571}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3903981995684634167
 GameObject:
   m_ObjectHideFlags: 0
@@ -6570,6 +6601,7 @@ Transform:
   - {fileID: 2705940158969744260}
   - {fileID: 3904534814466013690}
   - {fileID: 7818873529957459152}
+  - {fileID: 6236851997998102874}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7178928240373140589

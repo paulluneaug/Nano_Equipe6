@@ -652,20 +652,20 @@ MonoBehaviour:
   m_separationForce: {x: 0, y: 0}
   m_playerType: 2
   m_contactFilter:
-    useTriggers: 0
-    useLayerMask: 0
+    useTriggers: 1
+    useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 257
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  m_collisionOffset: 0
+  m_collisionOffset: 0.1
   m_maxHealth: 3
   m_knockedDownTimer:
     m_duration: 0
@@ -688,6 +688,8 @@ MonoBehaviour:
   m_mediumWingsSprite: {fileID: 6036493278761399431}
   m_smallWingsSprite: {fileID: 5248797677335994027}
   m_healthBarManager: {fileID: 0}
+  m_unstuckTarget: {fileID: 0}
+  m_unstuckStep: 0
 --- !u!212 &1019704423467836934 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5803379429713392529, guid: e69bba503a718b84596f9f91de848ec5, type: 3}

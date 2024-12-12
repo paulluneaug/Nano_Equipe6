@@ -497,9 +497,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1665842560}
     m_Modifications:
     - target: {fileID: 794718712470976885, guid: 3f8c7d272b3766641b1c0f5f8b629120, type: 3}
+      propertyPath: m_unstuckStep
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 794718712470976885, guid: 3f8c7d272b3766641b1c0f5f8b629120, type: 3}
       propertyPath: m_shootSfxPool
       value: 
       objectReference: {fileID: 732272859}
+    - target: {fileID: 794718712470976885, guid: 3f8c7d272b3766641b1c0f5f8b629120, type: 3}
+      propertyPath: m_unstuckTarget
+      value: 
+      objectReference: {fileID: 3303258727144343677}
     - target: {fileID: 794718712470976885, guid: 3f8c7d272b3766641b1c0f5f8b629120, type: 3}
       propertyPath: m_healthBarManager
       value: 
@@ -1092,6 +1100,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0d6f8603c4f024cb9aee2e7e8f5d51, type: 3}
+--- !u!4 &3303258727144343677 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6236851997998102874, guid: 0a0d6f8603c4f024cb9aee2e7e8f5d51, type: 3}
+  m_PrefabInstance: {fileID: 3303258727144343676}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6850164683888221091
 PrefabInstance:
   m_ObjectHideFlags: 0

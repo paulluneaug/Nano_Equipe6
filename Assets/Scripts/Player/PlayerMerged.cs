@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityUtility.CustomAttributes;
 using UnityUtility.Timer;
+using UnityUtility.Utils;
 
 public class PlayerMerged : Player
 {
@@ -17,6 +18,10 @@ public class PlayerMerged : Player
 
     [Title("UI")]
     [SerializeField] private DeousHealthBarManager m_healthBarManager;
+
+    [Title("Unstuck")]
+    [SerializeField] private Transform m_unstuckTarget;
+    [SerializeField] private float m_unstuckStep;
 
 
 
@@ -74,6 +79,27 @@ public class PlayerMerged : Player
         }
         m_healthBarManager.Display(isMerged);
         m_healthBarManager.UpdateHealthBar(m_health);
+        UnstuckIfNeeded();
+    }
+
+    private void UnstuckIfNeeded()
+    {
+        if (TryMove(Vector2.zero))
+        {
+            // Not stuck
+            return;
+        }
+
+        Vector2 unstuckDirection = (m_unstuckTarget.position - transform.position).XY().normalized;
+
+        int stepCount = 1;
+        Vector2 offset;
+        do
+        {
+            offset = m_unstuckStep * stepCount * unstuckDirection;
+            ++stepCount;
+        }
+        while (!TryMove(Vector2.zero, offset) && stepCount < 1000);
     }
 
     private void TriggerFusionVFX(bool isMerged)
