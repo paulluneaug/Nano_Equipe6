@@ -145,6 +145,7 @@ MonoBehaviour:
   m_hitSfxPool: {fileID: 0}
   m_shieldSfxPool: {fileID: 0}
   m_playSounds: 1
+  m_scoreValue: 5000
   m_speedFactor: 1
   m_useGlobalScrollFactor: 1
   m_speedAlongSpline:

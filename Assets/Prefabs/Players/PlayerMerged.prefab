@@ -588,6 +588,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 8204523869500282, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
     - {fileID: 2601739257846261392, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
+    - {fileID: 4894540009722126432, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7852602097730447406, guid: e69bba503a718b84596f9f91de848ec5, type: 3}
       insertIndex: -1
@@ -650,6 +651,21 @@ MonoBehaviour:
   m_decelerationFactor: 0.9
   m_separationForce: {x: 0, y: 0}
   m_playerType: 2
+  m_contactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  m_collisionOffset: 0
   m_maxHealth: 3
   m_knockedDownTimer:
     m_duration: 0
