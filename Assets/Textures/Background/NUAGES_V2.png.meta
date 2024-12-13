@@ -1,10 +1,67 @@
 fileFormatVersion: 2
-guid: 4aba35107ba9ea945a17534074eb0817
+guid: 460a0ab6f23edd8498a2d6d38123a40b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6632089216972950629
-    second: ObstacleVertical_0
+      213: -3060800952789106961
+    second: NUAGES_V2_0
+  - first:
+      213: 6263992206751900681
+    second: NUAGES_V2_1
+  - first:
+      213: 3893372935309355175
+    second: NUAGES_V2_2
+  - first:
+      213: -384804467304913552
+    second: NUAGES_V2_3
+  - first:
+      213: -3726118590790533816
+    second: NUAGES_V2_4
+  - first:
+      213: -4840360598528679483
+    second: NUAGES_V2_5
+  - first:
+      213: -8546360064974136134
+    second: NUAGES_V2_6
+  - first:
+      213: -4231652643548352059
+    second: NUAGES_V2_7
+  - first:
+      213: -8365115633035129185
+    second: NUAGES_V2_8
+  - first:
+      213: 8249947137376711205
+    second: NUAGES_V2_9
+  - first:
+      213: 4174345356267067815
+    second: NUAGES_V2_10
+  - first:
+      213: -7547310136723534123
+    second: NUAGES_V2_11
+  - first:
+      213: -7001339663074222423
+    second: NUAGES_V2_12
+  - first:
+      213: -6309336805692708739
+    second: NUAGES_V2_13
+  - first:
+      213: -3207344543109713249
+    second: NUAGES_V2_14
+  - first:
+      213: -8297040633599466465
+    second: NUAGES_V2_15
+  - first:
+      213: 9050337465430455357
+    second: NUAGES_V2_16
+  - first:
+      213: -4473128032489366843
+    second: NUAGES_V2_17
+  - first:
+      213: 7383517874761198921
+    second: NUAGES_V2_18
+  - first:
+      213: 8587765638632173237
+    second: NUAGES_V2_19
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,9 +97,9 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -100,13 +157,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ObstacleVertical_0
+      name: animation deplacement0000_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 1000
-        height: 1993
+        x: 789
+        y: 45
+        width: 327
+        height: 864
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +172,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b93f0a7def516f3a0800000000000000
-      internalID: -6632089216972950629
+      spriteID: d001c7604f5645e10800000000000000
+      internalID: 2185483817936752653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation deplacement0000_1
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 869
+        width: 77
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 250fea16b629587c0800000000000000
+      internalID: -4069685698361364398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation deplacement0000_2
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 865
+        width: 92
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc942343ad7b6d80800000000000000
+      internalID: -8256367351694058309
       vertices: []
       indices: 
       edges: []
@@ -135,7 +236,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ObstacleVertical_0: -6632089216972950629
+      animation deplacement0000_0: 2185483817936752653
+      animation deplacement0000_1: -4069685698361364398
+      animation deplacement0000_2: -8256367351694058309
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

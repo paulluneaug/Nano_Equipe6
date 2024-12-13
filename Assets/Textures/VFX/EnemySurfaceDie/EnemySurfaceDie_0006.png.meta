@@ -1,0 +1,306 @@
+fileFormatVersion: 2
+guid: 0fcbed10ed92e5f46a07e43e5d0bf987
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4728934513981146696
+    second: EnemySurfaceDie_0006_0
+  - first:
+      213: -1146524177135177567
+    second: EnemySurfaceDie_0006_1
+  - first:
+      213: 8391573163238589484
+    second: EnemySurfaceDie_0006_2
+  - first:
+      213: 2716179486656506660
+    second: EnemySurfaceDie_0006_3
+  - first:
+      213: -4082666946700095790
+    second: EnemySurfaceDie_0006_4
+  - first:
+      213: -6999595217135624190
+    second: EnemySurfaceDie_0006_5
+  - first:
+      213: -861523944474677247
+    second: EnemySurfaceDie_0006_6
+  - first:
+      213: -6765382395826930779
+    second: EnemySurfaceDie_0006_7
+  - first:
+      213: -3915183879480228880
+    second: EnemySurfaceDie_0006_8
+  - first:
+      213: 7154909270573309985
+    second: EnemySurfaceDie_0006_9
+  - first:
+      213: -3462209972611872256
+    second: EnemySurfaceDie_0006_10
+  - first:
+      213: -3538441057270601318
+    second: EnemySurfaceDie_0006_11
+  - first:
+      213: 6022150534482358265
+    second: EnemySurfaceDie_0006_12
+  - first:
+      213: -387240577251285174
+    second: EnemySurfaceDie_0006_13
+  - first:
+      213: -2545181108145765391
+    second: EnemySurfaceDie_0006_14
+  - first:
+      213: -2771090740742363469
+    second: EnemySurfaceDie_0006_15
+  - first:
+      213: -1419841661869326431
+    second: EnemySurfaceDie_0006_16
+  - first:
+      213: 3464728940392148687
+    second: EnemySurfaceDie_0006_17
+  - first:
+      213: -6399611167897095000
+    second: EnemySurfaceDie_0006_18
+  - first:
+      213: 6894504624644977609
+    second: EnemySurfaceDie_0006_19
+  - first:
+      213: 7265524283306807295
+    second: EnemySurfaceDie_0006_20
+  - first:
+      213: 718236910736328999
+    second: EnemySurfaceDie_0006_21
+  - first:
+      213: 3112922968676124971
+    second: EnemySurfaceDie_0006_22
+  - first:
+      213: -136273857969862231
+    second: EnemySurfaceDie_0006_23
+  - first:
+      213: 227871267558043968
+    second: EnemySurfaceDie_0006_24
+  - first:
+      213: -4230271606287375263
+    second: EnemySurfaceDie_0006_25
+  - first:
+      213: 2571062200807759749
+    second: EnemySurfaceDie_0006_26
+  - first:
+      213: 6938909918509248677
+    second: EnemySurfaceDie_0006_27
+  - first:
+      213: -5526430313231617153
+    second: EnemySurfaceDie_0006_28
+  - first:
+      213: -2191373636586582489
+    second: EnemySurfaceDie_0006_29
+  - first:
+      213: -7056740448659165966
+    second: EnemySurfaceDie_0006_30
+  - first:
+      213: -3606886612183639674
+    second: EnemySurfaceDie_0006_31
+  - first:
+      213: 7044956875483193708
+    second: EnemySurfaceDie_0006_32
+  - first:
+      213: -9149054249034610618
+    second: EnemySurfaceDie_0006_33
+  - first:
+      213: 4067817899208078449
+    second: EnemySurfaceDie_0006_34
+  - first:
+      213: 597976537956078638
+    second: EnemySurfaceDie_0006_35
+  - first:
+      213: -8874921509192771638
+    second: EnemySurfaceDie_0006_36
+  - first:
+      213: -168668376101955475
+    second: EnemySurfaceDie_0006_37
+  - first:
+      213: -1902105325545640697
+    second: EnemySurfaceDie_0006_38
+  - first:
+      213: -5059060865219334192
+    second: EnemySurfaceDie_0006_39
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: animation deplacement0000_0
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 45
+        width: 327
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d001c7604f5645e10800000000000000
+      internalID: 2185483817936752653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation deplacement0000_1
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 869
+        width: 77
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 250fea16b629587c0800000000000000
+      internalID: -4069685698361364398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation deplacement0000_2
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 865
+        width: 92
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc942343ad7b6d80800000000000000
+      internalID: -8256367351694058309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      animation deplacement0000_0: 2185483817936752653
+      animation deplacement0000_1: -4069685698361364398
+      animation deplacement0000_2: -8256367351694058309
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
