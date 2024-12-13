@@ -8,9 +8,12 @@ using UnityUtility.CustomAttributes;
 using UnityUtility.MathU;
 using UnityUtility.Pools;
 using UnityUtility.Timer;
+using UnityUtility.Utils;
 
 public class Player : MonoBehaviour
 {
+    private const int MAX_UNSTUCK_STEPS = 1000;
+
     private static readonly int s_animatorParamVelocityX = Animator.StringToHash("DirectionX");
     private static readonly int s_animatorParamVelocityY = Animator.StringToHash("DirectionY");
 
@@ -43,7 +46,12 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerType m_playerType;
 
     [SerializeField] private ContactFilter2D m_contactFilter;
+    [SerializeField] private ContactFilter2D m_unstuckContactFilter;
     [SerializeField] private float m_collisionOffset;
+
+    [Title("Unstuck")]
+    [SerializeField] private Transform m_unstuckTarget;
+    [SerializeField] private float m_unstuckStep;
 
     [Title("Health")]
     [SerializeField] private int m_maxHealth;
@@ -226,12 +234,13 @@ public class Player : MonoBehaviour
 
         Vector2 offset = m_velocity * Time.fixedDeltaTime;
 
-        if (!TryMove(offset))
+        if (!TryMove(offset, m_contactFilter))
         {
-            if (!TryMove(offset * Vector2.right))
+            if (!TryMove(offset * Vector2.right, m_contactFilter))
             {
-                if (!TryMove(offset * Vector2.up))
+                if (!TryMove(offset * Vector2.up, m_contactFilter))
                 {
+                    UnstuckIfNeeded();
                     Debug.LogWarning("Failed to move");
                 }
             }
@@ -240,15 +249,53 @@ public class Player : MonoBehaviour
         //m_rigidbody.linearVelocity = m_velocity;
     }
 
-    protected bool TryMove(Vector2 direction, Vector2 offset = new Vector2())
+    protected bool TryMove(Vector2 direction, ContactFilter2D contactFilter, Vector2 offset = new Vector2())
     {
-        int collisionCount = m_rigidbody.Cast(m_rigidbody.position + offset, m_rigidbody.rotation, direction, m_contactFilter, m_hits, direction.magnitude + m_collisionOffset);
+        if (CanMove(direction, contactFilter, offset))
+        {
+            m_rigidbody.MovePosition(m_rigidbody.position + direction + offset);
+            return true;
+        }
+        return false;
+    }
+
+    protected bool CanMove(Vector2 direction, ContactFilter2D contactFilter, Vector2 offset = new Vector2())
+    {
+        int collisionCount = m_rigidbody.Cast(m_rigidbody.position + offset, m_rigidbody.rotation, direction, contactFilter, m_hits, direction.magnitude + m_collisionOffset);
         if (collisionCount > 0)
         {
             return false;
         }
-        m_rigidbody.MovePosition(m_rigidbody.position + direction + offset);
         return true;
+    }
+
+    protected void UnstuckIfNeeded()
+    {
+        if (TryMove(Vector2.zero, m_unstuckContactFilter))
+        {
+            // Not stuck
+            return;
+        }
+
+        Vector2 unstuckDirection = (m_unstuckTarget.position - transform.position).XY().normalized;
+
+        int stepCount = 1;
+        Vector2 offset;
+        do
+        {
+            offset = m_unstuckStep * stepCount * unstuckDirection;
+            ++stepCount;
+        }
+        while (!TryMove(Vector2.zero, m_unstuckContactFilter, offset) && stepCount < MAX_UNSTUCK_STEPS);
+
+        if (stepCount == MAX_UNSTUCK_STEPS)
+        {
+            Debug.LogError("Failed to Unstuck");
+        }
+        else
+        {
+            Debug.LogWarning("Was stuck but it got better");
+        }
     }
 
     private void UpdateAnimation()
