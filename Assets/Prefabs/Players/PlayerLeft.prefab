@@ -394,7 +394,23 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  m_unstuckContactFilter:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   m_collisionOffset: 0.1
+  m_unstuckTarget: {fileID: 0}
+  m_unstuckStep: 0.05
   m_maxHealth: 1
   m_knockedDownTimer:
     m_duration: 3
