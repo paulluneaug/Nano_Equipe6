@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] private string m_mainSceneName;
     
     [SerializeField] private TMP_Text m_scoreText;
+
+    [SerializeField] private ScreenShakeController m_screenShakeController;
     
     private bool m_arePlayersMerged;
     private Timer m_mergeTimer;
@@ -160,6 +162,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             m_endingScreenController.SetScreenActive(true);
             m_endingScreenController.SetEndingScreen(true);
         }
+    }
+
+    public void ScreenShake(float duration)
+    {
+        m_screenShakeController.Shake(duration);
     }
 
     private void ReloadScene()
