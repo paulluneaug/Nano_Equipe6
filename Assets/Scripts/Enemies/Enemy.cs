@@ -12,8 +12,10 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private ContactDamageTrigger m_contactDamageTrigger;
     
     [SerializeField] private int m_contactDamage;
-    [SerializeField] private VFXControllerPool m_vfxPool;
-    
+
+    [SerializeField] private VFXControllerPool m_damageVfxPool;
+    [SerializeField] private VFXControllerPool m_deathVfxPool;
+
     [SerializeField] private SFXControllerPool m_dieSfxPool;
     [SerializeField] private SFXControllerPool m_hitSfxPool;
     [SerializeField] private SFXControllerPool m_shieldSfxPool;
@@ -72,15 +74,16 @@ public abstract class Enemy : MonoBehaviour
         }
 
         m_health -= damage;
+        bool killed = m_health <= 0;
 
-        if (m_health <= 0)
+
+        PlayDamageSFX(killed);
+        PlayDamageVFX(killed);
+
+        if (killed)
         {
-            PlayKillVfxAndSfx();
             Kill();
-        }
-        else
-        {
-            PlayDamageSfx();
+            GameManager.Instance.AddScore(m_scoreValue);
         }
     }
 
@@ -95,19 +98,6 @@ public abstract class Enemy : MonoBehaviour
         
         sfxController.Object.gameObject.SetActive(true);
         sfxController.Object.StartSFXLifeCycle(m_shieldSfxPool);
-    }
-
-    private void PlayDamageSfx()
-    {
-        if (!m_playSounds)
-        {
-            return;
-        }
-
-        PooledObject<SFXController> sfxController = m_hitSfxPool.Request();
-        
-        sfxController.Object.gameObject.SetActive(true);
-        sfxController.Object.StartSFXLifeCycle(m_hitSfxPool);
     }
 
     public virtual void StartEnemy()
@@ -128,24 +118,60 @@ public abstract class Enemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void PlayKillVfxAndSfx()
+    private void PlayDamageVFX(bool killed)
     {
-        // When an enemy is killed with VFX and SFX, it means the player has killed it. Therefore, increase the score.
-        GameManager.Instance.AddScore(m_scoreValue);
-        
-        PooledObject<VFXController> vfxController = m_vfxPool.Request();
+        if (killed)
+        {
+            PlayVFX(m_deathVfxPool);
+        }
+        else
+        {
+            PlayVFX(m_damageVfxPool);
+        }
+    }
 
-        vfxController.Object.gameObject.SetActive(true);
-        vfxController.Object.transform.position = transform.position;
-        vfxController.Object.StartVFXLifeCycle(m_vfxPool);
-
+    private void PlayDamageSFX(bool killed)
+    {
         if (!m_playSounds)
         {
             return;
         }
-        PooledObject<SFXController> sfxController = m_dieSfxPool.Request();
-        
+
+        if (killed)
+        {
+            PlaySFX(m_dieSfxPool);
+        }
+        else
+        {
+            PlaySFX(m_hitSfxPool);
+        }
+    }
+
+    private void PlaySFX(SFXControllerPool pool)
+    {
+        if (pool == null)
+        {
+            return;
+        }
+
+        PooledObject<SFXController> sfxController = pool.Request();
+
         sfxController.Object.gameObject.SetActive(true);
-        sfxController.Object.StartSFXLifeCycle(m_dieSfxPool);
+        sfxController.Object.transform.position = transform.position;
+        sfxController.Object.StartSFXLifeCycle(pool);
+    }
+
+    private void PlayVFX(VFXControllerPool pool)
+    {
+        if (pool == null)
+        {
+            return;
+        }
+
+        PooledObject<VFXController> vfxController = pool.Request();
+
+        vfxController.Object.gameObject.SetActive(true);
+        vfxController.Object.transform.position = transform.position;
+        vfxController.Object.StartVFXLifeCycle(pool);
     }
 }

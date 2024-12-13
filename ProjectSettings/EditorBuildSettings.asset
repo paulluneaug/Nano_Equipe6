@@ -15,11 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 164844632442d3c43afabe0c082c52d6
   - enabled: 1
-    path: Assets/Scenes/IntegrationScene.unity
-    guid: f2c0f45cfb828ef4fa87471738d403cc
-  - enabled: 1
     path: Assets/Scenes/IntroCinematic.unity
     guid: 971bc2ad4d8b7d546af2c8a74d0d3c79
+  - enabled: 1
+    path: Assets/Scenes/IntegrationScene.unity
+    guid: f2c0f45cfb828ef4fa87471738d403cc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityUtility.CustomAttributes;
@@ -28,11 +27,11 @@ public class PlayerMerged : Player
     [SerializeField] private AudioSource m_laserStartAudioSource;
     [SerializeField] private AudioSource m_laserLoopAudioSource;
     [SerializeField] private AudioSource m_laserEndAudioSource;
-    
+
     private LaserShootPattern m_laserShootPattern;
     private bool m_isShooting;
     private bool m_wasShootingLastFrame;
-    
+
     protected override void Awake()
     {
         base.Awake();
@@ -66,8 +65,8 @@ public class PlayerMerged : Player
         return false;
     }
 
-    
-    
+
+
     protected override void UpdateIFramesTimers(float deltaTime)
     {
         base.UpdateIFramesTimers(deltaTime);
@@ -80,15 +79,16 @@ public class PlayerMerged : Player
 
         m_wasShootingLastFrame = m_isShooting;
 
-        if (m_laserShootPattern.GetShootStep() == LaserShootPattern.LaserShootStep.LaserOn)
-            m_isShooting = true;
-        else
-            m_isShooting = false;
+        m_isShooting = m_laserShootPattern.GetShootStep() == LaserShootPattern.LaserShootStep.LaserOn;
 
         if (!m_wasShootingLastFrame && m_isShooting)
+        {
             PlayLaserStartAndLoopSound();
+        }
         else if (m_wasShootingLastFrame && !m_isShooting)
+        {
             PlayLaserEndSound();
+        }
     }
 
     private void PlayLaserStartAndLoopSound()

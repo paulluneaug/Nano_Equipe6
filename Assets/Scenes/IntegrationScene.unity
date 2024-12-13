@@ -256,11 +256,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!82 &196763955 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6873049987428967773, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
-  m_PrefabInstance: {fileID: 6850164683888221091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &234813264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -752,11 +747,6 @@ Transform:
   - {fileID: 1478261036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1875058644 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4306233032587224904, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
-  m_PrefabInstance: {fileID: 6850164683888221091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1895927383 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7143042809121119535, guid: b2d4cbe24a246a0468d353593ba3bcb0, type: 3}
@@ -1168,45 +1158,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1031497554}
     - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
-      propertyPath: m_deousMusic
-      value: 
-      objectReference: {fileID: 1875058644}
-    - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
       propertyPath: m_playerMerged
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
-      propertyPath: m_mainSceneName
-      value: IntegrationScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
-      propertyPath: m_magicalGirlMusic
-      value: 
-      objectReference: {fileID: 196763955}
     - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
       propertyPath: m_endingScreenController
       value: 
       objectReference: {fileID: 1543967316172013103}
     - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
-      propertyPath: m_mergeActions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
-      propertyPath: m_playerMergeCooldownTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
       propertyPath: m_separationFailedSfxPool
       value: 
       objectReference: {fileID: 3303258727144343678}
-    - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
-      propertyPath: 'm_mergeActions.Array.data[0]'
-      value: 
-      objectReference: {fileID: -6935871351947264078, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-    - target: {fileID: 4210124352990412976, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
-      propertyPath: 'm_mergeActions.Array.data[1]'
-      value: 
-      objectReference: {fileID: 4023803114228110605, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
     - target: {fileID: 5171638183769258507, guid: 025e8df2b4b96954d8099a658bfde4fe, type: 3}
       propertyPath: m_Name
       value: SeparationFailedAudio

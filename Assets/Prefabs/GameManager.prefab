@@ -702,8 +702,9 @@ MonoBehaviour:
   - {fileID: 4023803114228110605, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_fusionAudioSource: {fileID: 3588604532246467844}
   m_separationAudioSource: {fileID: 1839333605288054590}
-  m_separationFailedAudioSource: {fileID: 0}
-  m_magicalGirlMusic: {fileID: 0}
-  m_deousMusic: {fileID: 0}
+  m_magicalGirlMusic: {fileID: 6873049987428967773}
+  m_deousMusic: {fileID: 4306233032587224904}
+  m_separationFailedSfxPool: {fileID: 0}
   m_endingScreenController: {fileID: 0}
-  m_mainSceneName: 
+  m_mainSceneName: IntegrationScene
+  m_scoreText: {fileID: 0}

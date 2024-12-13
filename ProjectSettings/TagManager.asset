@@ -47,5 +47,8 @@ TagManager:
   - name: Foreground
     uniqueID: 4013962509
     locked: 0
+  - name: VFX
+    uniqueID: 2827872439
+    locked: 0
   m_RenderingLayers:
   - Default
