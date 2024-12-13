@@ -891,7 +891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_time: 38
-  m_enemyPool: {fileID: 5219090188965052445}
+  m_enemyPool: {fileID: 5732986155887471399}
   m_spawnPoints:
   - Position: {x: -2.5, y: 8.5, z: 0}
   - Position: {x: -2.5, y: 9.75, z: 0}
@@ -8279,7 +8279,7 @@ PrefabInstance:
       objectReference: {fileID: 8499691670966447916}
     - target: {fileID: 6342740792014538006, guid: 4b28184501790454f908ed27a2ec4b70, type: 3}
       propertyPath: m_delayBeforeDisappear.m_duration
-      value: 1.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9147809930844361405, guid: 4b28184501790454f908ed27a2ec4b70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9347,7 +9347,7 @@ PrefabInstance:
       objectReference: {fileID: 8499691670966447916}
     - target: {fileID: 1518045669572617119, guid: 953101d19a0fc284c823e8a472ae5283, type: 3}
       propertyPath: m_delayBeforeDisappear.m_duration
-      value: 1.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1581112117049984685, guid: 953101d19a0fc284c823e8a472ae5283, type: 3}
       propertyPath: m_Name
