@@ -15,10 +15,12 @@ public abstract class Enemy : MonoBehaviour
 
     [SerializeField] private VFXControllerPool m_damageVfxPool;
     [SerializeField] private VFXControllerPool m_deathVfxPool;
+    [SerializeField] private VFXControllerPool m_shieldVfxPool;
 
     [SerializeField] private SFXControllerPool m_dieSfxPool;
     [SerializeField] private SFXControllerPool m_hitSfxPool;
     [SerializeField] private SFXControllerPool m_shieldSfxPool;
+
 
     [SerializeField] private bool m_playSounds = true;
 
@@ -71,6 +73,7 @@ public abstract class Enemy : MonoBehaviour
         if ((damageType & ~m_resistances) == 0)
         {
             PlayShieldSfx();
+            PlayVFX(m_shieldVfxPool);
             return;
         }
 
