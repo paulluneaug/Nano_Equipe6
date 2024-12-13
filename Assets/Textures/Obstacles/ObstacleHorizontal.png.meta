@@ -3,29 +3,68 @@ guid: 0e6c40a7cff0d3948a81621c7b948f68
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5949518670637324674
-    second: ObstacleHorizontal 1_0
+      213: -1316741007591074135
+    second: ObstacleHorizontal_0
   - first:
-      213: -4277929841247601145
-    second: ObstacleHorizontal 1_1
+      213: -5154790373943604475
+    second: ObstacleHorizontal_1
   - first:
-      213: -3597750367509080519
-    second: ObstacleHorizontal 1_2
+      213: 2515108552010069425
+    second: ObstacleHorizontal_2
   - first:
-      213: 581832802876377641
-    second: ObstacleHorizontal 1_3
+      213: -552465243579511407
+    second: ObstacleHorizontal_3
   - first:
-      213: -2018290566641427916
-    second: ObstacleHorizontal 1_4
+      213: -8077407306600906666
+    second: ObstacleHorizontal_4
   - first:
-      213: -1379332371232689705
-    second: ObstacleHorizontal 1_5
+      213: 59907253728171002
+    second: ObstacleHorizontal_5
   - first:
-      213: -1086384647287276806
-    second: ObstacleHorizontal 1_6
+      213: 5992218833825709982
+    second: ObstacleHorizontal_6
   - first:
-      213: 6701144931013733750
-    second: ObstacleHorizontal 1_7
+      213: -3564939524374431669
+    second: ObstacleHorizontal_7
+  - first:
+      213: 6824900872911037314
+    second: ObstacleHorizontal_8
+  - first:
+      213: 8037701911724559251
+    second: ObstacleHorizontal_9
+  - first:
+      213: -1140171592659054242
+    second: ObstacleHorizontal_10
+  - first:
+      213: 8992164112374592377
+    second: ObstacleHorizontal_11
+  - first:
+      213: -1909867130140297354
+    second: ObstacleHorizontal_12
+  - first:
+      213: -6394160092855058723
+    second: ObstacleHorizontal_13
+  - first:
+      213: 4706421144928179111
+    second: ObstacleHorizontal_14
+  - first:
+      213: 8176456248743483949
+    second: ObstacleHorizontal_15
+  - first:
+      213: -4808287535942407072
+    second: ObstacleHorizontal_16
+  - first:
+      213: -4003844055245653935
+    second: ObstacleHorizontal_17
+  - first:
+      213: -74010507783914842
+    second: ObstacleHorizontal_18
+  - first:
+      213: 2264379358274643696
+    second: ObstacleHorizontal_19
+  - first:
+      213: -8132632172297295782
+    second: ObstacleHorizontal_20
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,13 +160,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ObstacleHorizontal 1_0
+      name: ObstacleHorizontal_0
       rect:
         serializedVersion: 2
-        x: 91
-        y: 161
-        width: 1167
-        height: 527
+        x: 1
+        y: 502
+        width: 131
+        height: 137
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e76ab1c7a401f6da0800000000000000
-      internalID: -5949518670637324674
+      spriteID: 9a6185da70ff9bde0800000000000000
+      internalID: -1316741007591074135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ObstacleHorizontal 1_1
+      name: ObstacleHorizontal_1
       rect:
         serializedVersion: 2
-        x: 595
-        y: 15
-        width: 277
-        height: 292
+        x: 104
+        y: 614
+        width: 63
+        height: 75
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70eb46e897db1a4c0800000000000000
-      internalID: -4277929841247601145
+      spriteID: 50b0d7557718678b0800000000000000
+      internalID: -5154790373943604475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ObstacleHorizontal 1_2
+      name: ObstacleHorizontal_2
       rect:
         serializedVersion: 2
-        x: 860
-        y: 149
-        width: 244
-        height: 222
+        x: 157
+        y: 224
+        width: 434
+        height: 456
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,20 +219,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 936171a3a19321ec0800000000000000
-      internalID: -3597750367509080519
+      spriteID: 1b57b1607e577e220800000000000000
+      internalID: 2515108552010069425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ObstacleHorizontal 1_3
+      name: ObstacleHorizontal_3
       rect:
         serializedVersion: 2
-        x: 1223
-        y: 78
-        width: 493
-        height: 448
+        x: 584
+        y: 317
+        width: 420
+        height: 383
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +241,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92acd1ef9d5131800800000000000000
-      internalID: 581832802876377641
+      spriteID: 19d81bdb9cf3558f0800000000000000
+      internalID: -552465243579511407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ObstacleHorizontal 1_4
+      name: ObstacleHorizontal_4
       rect:
         serializedVersion: 2
-        x: 1529
-        y: 281
-        width: 410
-        height: 377
+        x: 919
+        y: 336
+        width: 291
+        height: 323
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43ad0d94c679df3e0800000000000000
-      internalID: -2018290566641427916
+      spriteID: 65088efb9d847ef80800000000000000
+      internalID: -8077407306600906666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ObstacleHorizontal 1_5
+      name: ObstacleHorizontal_5
       rect:
         serializedVersion: 2
-        x: 357
-        y: 57
-        width: 164
-        height: 100
+        x: 1124
+        y: 561
+        width: 105
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +285,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7d17a713480abdce0800000000000000
-      internalID: -1379332371232689705
+      spriteID: af3dfe17455d4d000800000000000000
+      internalID: 59907253728171002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ObstacleHorizontal 1_6
+      name: ObstacleHorizontal_6
       rect:
         serializedVersion: 2
-        x: 1173
-        y: 62
-        width: 28
-        height: 28
+        x: 1531
+        y: 283
+        width: 425
+        height: 388
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +307,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: afaf0015be26ce0f0800000000000000
-      internalID: -1086384647287276806
+      spriteID: e9f369ef743a82350800000000000000
+      internalID: 5992218833825709982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ObstacleHorizontal 1_7
+      name: ObstacleHorizontal_7
       rect:
         serializedVersion: 2
-        x: 1769
-        y: 47
-        width: 183
-        height: 218
+        x: 1206
+        y: 66
+        width: 511
+        height: 464
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,8 +329,294 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67dab718fcf3ffc50800000000000000
-      internalID: 6701144931013733750
+      spriteID: b4879e3f36ac68ec0800000000000000
+      internalID: -3564939524374431669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_8
+      rect:
+        serializedVersion: 2
+        x: 1977
+        y: 368
+        width: 65
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 283ad1d1f2be6be50800000000000000
+      internalID: 6824900872911037314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_9
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 155
+        width: 128
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b02da9d47ab8f60800000000000000
+      internalID: 8037701911724559251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_10
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 0
+        width: 282
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e51d0943afb4d20f0800000000000000
+      internalID: -1140171592659054242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_11
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 244
+        width: 66
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9737a102e959acc70800000000000000
+      internalID: 8992164112374592377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_12
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 142
+        width: 191
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 677facbc6f9ce75e0800000000000000
+      internalID: -1909867130140297354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_13
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 236
+        width: 77
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dde3564f5416347a0800000000000000
+      internalID: -6394160092855058723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_14
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 142
+        width: 133
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a3d4da7811905140800000000000000
+      internalID: 4706421144928179111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_15
+      rect:
+        serializedVersion: 2
+        x: 1919
+        y: 127
+        width: 181
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2ad0e333ab987170800000000000000
+      internalID: 8176456248743483949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_16
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 44
+        width: 100
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06ce63226f7854db0800000000000000
+      internalID: -4808287535942407072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_17
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 66
+        width: 57
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 158f5078b0d7f68c0800000000000000
+      internalID: -4003844055245653935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_18
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 50
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aab4e5d5df09fef0800000000000000
+      internalID: -74010507783914842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_19
+      rect:
+        serializedVersion: 2
+        x: 1834
+        y: 66
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f6efa67701bc6f10800000000000000
+      internalID: 2264379358274643696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ObstacleHorizontal_20
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 23
+        width: 75
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a586e49b026132f80800000000000000
+      internalID: -8132632172297295782
       vertices: []
       indices: 
       edges: []
@@ -310,14 +635,27 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ObstacleHorizontal 1_0: -5949518670637324674
-      ObstacleHorizontal 1_1: -4277929841247601145
-      ObstacleHorizontal 1_2: -3597750367509080519
-      ObstacleHorizontal 1_3: 581832802876377641
-      ObstacleHorizontal 1_4: -2018290566641427916
-      ObstacleHorizontal 1_5: -1379332371232689705
-      ObstacleHorizontal 1_6: -1086384647287276806
-      ObstacleHorizontal 1_7: 6701144931013733750
+      ObstacleHorizontal_0: -1316741007591074135
+      ObstacleHorizontal_1: -5154790373943604475
+      ObstacleHorizontal_10: -1140171592659054242
+      ObstacleHorizontal_11: 8992164112374592377
+      ObstacleHorizontal_12: -1909867130140297354
+      ObstacleHorizontal_13: -6394160092855058723
+      ObstacleHorizontal_14: 4706421144928179111
+      ObstacleHorizontal_15: 8176456248743483949
+      ObstacleHorizontal_16: -4808287535942407072
+      ObstacleHorizontal_17: -4003844055245653935
+      ObstacleHorizontal_18: -74010507783914842
+      ObstacleHorizontal_19: 2264379358274643696
+      ObstacleHorizontal_2: 2515108552010069425
+      ObstacleHorizontal_20: -8132632172297295782
+      ObstacleHorizontal_3: -552465243579511407
+      ObstacleHorizontal_4: -8077407306600906666
+      ObstacleHorizontal_5: 59907253728171002
+      ObstacleHorizontal_6: 5992218833825709982
+      ObstacleHorizontal_7: -3564939524374431669
+      ObstacleHorizontal_8: 6824900872911037314
+      ObstacleHorizontal_9: 8037701911724559251
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

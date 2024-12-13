@@ -1,10 +1,43 @@
 fileFormatVersion: 2
-guid: 4aba35107ba9ea945a17534074eb0817
+guid: 2ec9052f89abe594280dea483d00bca1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6632089216972950629
-    second: ObstacleVertical_0
+      213: 5640670636322709142
+    second: EnemySurfaceDie_0005_0
+  - first:
+      213: 4824547447088087495
+    second: EnemySurfaceDie_0005_1
+  - first:
+      213: 5690727833916607380
+    second: EnemySurfaceDie_0005_2
+  - first:
+      213: -1253428488435144593
+    second: EnemySurfaceDie_0005_3
+  - first:
+      213: 4594372885915734069
+    second: EnemySurfaceDie_0005_4
+  - first:
+      213: -6528222561134046664
+    second: EnemySurfaceDie_0005_5
+  - first:
+      213: 1172870365532529966
+    second: EnemySurfaceDie_0005_6
+  - first:
+      213: 269034308172705285
+    second: EnemySurfaceDie_0005_7
+  - first:
+      213: -555298988109590078
+    second: EnemySurfaceDie_0005_8
+  - first:
+      213: 7789533686988685022
+    second: EnemySurfaceDie_0005_9
+  - first:
+      213: -4254252539643404377
+    second: EnemySurfaceDie_0005_10
+  - first:
+      213: -7888465304264071006
+    second: EnemySurfaceDie_0005_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +81,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -100,13 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ObstacleVertical_0
+      name: animation deplacement0000_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 1000
-        height: 1993
+        x: 789
+        y: 45
+        width: 327
+        height: 864
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +148,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b93f0a7def516f3a0800000000000000
-      internalID: -6632089216972950629
+      spriteID: d001c7604f5645e10800000000000000
+      internalID: 2185483817936752653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation deplacement0000_1
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 869
+        width: 77
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 250fea16b629587c0800000000000000
+      internalID: -4069685698361364398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation deplacement0000_2
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 865
+        width: 92
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc942343ad7b6d80800000000000000
+      internalID: -8256367351694058309
       vertices: []
       indices: 
       edges: []
@@ -135,7 +212,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ObstacleVertical_0: -6632089216972950629
+      animation deplacement0000_0: 2185483817936752653
+      animation deplacement0000_1: -4069685698361364398
+      animation deplacement0000_2: -8256367351694058309
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
