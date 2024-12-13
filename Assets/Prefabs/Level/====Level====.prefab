@@ -7987,6 +7987,10 @@ PrefabInstance:
       propertyPath: m_shieldSfxPool
       value: 
       objectReference: {fileID: 8499691670966447916}
+    - target: {fileID: 6342740792014538006, guid: 4b28184501790454f908ed27a2ec4b70, type: 3}
+      propertyPath: m_delayBeforeDisappear.m_duration
+      value: 1.15
+      objectReference: {fileID: 0}
     - target: {fileID: 9147809930844361405, guid: 4b28184501790454f908ed27a2ec4b70, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8924,6 +8928,10 @@ PrefabInstance:
       propertyPath: m_shieldSfxPool
       value: 
       objectReference: {fileID: 8499691670966447916}
+    - target: {fileID: 1518045669572617119, guid: 953101d19a0fc284c823e8a472ae5283, type: 3}
+      propertyPath: m_delayBeforeDisappear.m_duration
+      value: 1.15
+      objectReference: {fileID: 0}
     - target: {fileID: 1581112117049984685, guid: 953101d19a0fc284c823e8a472ae5283, type: 3}
       propertyPath: m_Name
       value: BossOnSpline_NoShoot
