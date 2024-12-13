@@ -414,7 +414,10 @@ public class Player : MonoBehaviour
         m_knockedDown = true;
         m_knockedDownTimer.Start();
 
-        m_visualElementsRoot.gameObject.SetActive(false);
+        if (m_visualElementsRoot != null)
+        {
+            m_visualElementsRoot.gameObject.SetActive(false);
+        }
     }
 
     protected void Revive()
