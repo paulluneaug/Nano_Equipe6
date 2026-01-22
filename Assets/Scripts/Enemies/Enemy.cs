@@ -1,30 +1,30 @@
 using System;
 using UnityEngine;
 using UnityUtility.Pools;
-using UnityUtility.Timer;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public virtual bool IsAlive => (m_health > 0 || m_delayBeforeDisappear.IsRunning) && !m_outOfBounds;
+    public virtual bool IsAlive => m_health > 0 && !m_outOfBounds;
 
     [SerializeField] private ProjectileDamageType m_resistances;
     [SerializeField] private int m_maxHealth;
     [SerializeField] private ShootPattern m_shootPattern;
     [SerializeField] private ContactDamageTrigger m_contactDamageTrigger;
-    
+
     [SerializeField] private int m_contactDamage;
 
     [SerializeField] private VFXControllerPool m_damageVfxPool;
     [SerializeField] private VFXControllerPool m_deathVfxPool;
+    [SerializeField] private VFXControllerPool m_shieldVfxPool;
 
     [SerializeField] private SFXControllerPool m_dieSfxPool;
     [SerializeField] private SFXControllerPool m_hitSfxPool;
     [SerializeField] private SFXControllerPool m_shieldSfxPool;
 
+
     [SerializeField] private bool m_playSounds = true;
 
     [SerializeField] private int m_scoreValue;
-    [SerializeField] private Timer m_delayBeforeDisappear;
 
     [NonSerialized] private int m_health;
     [NonSerialized] private bool m_outOfBounds;
@@ -46,10 +46,6 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Update()
     {
         _ = m_shootPattern.UpdatePattern(Time.deltaTime);
-        if (m_delayBeforeDisappear.Update(Time.deltaTime))
-        {
-            gameObject.SetActive(false);
-        }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -59,14 +55,10 @@ public abstract class Enemy : MonoBehaviour
         {
             return;
         }
-        
+
         DealContactDamage(other);
     }
 
-    private void OnDisable()
-    {
-        m_delayBeforeDisappear.Stop();
-    }
 
     private void DealContactDamage(Collider2D other)
     {
@@ -75,12 +67,13 @@ public abstract class Enemy : MonoBehaviour
             _ = player.TakeDamage(m_contactDamage);
         }
     }
-    
+
     public virtual void TakeDamage(int damage, ProjectileDamageType damageType)
     {
         if ((damageType & ~m_resistances) == 0)
         {
             PlayShieldSfx();
+            PlayVFX(m_shieldVfxPool);
             return;
         }
 
@@ -106,7 +99,7 @@ public abstract class Enemy : MonoBehaviour
         }
 
         PooledObject<SFXController> sfxController = m_shieldSfxPool.Request();
-        
+
         sfxController.Object.gameObject.SetActive(true);
         sfxController.Object.StartSFXLifeCycle(m_shieldSfxPool);
     }
@@ -126,7 +119,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Kill()
     {
-        m_delayBeforeDisappear.Start();
+        gameObject.SetActive(false);
     }
 
     private void PlayDamageVFX(bool killed)

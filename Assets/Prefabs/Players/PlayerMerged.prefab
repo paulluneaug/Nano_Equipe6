@@ -203,8 +203,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -37773953
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8d50d5f1a0f384b45ab41d1c888bdced, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -313,9 +313,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -37773953
+  m_SortingLayer: 3
+  m_SortingOrder: 3
   m_Sprite: {fileID: -1876251298423762632, guid: f632dc12963d55b4c92b28a583da4c87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -552,8 +552,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -37773953
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e453a7fa97c7d5a4bae8c37b3d2cbc14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1073,7 +1073,23 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  m_unstuckContactFilter:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   m_collisionOffset: 0.1
+  m_unstuckTarget: {fileID: 0}
+  m_unstuckStep: 0.05
   m_maxHealth: 3
   m_knockedDownTimer:
     m_duration: 0
@@ -1096,8 +1112,6 @@ MonoBehaviour:
   m_mediumWingsSprite: {fileID: 6036493278761399431}
   m_smallWingsSprite: {fileID: 5248797677335994027}
   m_healthBarManager: {fileID: 0}
-  m_unstuckTarget: {fileID: 0}
-  m_unstuckStep: 0
   m_laserStartAudioSource: {fileID: 7144051155812189929}
   m_laserLoopAudioSource: {fileID: 1197516571015702368}
   m_laserEndAudioSource: {fileID: 7083233474558380620}

@@ -59,6 +59,8 @@ public class LaserShootPattern : ShootPattern
         m_laserTimer.Start();
         m_laser.ResetLaser();
         m_laser.gameObject.SetActive(true);
+
+        GameManager.Instance.ScreenShake(m_laserTimer.Duration - 0.5f);
     }
 
     private void UpdateLaserOn(float deltaTime)
